@@ -1,0 +1,105 @@
+# ============================================================================
+# M0 — EXPERIMENT HARNESS (bộ khung thí nghiệm dùng chung)  ⭐ ĐƯỜNG GĂNG
+# ----------------------------------------------------------------------------
+# Mọi module khác gọi qua M0. M0 xong sớm ngày nào → cả nhóm chạy song song
+# sớm ngày đó. Đọc 00-contract.yaml trước khi implement file này.
+# ============================================================================
+
+module: M0
+name: "Experiment Harness"
+role: "critical_path"
+owner: "Thành viên A (code Python vững nhất)"
+depends_on: []
+blocks: ["M1", "M2", "M3", "M4", "M5"]
+directory: "harness/"
+
+goal: >
+  Xây bộ khung để mọi 'chiến lược' (baseline/reflexion/rag/...) cắm vào chạy
+  50 bài MBPP và tự chấm pass@1, xuất kết quả JSON + CSV.
+
+# ----------------------------------------------------------------------------
+# THỨ TỰ XÂY (theo rủi ro & phụ thuộc — làm từ trên xuống)
+# ----------------------------------------------------------------------------
+build_order:
+  - step: 1
+    component: "ExecutionResult schema"
+    why: "Hợp đồng M2/M4 đọc. Chốt sớm nhất, đổi sau = vỡ cả nhóm."
+    ref: "00-contract.yaml#execution_result_schema"
+
+  - step: 2
+    component: "Sandbox Executor"
+    why: "Thành phần QUAN TRỌNG NHẤT, rủi ro cao nhất."
+    spec:
+      method: "Ghi code + các assert của test vào file tạm, chạy bằng subprocess"
+      call: "subprocess.run([sys.executable, file], timeout=10, capture_output=True)"
+      run_each_test_separately: true      # để biết assert nào rớt đầu -> failed_test
+      timeout_seconds: 10                 # BẮT BUỘC — code sinh ra có thể lặp vô hạn
+      workdir: "thư mục tạm"
+      returns: "ExecutionResult (xem 00-contract)"
+    contract_note: >
+      ExecutionResult là 'hợp đồng giao tiếp' M0 <-> M2/M4. Chốt schema sớm,
+      thay đổi phải báo cả nhóm.
+
+  - step: 3
+    component: "Ollama Client"
+    signature: "generate(system_prompt, user_prompt, temperature, max_tokens) -> str"
+    spec:
+      wraps: "POST /api/chat tới http://192.168.31.16:11434"
+      needs: ["retry khi timeout", "log thời gian sinh", "đếm token"]
+      no_agent_lib: "giữ mỏng để giải thích được khi thuyết trình"
+
+  - step: 4
+    component: "Code Extractor"
+    why: "Nguồn lỗi vặt LỚN NHẤT của loại POC này."
+    spec:
+      primary: "tách code khỏi khối ```python ... ```"
+      fallback: "nếu không có fence, lấy từ dòng `def` đầu tiên"
+      must_have: "unit test RIÊNG cho chính extractor (yêu cầu của DoD)"
+
+  - step: 5
+    component: "MBPP Loader"
+    spec:
+      source: "datasets.load_dataset('mbpp', 'sanitized')"
+      select: "50 bài theo tiêu chí (00-contract#benchmark.selection_criteria)"
+      freeze: "commit data/selected_tasks.json — KHÔNG đổi giữa chừng"
+      returns_per_task: ["task_id", "text", "test_list"]
+
+  - step: 6
+    component: "Scorer + Runner"
+    spec:
+      strategy_interface: "mỗi module cung cấp solve(task) -> code là cắm được"
+      loop: "chạy 50 bài qua 1 strategy, tính pass@1"
+      output: "results/<module>/<run>.json + bảng CSV tổng hợp"
+
+# ----------------------------------------------------------------------------
+# DEFINITION OF DONE
+# ----------------------------------------------------------------------------
+definition_of_done:
+  - "Chạy được: python -m harness.run --strategy baseline --tasks data/selected_tasks.json"
+  - "Lệnh trên ra file kết quả JSON"
+  - "Code Extractor có unit test riêng"
+  - "Schema ExecutionResult được viết thành tài liệu trong repo"
+
+deadline: "2026-07-21 (cuối tuần 1) — mốc đường găng ⭐"
+
+# ----------------------------------------------------------------------------
+# KẾ THỪA (ghi rõ trong báo cáo — Week0 tr.10)
+# ----------------------------------------------------------------------------
+inheritance:
+  reused:
+    - "Logic chấm tham khảo google-research/mbpp"
+    - "Cách chấm của HumanEval (openai/human-eval)"
+  self_written: "Toàn bộ harness, executor, runner"
+
+# ----------------------------------------------------------------------------
+# CẠM BẪY
+# ----------------------------------------------------------------------------
+traps:
+  - "Quên chạy từng test riêng -> không biết assert nào rớt -> M2 thiếu feedback"
+  - "Bỏ timeout -> code lặp vô hạn treo cả run"
+  - "Extractor không có fallback khi model quên fence ``` -> rớt oan nhiều bài"
+  - "Chưa git init -> 'đóng băng' 50 task chỉ là lời nói"
+
+frozen_outputs:                             # M0 sinh ra các thứ khác đóng băng theo
+  - "data/selected_tasks.json (50 task)"
+  - "ExecutionResult schema"

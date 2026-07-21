@@ -1,0 +1,58 @@
+# ============================================================================
+# M4 — MULTI-AGENT: Programmer <-> Reviewer (ChatDev thu nhỏ)
+# ----------------------------------------------------------------------------
+# Trả lời: feedback từ 1 agent Reviewer riêng có tốt hơn tự phản tỉnh (M2)?
+# Dùng lại ~70% hạ tầng vòng lặp của M2 -> phối hợp CHẶT với B.
+# ============================================================================
+
+module: M4
+name: "Multi-Agent (Programmer + Reviewer)"
+owner: "Thành viên D (bắt cặp với B tuần 1 để chốt interface)"
+depends_on: ["M0", "M2"]
+shares_loop_interface_with: "M2"
+directory: "multiagent/"
+
+goal: >
+  So sánh tự phê (self-critique, M2) vs phê bình ngoài (external critique):
+  Reviewer riêng có bắt lỗi tốt hơn tự phản tỉnh không?
+
+# ----------------------------------------------------------------------------
+# THIẾT KẾ (dual-agent communication theo ChatDev)
+# ----------------------------------------------------------------------------
+design:
+  agents:
+    programmer:
+      prompt: "ĐÚNG prompt sinh code của baseline"
+      role: "sinh code, nhận review, sinh bản mới"
+    reviewer:
+      system_prompt: "riêng — đóng vai người review khó tính"
+      input: ["đề bài", "code", "ExecutionResult"]
+      output: "nhận xét có cấu trúc: lỗi ở đâu, vì sao sai, gợi ý hướng sửa"
+      hard_constraint: "Reviewer KHÔNG được viết code hộ (ép trong prompt), chỉ nhận xét"
+  loop:
+    max_iterations: 4                       # CÙNG ngân sách với M2 để so sánh công bằng
+    flow: "Programmer sinh -> Reviewer nhận xét -> Programmer sinh lại -> lặp"
+
+advanced_config:                            # nếu kịp
+  name: "Reviewer KHÔNG thấy ExecutionResult (phải tự suy luận lỗi bằng đọc code)"
+  purpose: "tách bạch giá trị của 'người thứ hai' vs giá trị của 'thông tin thực thi'"
+
+# ----------------------------------------------------------------------------
+# THƯỚC ĐO
+# ----------------------------------------------------------------------------
+metrics:
+  primary: "pass@1 theo vòng — đặt CẠNH đường cong M2 trên CÙNG biểu đồ"
+  analysis: "loại lỗi nào Reviewer bắt được mà self-reflect bỏ sót (và ngược lại)"
+
+# ----------------------------------------------------------------------------
+# GHI CHÚ THIẾT KẾ
+# ----------------------------------------------------------------------------
+design_note: >
+  M4 dùng lại ~70% hạ tầng vòng lặp M2 (chỉ thay bước Reflect bằng lượt gọi
+  Reviewer). Người làm M4 thống nhất interface vòng lặp với B NGAY tuần 1.
+
+inheritance:
+  reused: "khung dual-agent ChatDev"
+  self_written: "Reviewer agent + tích hợp trên vòng lặp M2"
+
+deadline: "2026-08-04 (khóa số liệu)"

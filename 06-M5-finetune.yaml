@@ -1,0 +1,71 @@
+# ============================================================================
+# M5 — FINE-TUNE với OSS-Instruct thu nhỏ  (STRETCH GOAL — cắt đầu tiên nếu thiếu giờ)
+# ----------------------------------------------------------------------------
+# Minh họa trục TRAINING-TIME để đối chiếu với các kỹ thuật INFERENCE-TIME.
+# LƯU Ý: M5 dùng 1.3b-BASE, tách khỏi nhánh instruct của M1-M4 -> vẫn có
+# đối chứng trước/sau sạch dù ablation cũng chạy 1.3b.
+# ============================================================================
+
+module: M5
+name: "Fine-tune (OSS-Instruct thu nhỏ, LoRA)"
+role: "stretch_goal"
+owner: "Thành viên E (cần máy khỏe hoặc quen Colab)"
+depends_on: ["M0"]                          # dùng lại Sandbox Executor để lọc dữ liệu
+directory: "finetune/"
+independent_branch: true                    # có thể trễ hơn M1-M4
+
+goal: >
+  Minh họa trục training-time cho báo cáo phủ đủ cả hai phía error decomposition.
+
+# ----------------------------------------------------------------------------
+# LƯU Ý MODEL (quan trọng — tránh lẫn instruct/base)
+# ----------------------------------------------------------------------------
+model_note:
+  ablation_branch: "deepseek-coder:1.3b-INSTRUCT (M1-M4)"
+  finetune_branch: "deepseek-coder:1.3b-BASE — before vs after"
+  why_clean: >
+    Hai nhánh dùng model KHÁC NHAU (instruct vs base) nên M5 tự đối chứng nội
+    bộ (base-vanilla vs base-finetuned), KHÔNG đụng nhánh instruct. So sánh là
+    1.3b-base-TRƯỚC vs 1.3b-base-SAU — TUYỆT ĐỐI không so với instruct.
+
+# ----------------------------------------------------------------------------
+# CÁC BƯỚC
+# ----------------------------------------------------------------------------
+steps:
+  - step: 1
+    name: "Thu seed snippets"
+    spec:
+      count: "300-500 đoạn 1-15 dòng từ repo Python giấy phép mở"
+      sources: "repo của M3 + vài repo phổ biến — GHI RÕ nguồn từng repo (Week0 tr.10)"
+  - step: 2
+    name: "Sinh dữ liệu giáo viên"
+    spec:
+      teacher_model: "model mạnh nhất truy cập được (API Claude/GPT free-tier, hoặc qwen2.5-coder:32b)"
+      fallback: "nếu chỉ có 1.3b/6.7b làm giáo viên -> thành 'self-instruct', ghi rõ hạn chế"
+      per_seed: "prompt giáo viên sinh cặp (đề bài, lời giải)"
+      filter: "loại mẫu mà lời giải KHÔNG tự chạy được (dùng lại Sandbox Executor M0 — điểm cộng hệ thống)"
+  - step: 3
+    name: "Fine-tune LoRA"
+    spec:
+      base: "deepseek-coder-1.3b-base"
+      tooling: "mlx_lm (Mac Apple Silicon) HOẶC Colab T4 + peft"
+      epochs: "2-3 trên vài trăm mẫu"
+  - step: 4
+    name: "Đánh giá"
+    spec:
+      metric: "pass@1 của 1.3b-base TRƯỚC và SAU fine-tune"
+      dataset: "ĐÚNG 50 bài MBPP của M0"
+      comparison: "1.3b-base-trước vs 1.3b-base-sau (KHÔNG so với model khác)"
+
+# ----------------------------------------------------------------------------
+# KỲ VỌNG THỰC TẾ
+# ----------------------------------------------------------------------------
+realistic_expectation: >
+  Với vài trăm mẫu, cải thiện KHIÊM TỐN (vài điểm %). Kết quả "cải thiện nhỏ
+  nhưng đo được" + phân tích vì sao (sample complexity — Week2 tr.33) vẫn là
+  chương báo cáo tốt. Đừng kỳ vọng phép màu.
+
+cut_priority: "ĐẦU TIÊN bị cắt nếu thiếu giờ (independent branch)"
+inheritance:
+  reused: "ý tưởng OSS-Instruct; peft/mlx_lm cho LoRA"
+  self_written: "pipeline thu seed + sinh + lọc dữ liệu + script train"

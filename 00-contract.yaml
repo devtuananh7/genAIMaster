@@ -1,0 +1,164 @@
+# ============================================================================
+# 00-CONTRACT.yaml  —  HỢP ĐỒNG ĐÓNG BĂNG (single source of truth)
+# ----------------------------------------------------------------------------
+# File này chứa 4 thứ KHÔNG AI ĐƯỢC ĐỔI mà không báo cả nhóm (quy tắc vàng).
+# Mọi module M0-M6 đọc file này để lấy hằng số chung. Đổi 1 dòng ở đây =
+# mọi kết quả của 5 người mất tính so sánh. Agent đọc file này TRƯỚC TIÊN.
+# ============================================================================
+
+meta:
+  project: "POC — Tối ưu hóa LLM sinh mã nguồn"
+  course: "IT5410 – Nền tảng AI Tạo sinh (Foundation of Generative AI)"
+  topic: "Chủ đề gợi ý số 3 (Week0, tr.11) — gợi ý/hoàn thành code, tạo hàm, sinh test"
+  team_size: 5
+  duration_weeks: 4
+  start_date: "2026-07-14"
+  standard_version: "1.3b"          # chuẩn hiện hành (thay bản gốc 6.7b)
+  original_doc: "draft/Tài liệu Backbone - POC (bản gốc 6.7b).md"
+
+# ----------------------------------------------------------------------------
+# FROZEN #1 — MODEL & ENDPOINT
+# ----------------------------------------------------------------------------
+# ĐỔI QUYẾT ĐỊNH so với bản gốc: máy Windows yếu, không kéo nổi 6.7b nên
+# TOÀN BỘ pipeline ablation (M1-M4) hạ chuẩn xuống 1.3b. Đây là "deviation"
+# BẮT BUỘC ghi rõ trong báo cáo (tiêu chí chấm Week0 tr.10).
+model:
+  ablation_model: "deepseek-coder:1.3b"     # instruct — dùng cho M0-M4 (tag CHỐT)
+  ablation_variant: "instruct"              # ĐÃ XÁC MINH là instruct (xem server_verified)
+  server_tag_actual: "deepseek-coder:latest"  # tag ĐANG có trên server = cùng model 1.3b instruct
+  finetune_base_model: "deepseek-coder:1.3b-base"  # riêng M5, tách khỏi nhánh instruct
+  embedding_model: "qwen3-embedding:0.6b"   # cho RAG (M3) — server KHÔNG có nomic-embed-text
+  teacher_model_candidate: "qwen3.5:9b"     # M5: có sẵn trên server (tools+thinking), thay API ngoài
+  deviation_from_original:
+    was: "deepseek-coder:6.7b"
+    now: "deepseek-coder:1.3b"
+    reason: "Ràng buộc phần cứng máy chủ Ollama (192.168.31.16) không đủ RAM/VRAM cho 6.7b"
+    must_document_in_report: true
+
+  # ĐÃ KIỂM TRA server ngày 2026-07-21 qua /api/tags, /api/ps, /api/show:
+  server_verified:
+    date: "2026-07-21"
+    ollama_version: "0.32.1"
+    is_instruct: true                       # template dùng '### Instruction/### Response' + system prompt DeepSeek-Coder-Instruct
+    quantization: "Q4_0"
+    tag_mismatch: >
+      Server chỉ có tag 'deepseek-coder:latest' (0.78GB, 1.3b instruct), CHƯA có
+      'deepseek-coder:1.3b'. Chạy default sẽ 404. Cách xử lý: pull tag 1.3b (giữ
+      đóng băng/tái lập) HOẶC chạy kèm --model deepseek-coder:latest.
+    runtime_context_length: 4096            # /api/ps: nạp ở 4096 dù model hỗ trợ 16384
+    context_warning: >
+      M1 baseline OK (prompt ngắn + 1024 token). M2 Reflexion tích lũy memory qua
+      4 vòng có thể vượt 4096 -> lúc đó set options.num_ctx cao hơn trong client.
+
+endpoint:
+  host: "192.168.31.16"
+  port: 11434
+  base_url: "http://192.168.31.16:11434"
+  chat_api: "POST /api/chat"
+  embed_api: "POST /api/embeddings"
+  pull_api: "POST /api/pull"                # pull model từ xa, không cần vào máy chủ
+  health_check: "GET /api/tags"             # liệt kê model đang có
+  verify_instruct_note: >
+    ĐÃ XÁC MINH 2026-07-21: 'deepseek-coder:latest' trên server là 1.3b INSTRUCT
+    (qua /api/show: template '### Instruction/### Response'). Xem model.server_verified.
+
+# ----------------------------------------------------------------------------
+# FROZEN #2 — THAM SỐ SINH (generation params)
+# ----------------------------------------------------------------------------
+generation_params:
+  default:                                  # dùng cho MỌI so sánh công bằng
+    temperature: 0.2
+    max_tokens: 1024
+    top_p: 1.0
+    seed: 5410                              # CỐ ĐỊNH để tái lập (thêm 2026-07-21 sau khi phát hiện non-determinism)
+  determinism_note: >
+    Không set seed thì temp=0.2 vẫn ngẫu nhiên hoàn toàn (2 lần chạy khác hẳn) ->
+    mọi so sánh ablation vô nghĩa. Seed đưa tái lập lên ~64%, phần còn lại là
+    non-determinism tầng GPU (Metal/Mac) với generation dài — KHÔNG sửa được bằng code.
+  measurement_protocol: >
+    Vì còn dao động ±2-3 điểm giữa các lần chạy seeded, MỌI con số ablation chính
+    thức (baseline, +RAG, +Reflexion...) PHẢI chạy N=3 lần, báo cáo mean ± std.
+    Một lần chạy đơn KHÔNG đủ tin để so sánh delta nhỏ.
+  sampling_variant:                         # chỉ khi cần lấy mẫu đa dạng (pass@k)
+    temperature: 0.8
+    max_tokens: 1024
+    note: "Phải ghi rõ 'sampling' trong file kết quả khi dùng biến thể này"
+  base_system_prompt: >
+    You are an expert Python programmer. You write correct, runnable code.
+    Return ONLY the function inside a single ```python code block.
+
+# ----------------------------------------------------------------------------
+# FROZEN #3 — BENCHMARK: 50 TASK MBPP
+# ----------------------------------------------------------------------------
+benchmark:
+  name: "MBPP (Mostly Basic Python Problems)"
+  source: "datasets.load_dataset('mbpp', 'sanitized')"   # bản sanitized ~427 bài
+  subset_size: 50
+  selection_criteria:
+    - "Trải đều độ khó (đo bằng độ dài code tham chiếu)"
+    - "Loại các bài cần thư viện ngoài (chỉ stdlib)"
+  frozen_file: "data/selected_tasks.json"   # CHỐT 1 LẦN, commit, KHÔNG đổi giữa chừng
+  per_task_fields: ["task_id", "text", "test_list", "test_imports"]  # test_list = chuỗi 'assert ...'
+  test_imports_note: >
+    test_imports (import statements test cần) PHẢI được nạp cùng test_list khi
+    chạy Sandbox Executor. Bỏ qua nó -> vài bài error_runtime OAN -> chấm sai
+    baseline. Bản MBPP sanitized có sẵn trường này.
+  expected_pass1_1_3b: "40-50%"             # KỲ VỌNG MỚI cho 1.3b (bản gốc ghi 55-65% cho 6.7b)
+  sanity_note: >
+    Nếu pass@1 rơi ngoài 40-50% NHIỀU, kiểm tra Code Extractor và prompt TRƯỚC
+    khi nghi ngờ model. Đừng sửa harness oan.
+
+# ----------------------------------------------------------------------------
+# FROZEN #4 — EXECUTIONRESULT SCHEMA (hợp đồng M0 <-> M2/M4)
+# ----------------------------------------------------------------------------
+# Reflexion (M2) và Reviewer (M4) đều đọc cấu trúc này để tạo feedback.
+# Thiếu/đổi 1 trường = vỡ M2 và M4. Chốt sớm nhất.
+execution_result_schema:
+  status:
+    type: "enum"
+    values: ["pass", "fail_assert", "error_runtime", "error_syntax", "timeout"]
+  stdout: { type: "string" }
+  stderr: { type: "string" }
+  traceback: { type: "string", note: "rút gọn <= 15 dòng khi đưa vào prompt Reflexion" }
+  failed_test:
+    type: "string | null"
+    note: "assert đầu tiên bị rớt — chạy TỪNG test một để xác định"
+  passed_count: { type: "int" }
+  total_count: { type: "int" }
+  duration_ms: { type: "int" }
+
+# ----------------------------------------------------------------------------
+# QUY TẮC VÀNG — 4 thứ không được đổi đơn phương
+# ----------------------------------------------------------------------------
+golden_rules:
+  do_not_change_without_team_notice:
+    - "execution_result_schema (FROZEN #4)"
+    - "benchmark.frozen_file — danh sách 50 task_id"
+    - "baseline prompt (định nghĩa trong 02-M1-baseline.yaml, đóng băng sau khi chốt)"
+    - "generation_params.default (temperature/max_tokens)"
+  sync_cadence: "2 lần/tuần, 30 phút — trạng thái module + blocker + đổi schema"
+
+# ----------------------------------------------------------------------------
+# THƯỚC ĐO & OUTPUT
+# ----------------------------------------------------------------------------
+metrics:
+  primary: "pass@1"                         # % bài pass toàn bộ unit test ở lượt sinh đầu
+  secondary: "pass@5"                       # tham chiếu, dùng sampling_variant
+results_convention:
+  path: "results/<module>/<run-name>.json"
+  per_run_fields:
+    - "model_name"
+    - "params (temperature, max_tokens)"
+    - "timestamp"
+    - "task_list"
+    - "per_task: {task_id, status, iterations, error}"
+    - "total_pass1"
+
+# ----------------------------------------------------------------------------
+# NGUYÊN TẮC KỸ THUẬT CHUNG
+# ----------------------------------------------------------------------------
+engineering_constraints:
+  language: "Python thuần — KHÔNG dùng framework agent (LangChain...) để giải thích được khi bảo vệ"
+  repo: "1 repo GitHub chung; mỗi module 1 thư mục (harness/ baseline/ reflexion/ rag/ multiagent/ finetune/)"
+  git_status: "CHƯA có git — cần `git init` sớm để 'đóng băng' có hiệu lực thật"
+  sandbox_isolation: "subprocess + timeout, KHÔNG Docker (ghi rõ giới hạn này trong báo cáo)"

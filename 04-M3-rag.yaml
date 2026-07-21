@@ -1,0 +1,67 @@
+# ============================================================================
+# M3 — REPOSITORY-LEVEL RAG (RepoCoder)  —  PHẦN KHÓ NHẤT, cần người vững
+# ----------------------------------------------------------------------------
+# Chứng minh truy xuất ngữ cảnh repo giúp model DÙNG LẠI API có sẵn thay vì bịa.
+# ============================================================================
+
+module: M3
+name: "Repository-Level RAG (RepoCoder)"
+owner: "Thành viên C (mạnh thứ hai của nhóm)"
+depends_on: ["M0"]
+directory: "rag/"
+
+goal: "Chứng minh truy xuất ngữ cảnh repo giúp model dùng lại hàm/API có sẵn."
+
+# ----------------------------------------------------------------------------
+# KHÁC BIỆT QUAN TRỌNG: MBPP là bài đơn lẻ, KHÔNG có repo -> cần benchmark riêng
+# ----------------------------------------------------------------------------
+mini_benchmark:
+  name: "RepoTasks"
+  size: "12-15 task"
+  repo_choice:
+    option_a: "1 thư viện utility Python cỡ vừa dễ hiểu (vd: boltons)"
+    option_b: "tự dựng repo giả lập ~20 file (vd: app quản lý bán hàng)"
+  per_task:
+    setup: "xóa thân 1 hàm CÓ THẬT (giữ chữ ký + docstring), yêu cầu model viết lại"
+    scoring: "unit test có sẵn của repo hoặc tự viết 2-3 test/hàm"
+    pick_functions: "chọn hàm CÓ GỌI SANG FILE KHÁC — đó mới là chỗ RAG tỏa sáng"
+
+# ----------------------------------------------------------------------------
+# PIPELINE
+# ----------------------------------------------------------------------------
+indexing:
+  chunk: "dùng module `ast` bóc từng hàm/lớp trong repo thành chunk"
+  embed: "nomic-embed-text qua Ollama (192.168.31.16:11434)"
+  store: ".npy (vector) + metadata JSON — KHÔNG cần vector DB, numpy + cosine là đủ"
+
+retrieval_loop:
+  round_1:
+    query: "chữ ký hàm + docstring"
+    retrieve: "top-5 chunk"
+    action: "dựng prompt (ngữ cảnh + yêu cầu) -> sinh code nháp"
+  round_2:                                  # điểm RepoCoder
+    query: "CHÍNH code nháp vòng 1 (chứa tên biến/hàm mà query gốc không có)"
+    retrieve: "top-5 chunk mới"
+    action: "sinh bản cuối"
+
+# ----------------------------------------------------------------------------
+# THÍ NGHIỆM
+# ----------------------------------------------------------------------------
+experiments:
+  compare_3_configs: ["không RAG", "RAG một lần", "RAG lặp (RepoCoder)"]
+  metrics:
+    - "pass-rate trên RepoTasks"
+    - "số lần model TÁI SỬ DỤNG hàm có sẵn thay vì viết lại (đọc thủ công — rất thuyết phục)"
+
+# ----------------------------------------------------------------------------
+# CẠM BẪY & PHƯƠNG ÁN CẮT
+# ----------------------------------------------------------------------------
+traps:
+  - "Module DỄ SA LẦY NHẤT"
+  - cut_plan: "nếu giữa tuần 3 chưa xong indexing + vòng 1 -> cắt vòng 2 thành demo định tính 3-4 case"
+
+inheritance:
+  reused: "ý tưởng pipeline từ paper RepoCoder (microsoft/CodeT)"
+  self_written: "toàn bộ indexer + retriever"
+
+deadline: "2026-08-04 (khóa số liệu)"

@@ -1,0 +1,16 @@
+# Dữ liệu / build
+draft/
+*.pdf
+.venv/
+results/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+
+# Công cụ agent / workflow nội bộ (không public)
+.claude/
+.codex/
+.agent/
+openspec/
+base_knowledge/

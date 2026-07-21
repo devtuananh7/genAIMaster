@@ -1,0 +1,86 @@
+# ============================================================================
+# M6 — BÁO CÁO LaTeX + SLIDES  (xuyên suốt, KHÔNG phải việc cuối kỳ)
+# ----------------------------------------------------------------------------
+# Cấu trúc bám Week0 tr.8-9. Mỗi thành viên tự viết phần lý thuyết + kết quả
+# của module mình. File này cũng chứa bảng trích dẫn slide (PHẦN 2 bản gốc).
+# ============================================================================
+
+module: M6
+name: "Báo cáo LaTeX + Slides"
+owner: "Thành viên E dựng skeleton Overleaf từ tuần 1; mỗi người tự điền phần mình"
+depends_on: ["M1", "M2", "M3", "M4", "M5"]
+directory: "report/ (Overleaf)"
+
+# ----------------------------------------------------------------------------
+# CẤU TRÚC BÁO CÁO
+# ----------------------------------------------------------------------------
+report_structure:
+  - "1. Giới thiệu chủ đề + phát biểu bài toán"
+  - "2. Cơ sở lý thuyết: 7 kỹ thuật theo khung Input representation / Training / Prediction"
+  - "3. Phương pháp thực nghiệm: kiến trúc harness, benchmark, tham số"
+  - "4. Kết quả: bảng ablation A->D + đường cong iteration (M2 vs M4) + RAG + fine-tune"
+  - "5. Thảo luận: phân loại lỗi, khám phá mới (hard-coding test, self vs external critique...)"
+  - "6. Phân công đóng góp từng thành viên + nguồn kế thừa"
+
+# ----------------------------------------------------------------------------
+# DEVIATION BẮT BUỘC GHI (chuẩn 1.3b)
+# ----------------------------------------------------------------------------
+mandatory_deviations_to_document:
+  - item: "Model"
+    note: "Dùng 1.3b thay 6.7b do ràng buộc phần cứng. Ảnh hưởng: baseline ~40-50% thay vì 55-65%."
+  - item: "Sandbox"
+    note: "Không dùng Docker (subprocess + timeout). Ghi rõ giới hạn cách ly."
+  - item: "Kế thừa"
+    note: "Mọi module ghi rõ phần reused vs self_written (Week0 tr.10)."
+
+# ----------------------------------------------------------------------------
+# BẢNG TRÍCH DẪN SLIDE (PHẦN 2 bản gốc — đưa thẳng vào báo cáo)
+# ----------------------------------------------------------------------------
+theory_citations:
+  framework:
+    technique: "Khung phân tích chung"
+    slide: "Week2-Learning Theory"
+    pages: "10, 14, 16-17"
+    concepts: "Hypothesis space, ERM, Error decomposition"
+  fim:
+    technique: "FIM (Fill-in-the-Middle)"
+    slide: "Week4-Transformer / Week6-autoregressive"
+    pages: "47-48 / 8"
+    concepts: "Causal masking / Chain rule, tự chọn thứ tự biến"
+    poc_role: "Không train FIM; tận dụng chế độ FIM có sẵn của deepseek-coder trong M3"
+  rag:
+    technique: "Repo-level RAG"
+    slide: "Week4-Transformer / Week8-Diffusion"
+    pages: "55 / 53"
+    concepts: "O(n^2) self-attention / CLIP contrastive loss"
+  rl_compiler:
+    technique: "RL + Compiler Feedback"
+    slide: "Week2 / Week6"
+    pages: "14 / 14-15"
+    concepts: "Giới hạn ERM / MADE masking (FGO của StepCoder cùng triết lý mask)"
+  reflexion:
+    technique: "Reflexion"
+    slide: "Week2"
+    pages: "16-17"
+    concepts: "Inference-time optimization, giảm sai số KHÔNG đổi hypothesis space"
+  tdd_harness:
+    technique: "TDD Harness"
+    slide: "Week8 / Week6"
+    pages: "36, 44, 76 / 19"
+    concepts: "Classifier (Free) Guidance, Dynamic thresholding / Conditional models"
+  oss_instruct:
+    technique: "OSS-Instruct"
+    slide: "Week5 / Week2"
+    pages: "21-22, 24 / 18, 22"
+    concepts: "KL, MLE / Data manifold, Bias-Variance"
+  multi_agent:
+    technique: "Multi-Agent"
+    slide: "Week2"
+    pages: "34"
+    concepts: "No-free-lunch theorem — không model nào giỏi mọi vai"
+
+deliverables:
+  - "Mã nguồn GitHub + notebook Colab minh họa"
+  - "Readme hướng dẫn cài đặt và chạy"
+  - "Báo cáo LaTeX (Overleaf)"
+  - "Slides thuyết trình"

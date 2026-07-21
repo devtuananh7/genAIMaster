@@ -1,0 +1,71 @@
+# ============================================================================
+# M2 — REFLEXION / SELF-DEBUGGING (tự gỡ lỗi qua phản tỉnh)
+# ----------------------------------------------------------------------------
+# Vòng lặp Generate -> Execute -> Reflect. KHÔNG cập nhật trọng số — tín hiệu
+# đúng/sai của compiler được dịch thành "gradient bằng lời".
+# ============================================================================
+
+module: M2
+name: "Reflexion / Self-Debugging"
+owner: "Thành viên B"
+depends_on: ["M0", "M1"]
+shares_loop_interface_with: "M4"            # chốt chung interface vòng lặp tuần 1
+directory: "reflexion/"
+
+goal: "Đo mức cải thiện pass@1 khi cho model tối đa N vòng tự sửa."
+
+# ----------------------------------------------------------------------------
+# THUẬT TOÁN (3 pha Act–Evaluate–Reflect)
+# ----------------------------------------------------------------------------
+algorithm:
+  max_iterations: 4                         # theo paper Reflexion, lợi ích bão hòa vòng 3-4
+  steps:
+    - phase: "Generate"
+      spec: "sinh code như baseline; vòng 0 DÙNG LẠI kết quả baseline (tiết kiệm thời gian)"
+    - phase: "Execute"
+      spec: "chạy qua Sandbox Executor M0, nhận ExecutionResult"
+    - phase: "check"
+      spec: "nếu pass -> dừng, ghi số vòng. Nếu fail -> sang Reflect"
+    - phase: "Reflect"
+      prompt_contents:
+        - "đề bài"
+        - "code vừa sinh"
+        - "feedback từ ExecutionResult (loại lỗi + traceback rút gọn <=15 dòng + failed_test)"
+        - "toàn bộ episodic_memory (các đoạn tự phê của vòng trước)"
+      output: "một đoạn tự phê NGẮN: nguyên nhân gốc + vòng sau cần đổi gì (CHƯA sinh code)"
+    - phase: "loop"
+      spec: "nối đoạn tự phê vào episodic_memory; quay lại Generate với prompt = đề bài + memory"
+
+episodic_memory:
+  what: "danh sách các đoạn tự phê tích lũy qua các vòng"
+  purpose: "chống lặp lại lỗi cũ"
+  limit: "mỗi đoạn tự phê <= 100 từ (chống context phình)"
+
+# ----------------------------------------------------------------------------
+# THÍ NGHIỆM
+# ----------------------------------------------------------------------------
+experiments:
+  primary:
+    name: "pass@1 theo mỗi vòng (iteration 0->4)"
+    output: "đường cong pass-rate — HÌNH ĐẸP NHẤT của báo cáo"
+  ablation_secondary:                       # chọn 1 nếu thiếu thời gian
+    - id: "a"
+      name: "bỏ episodic memory (chỉ đưa lỗi vòng gần nhất)"
+      proves: "memory có tác dụng chống lặp lỗi"
+    - id: "b"
+      name: "chỉ đưa pass/fail, KHÔNG kèm traceback"
+      proves: "chất lượng feedback quan trọng"
+
+# ----------------------------------------------------------------------------
+# CẠM BẪY
+# ----------------------------------------------------------------------------
+traps:
+  - "context phình sau vài vòng -> giới hạn traceback + tự phê <= 100 từ"
+  - trap: "model 'sửa' bằng cách hard-code output của test"
+    action: "thống kê thủ công hiện tượng này — là điểm thảo luận thú vị"
+
+inheritance:
+  reused: "ý tưởng + cấu trúc prompt từ repo noahshinn/reflexion"
+  self_written: "code vòng lặp trên harness M0"
+
+deadline: "2026-08-04 (khóa số liệu)"

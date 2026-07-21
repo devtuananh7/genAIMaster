@@ -1,0 +1,83 @@
+# ============================================================================
+# M1 — BASELINE (mốc so sánh gốc)
+# ----------------------------------------------------------------------------
+# Code rất ít; giá trị nằm ở PHÂN TÍCH LỖI THỦ CÔNG. Baseline prompt sinh ở
+# đây sẽ bị ĐÓNG BĂNG cho mọi module sau kế thừa.
+# ============================================================================
+
+module: M1
+name: "Baseline"
+role: "reference_point"
+owner: "Thành viên A (tiếp sau M0)"
+depends_on: ["M0"]
+directory: "baseline/"
+
+goal: >
+  Con số pass@1 GỐC của deepseek-coder:1.3b khi sinh 1 lần, không kỹ thuật
+  hỗ trợ. Đây là mốc neo mà M2/M3/M4 so vào.
+
+# ----------------------------------------------------------------------------
+# CÁC BƯỚC
+# ----------------------------------------------------------------------------
+steps:
+  - step: 1
+    name: "Thiết kế prompt baseline"
+    spec:
+      contents:
+        - "Đề bài (text của task MBPP)"
+        - "Chữ ký hàm gợi ý từ test (parse tên hàm + tham số từ assert đầu)"
+        - "Yêu cầu: chỉ trả về code trong khối ```python"
+      freeze: "ĐÓNG BĂNG sau khi chốt — mọi module sau dùng ĐÚNG prompt này làm nền"
+      is_golden_rule: true                  # 00-contract#golden_rules
+
+  - step: 2
+    name: "Chạy baseline"
+    spec:
+      tasks: 50
+      samples_per_task: 1
+      temperature: 0.2                      # 00-contract#generation_params.default
+      output: "results/baseline/run.json"
+
+  - step: 3
+    name: "PHÂN TÍCH LỖI THỦ CÔNG"          # ⭐ việc quan trọng nhất của M1
+    why: "'Mỏ vàng' cho chương thảo luận; báo M2/M4 loại lỗi nào feedback sửa được"
+    spec:
+      classify_50_results_into:
+        - "sai logic"
+        - "sai cú pháp"
+        - "hiểu sai đề"
+        - "lỗi format đầu ra"
+        - "timeout"
+      output: "bảng phân loại lỗi (đưa thẳng vào báo cáo)"
+
+  - step: 4
+    name: "Biến thể sampling (pass@5 tham chiếu)"
+    spec:
+      temperature: 0.8                      # 00-contract#generation_params.sampling_variant
+      samples_per_task: 5
+      purpose: "phục vụ thảo luận về sampling"
+
+# ----------------------------------------------------------------------------
+# KỲ VỌNG (CẬP NHẬT cho 1.3b — khác bản gốc)
+# ----------------------------------------------------------------------------
+expectation:
+  pass1_range: "40-50%"                      # bản gốc ghi 55-65% cho 6.7b
+  note: >
+    Model 1.3b yếu hơn 6.7b nên baseline thấp hơn là BÌNH THƯỜNG. Nếu ra ngoài
+    40-50% nhiều -> kiểm tra Extractor/prompt TRƯỚC khi nghi model.
+  silver_lining: >
+    Baseline thấp = headroom cải thiện LỚN -> delta của M2/M3/M4 dễ ấn tượng
+    hơn. Đây là luận điểm tốt cho phần thảo luận (biến ràng buộc thành ưu điểm).
+
+# ----------------------------------------------------------------------------
+# ĐÓNG BĂNG & CẠM BẪY
+# ----------------------------------------------------------------------------
+frozen_outputs:
+  - "baseline prompt (mọi module sau kế thừa nguyên văn)"
+  - "results/baseline/run.json (vòng 0 của M2 tái dùng để tiết kiệm thời gian chạy)"
+
+traps:
+  - "Đổi prompt sau khi module khác đã dùng -> mất tính so sánh"
+  - "Nhầm model base thay vì instruct -> baseline tệ vô lý (xem 00-contract verify note)"
+
+deadline: "2026-07-28 (tuần 2, sau M0)"

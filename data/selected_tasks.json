@@ -1,0 +1,506 @@
+[
+  {
+    "task_id": 3,
+    "text": "Write a python function to identify non-prime numbers.",
+    "test_list": [
+      "assert is_not_prime(2) == False",
+      "assert is_not_prime(10) == True",
+      "assert is_not_prime(35) == True",
+      "assert is_not_prime(37) == False"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 4,
+    "text": "Write a function to find the n largest integers from a given list of numbers, returned in descending order.",
+    "test_list": [
+      "assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],3)==[85, 75, 65]",
+      "assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],2)==[85, 75]",
+      "assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],5)==[85, 75, 65, 58, 35]"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 92,
+    "text": "Write a function to check whether the given number is undulating or not.",
+    "test_list": [
+      "assert is_undulating(1212121) == True",
+      "assert is_undulating(1991) == False",
+      "assert is_undulating(121) == True"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 106,
+    "text": "Write a function to append the given list to the given tuples.",
+    "test_list": [
+      "assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)",
+      "assert add_lists([6, 7, 8], (10, 11)) == (10, 11, 6, 7, 8)",
+      "assert add_lists([7, 8, 9], (11, 12)) == (11, 12, 7, 8, 9)"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 111,
+    "text": "Write a function to find the common elements in given nested lists.",
+    "test_list": [
+      "assert set(common_in_nested_lists([[12, 18, 23, 25, 45], [7, 12, 18, 24, 28], [1, 5, 8, 12, 15, 16, 18]]))==set([18, 12])",
+      "assert set(common_in_nested_lists([[12, 5, 23, 25, 45], [7, 11, 5, 23, 28], [1, 5, 8, 18, 23, 16]]))==set([5,23])",
+      "assert set(common_in_nested_lists([[2, 3,4, 1], [4, 5], [6,4, 8],[4, 5], [6, 8,4]]))==set([4])"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 119,
+    "text": "Write a python function to find the element that appears only once in a sorted array.",
+    "test_list": [
+      "assert search([1,1,2,2,3]) == 3",
+      "assert search([1,1,3,3,4,4,5,5,7,7,8]) == 8",
+      "assert search([1,2,2,3,3,4,4]) == 1"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 131,
+    "text": "Write a python function to reverse only the vowels of a given string (where y is not a vowel).",
+    "test_list": [
+      "assert reverse_vowels(\"Python\") == \"Python\"",
+      "assert reverse_vowels(\"USA\") == \"ASU\"",
+      "assert reverse_vowels(\"ab\") == \"ab\""
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 135,
+    "text": "Write a function to find the nth hexagonal number.",
+    "test_list": [
+      "assert hexagonal_num(10) == 190",
+      "assert hexagonal_num(5) == 45",
+      "assert hexagonal_num(7) == 91"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 141,
+    "text": "Write a function to sort a list of elements.",
+    "test_list": [
+      "assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]",
+      "assert pancake_sort([98, 12, 54, 36, 85]) == [12, 36, 54, 85, 98]",
+      "assert pancake_sort([41, 42, 32, 12, 23]) == [12, 23, 32, 41, 42]"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 223,
+    "text": "Write a function that takes in a sorted array, its length (n), and an element and returns whether the element is the majority element in the given sorted array. (The majority element is the element that occurs more than n/2 times.)",
+    "test_list": [
+      "assert is_majority([1, 2, 3, 3, 3, 3, 10], 7, 3) == True",
+      "assert is_majority([1, 1, 2, 4, 4, 4, 6, 6], 8, 4) == False",
+      "assert is_majority([1, 1, 1, 2, 2], 5, 1) == True",
+      "assert is_majority([1, 1, 2, 2], 5, 1) == False"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 224,
+    "text": "Write a python function to count the number of set bits (binary digits with value 1) in a given number.",
+    "test_list": [
+      "assert count_Set_Bits(2) == 1",
+      "assert count_Set_Bits(4) == 1",
+      "assert count_Set_Bits(6) == 2"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 252,
+    "text": "Write a python function to convert complex numbers to polar coordinates.",
+    "test_list": [
+      "assert convert(1) == (1.0, 0.0)",
+      "assert convert(4) == (4.0,0.0)",
+      "assert convert(5) == (5.0,0.0)"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 256,
+    "text": "Write a python function that takes in a non-negative number and returns the number of prime numbers less than the given non-negative number.",
+    "test_list": [
+      "assert count_Primes_nums(5) == 2",
+      "assert count_Primes_nums(10) == 4",
+      "assert count_Primes_nums(100) == 25"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 272,
+    "text": "Write a function that takes in a list of tuples and returns a list containing the rear element of each tuple.",
+    "test_list": [
+      "assert rear_extract([(1, 'Rash', 21), (2, 'Varsha', 20), (3, 'Kil', 19)]) == [21, 20, 19]",
+      "assert rear_extract([(1, 'Sai', 36), (2, 'Ayesha', 25), (3, 'Salman', 45)]) == [36, 25, 45]",
+      "assert rear_extract([(1, 'Sudeep', 14), (2, 'Vandana', 36), (3, 'Dawood', 56)]) == [14, 36, 56]"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 277,
+    "text": "Write a function that takes in a dictionary and integer n and filters the dictionary to only include entries with values greater than or equal to n.",
+    "test_list": [
+      "assert dict_filter({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190},170)=={'Cierra Vega': 175, 'Alden Cantrell': 180, 'Pierre Cox': 190}",
+      "assert dict_filter({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190},180)=={ 'Alden Cantrell': 180, 'Pierre Cox': 190}",
+      "assert dict_filter({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190},190)=={ 'Pierre Cox': 190}"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 281,
+    "text": "Write a python function to check if the elements of a given list are unique or not.",
+    "test_list": [
+      "assert all_unique([1,2,3]) == True",
+      "assert all_unique([1,2,1,2]) == False",
+      "assert all_unique([1,2,3,4,5]) == True"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 295,
+    "text": "Write a function to return the sum of all divisors of a number.",
+    "test_list": [
+      "assert sum_div(8)==7",
+      "assert sum_div(12)==16",
+      "assert sum_div(7)==1"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 307,
+    "text": "Write a function to get a colon of a tuple.",
+    "test_list": [
+      "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,50)==(\"HELLO\", 5, [50], True)",
+      "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,100)==((\"HELLO\", 5, [100],True))",
+      "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,500)==(\"HELLO\", 5, [500], True)"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 308,
+    "text": "Write a function to find the specified number of largest products from two given lists, selecting one factor from each list.",
+    "test_list": [
+      "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],3)==[60, 54, 50]",
+      "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],4)==[60, 54, 50, 48]",
+      "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],5)==[60, 54, 50, 48, 45]"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 398,
+    "text": "Write a function to compute the sum of digits of each number of a given list.",
+    "test_list": [
+      "assert sum_of_digits([10,2,56])==14",
+      "assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19",
+      "assert sum_of_digits([10,20,-4,5,-70])==19"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 413,
+    "text": "Write a function to extract the nth element from a given list of tuples.",
+    "test_list": [
+      "assert extract_nth_element([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)] ,0)==['Greyson Fulton', 'Brady Kent', 'Wyatt Knott', 'Beau Turnbull']",
+      "assert extract_nth_element([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)] ,2)==[99, 96, 94, 98]",
+      "assert extract_nth_element([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)],1)==[98, 97, 91, 94]"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 414,
+    "text": "Write a python function to check whether any value in a sequence exists in a sequence or not.",
+    "test_list": [
+      "assert overlapping([1,2,3,4,5],[6,7,8,9]) == False",
+      "assert overlapping([1,2,3],[4,5,6]) == False",
+      "assert overlapping([1,4,5],[1,4,5]) == True"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 415,
+    "text": "Write a python function to find a pair with highest product from a given array of integers.",
+    "test_list": [
+      "assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)",
+      "assert max_Product([0,-1,-2,-4,5,0,-6]) == (-4,-6)",
+      "assert max_Product([1,2,3]) == (2,3)"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 419,
+    "text": "Write a function to round every number of a given list of numbers and print the total sum multiplied by the length of the list.",
+    "test_list": [
+      "assert round_and_sum([22.4, 4.0, -16.22, -9.10, 11.00, -12.22, 14.20, -5.20, 17.50])==243",
+      "assert round_and_sum([5,2,9,24.3,29])==345",
+      "assert round_and_sum([25.0,56.7,89.2])==513"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 428,
+    "text": "Write a function to sort the given array by using shell sort.",
+    "test_list": [
+      "assert shell_sort([12, 23, 4, 5, 3, 2, 12, 81, 56, 95]) == [2, 3, 4, 5, 12, 12, 23, 56, 81, 95]",
+      "assert shell_sort([24, 22, 39, 34, 87, 73, 68]) == [22, 24, 34, 39, 68, 73, 87]",
+      "assert shell_sort([32, 30, 16, 96, 82, 83, 74]) == [16, 30, 32, 74, 82, 83, 96]"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 435,
+    "text": "Write a python function to find the last digit of a given number.",
+    "test_list": [
+      "assert last_Digit(123) == 3",
+      "assert last_Digit(25) == 5",
+      "assert last_Digit(30) == 0"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 443,
+    "text": "Write a python function to find the largest negative number from the given list.",
+    "test_list": [
+      "assert largest_neg([1,2,3,-4,-6]) == -6",
+      "assert largest_neg([1,2,3,-8,-9]) == -9",
+      "assert largest_neg([1,2,3,4,-1]) == -1"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 447,
+    "text": "Write a function to find cubes of individual elements in a list.",
+    "test_list": [
+      "assert cube_nums([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])==[1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]",
+      "assert cube_nums([10,20,30])==([1000, 8000, 27000])",
+      "assert cube_nums([12,15])==([1728, 3375])"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 452,
+    "text": "Write a function that gives loss amount on a sale if the given amount has loss else return 0.",
+    "test_list": [
+      "assert loss_amount(1500,1200)==0",
+      "assert loss_amount(100,200)==100",
+      "assert loss_amount(2000,5000)==3000"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 455,
+    "text": "Write a function to check whether the given month number contains 31 days or not.",
+    "test_list": [
+      "assert check_monthnumb_number(5)==True",
+      "assert check_monthnumb_number(2)==False",
+      "assert check_monthnumb_number(6)==False"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 459,
+    "text": "Write a function to remove uppercase substrings from a given string.",
+    "test_list": [
+      "assert remove_uppercase('cAstyoUrFavoRitETVshoWs') == 'cstyoravoitshos'",
+      "assert remove_uppercase('wAtchTheinTernEtrAdIo') == 'wtchheinerntrdo'",
+      "assert remove_uppercase('VoicESeaRchAndreComMendaTionS') == 'oiceachndreomendaion'"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 463,
+    "text": "Write a function to find the maximum product subarray of the given array.",
+    "test_list": [
+      "assert max_subarray_product([1, -2, -3, 0, 7, -8, -2]) == 112",
+      "assert max_subarray_product([6, -3, -10, 0, 2]) == 180",
+      "assert max_subarray_product([-2, -40, 0, -2, -3]) == 80"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 562,
+    "text": "Write a python function to find the length of the longest sublists.",
+    "test_list": [
+      "assert Find_Max_Length([[1],[1,4],[5,6,7,8]]) == 4",
+      "assert Find_Max_Length([[0,1],[2,2,],[3,2,1]]) == 3",
+      "assert Find_Max_Length([[7],[22,23],[13,14,15],[10,20,30,40,50]]) == 5"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 563,
+    "text": "Write a function to extract values between quotation marks from a string.",
+    "test_list": [
+      "assert extract_values('\"Python\", \"PHP\", \"Java\"')==['Python', 'PHP', 'Java']",
+      "assert extract_values('\"python\",\"program\",\"language\"')==['python','program','language']",
+      "assert extract_values('\"red\",\"blue\",\"green\",\"yellow\"')==['red','blue','green','yellow']"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 577,
+    "text": "Write a python function to find the last digit in factorial of a given number.",
+    "test_list": [
+      "assert last_Digit_Factorial(4) == 4",
+      "assert last_Digit_Factorial(21) == 0",
+      "assert last_Digit_Factorial(30) == 0"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 581,
+    "text": "Write a python function to find the surface area of a square pyramid with a given base edge and height.",
+    "test_list": [
+      "assert surface_Area(3,4) == 33",
+      "assert surface_Area(4,5) == 56",
+      "assert surface_Area(1,2) == 5"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 582,
+    "text": "Write a function to check if a dictionary is empty",
+    "test_list": [
+      "assert my_dict({10})==False",
+      "assert my_dict({11})==False",
+      "assert my_dict({})==True"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 594,
+    "text": "Write a function to find the difference of the first even and first odd number of a given list.",
+    "test_list": [
+      "assert diff_even_odd([1,3,5,7,4,1,6,8])==3",
+      "assert diff_even_odd([1,2,3,4,5,6,7,8,9,10])==1",
+      "assert diff_even_odd([1,5,7,9,10])==9"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 605,
+    "text": "Write a function to check if the given integer is a prime number.",
+    "test_list": [
+      "assert prime_num(13)==True",
+      "assert prime_num(7)==True",
+      "assert prime_num(-1010)==False"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 617,
+    "text": "Write a function to check for the number of jumps required of given length to reach a point of form (d, 0) from origin in a 2d plane.",
+    "test_list": [
+      "assert min_Jumps((3,4),11)==3.5",
+      "assert min_Jumps((3,4),0)==0",
+      "assert min_Jumps((11,14),11)==1"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 620,
+    "text": "Write a function to find the size of the largest subset of a list of numbers so that every pair is divisible.",
+    "test_list": [
+      "assert largest_subset([ 1, 3, 6, 13, 17, 18 ]) == 4",
+      "assert largest_subset([10, 5, 3, 15, 20]) == 3",
+      "assert largest_subset([18, 1, 3, 6, 13, 17]) == 4"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 631,
+    "text": "Write a function to replace whitespaces with an underscore and vice versa in a given string.",
+    "test_list": [
+      "assert replace_spaces('Jumanji The Jungle') == 'Jumanji_The_Jungle'",
+      "assert replace_spaces('The_Avengers') == 'The Avengers'",
+      "assert replace_spaces('Fast and Furious') == 'Fast_and_Furious'"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 644,
+    "text": "Write a python function to reverse an array upto a given position.",
+    "test_list": [
+      "assert reverse_Array_Upto_K([1, 2, 3, 4, 5, 6],4) == [4, 3, 2, 1, 5, 6]",
+      "assert reverse_Array_Upto_K([4, 5, 6, 7], 2) == [5, 4, 6, 7]",
+      "assert reverse_Array_Upto_K([9, 8, 7, 6, 5],3) == [7, 8, 9, 6, 5]"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 730,
+    "text": "Write a function to remove consecutive duplicates of a given list.",
+    "test_list": [
+      "assert consecutive_duplicates([0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4 ])==[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 4]",
+      "assert consecutive_duplicates([10, 10, 15, 19, 18, 18, 17, 26, 26, 17, 18, 10])==[10, 15, 19, 18, 17, 26, 17, 18, 10]",
+      "assert consecutive_duplicates(['a', 'a', 'b', 'c', 'd', 'd'])==['a', 'b', 'c', 'd']",
+      "assert consecutive_duplicates(['a', 'a', 'b', 'c', 'd', 'd', 'a', 'a'])==['a', 'b', 'c', 'd', 'a']"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 744,
+    "text": "Write a function to check if the given tuple has any none value or not.",
+    "test_list": [
+      "assert check_none((10, 4, 5, 6, None)) == True",
+      "assert check_none((7, 8, 9, 11, 14)) == False",
+      "assert check_none((1, 2, 3, 4, None)) == True"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 748,
+    "text": "Write a function to put spaces between words starting with capital letters in a given string.",
+    "test_list": [
+      "assert capital_words_spaces(\"Python\") == 'Python'",
+      "assert capital_words_spaces(\"PythonProgrammingExamples\") == 'Python Programming Examples'",
+      "assert capital_words_spaces(\"GetReadyToBeCodingFreak\") == 'Get Ready To Be Coding Freak'"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 751,
+    "text": "Write a function to check if the given array represents min heap or not. https://www.geeksforgeeks.org/how-to-check-if-a-given-array-represents-a-binary-heap/",
+    "test_list": [
+      "assert check_min_heap([1, 2, 3, 4, 5, 6]) == True",
+      "assert check_min_heap([2, 3, 4, 5, 10, 15]) == True",
+      "assert check_min_heap([2, 10, 4, 5, 3, 15]) == False"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 772,
+    "text": "Write a function to remove all the words with k length in the given string.",
+    "test_list": [
+      "assert remove_length('The person is most value tet', 3) == 'person is most value'",
+      "assert remove_length('If you told me about this ok', 4) == 'If you me about ok'",
+      "assert remove_length('Forces of darkeness is come into the play', 4) == 'Forces of darkeness is the'"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 787,
+    "text": "Write a function that matches a string that has an a followed by three 'b'.",
+    "test_list": [
+      "assert not text_match_three(\"ac\")",
+      "assert not text_match_three(\"dc\")",
+      "assert text_match_three(\"abbbba\")",
+      "assert text_match_three(\"caacabbbba\")"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 798,
+    "text": "Write a python function to find the sum of an array.",
+    "test_list": [
+      "assert _sum([1, 2, 3]) == 6",
+      "assert _sum([15, 12, 13, 10]) == 50",
+      "assert _sum([0, 1, 2]) == 3"
+    ],
+    "test_imports": []
+  }
+]
