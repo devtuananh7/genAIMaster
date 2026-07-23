@@ -9,6 +9,8 @@ from harness.loader import load_tasks
 from harness.ollama_client import DEFAULT_MODEL, resolve_model
 from harness.scorer import iteration_payload, write_results
 from harness.types import Strategy
+from reflexion.strategy import ReflexionStrategy
+from multiagent.strategy import MultiAgentStrategy
 
 
 def load_strategy(
@@ -21,6 +23,20 @@ def load_strategy(
 ) -> Strategy:
     if name == "baseline":
         return BaselineStrategy(
+            temperature=temperature,
+            max_tokens=max_tokens,
+            base_url=base_url,
+            model=model,
+        )
+    elif name == "reflexion":
+        return ReflexionStrategy(
+            temperature=temperature,
+            max_tokens=max_tokens,
+            base_url=base_url,
+            model=model,
+        )
+    elif name == "multiagent":
+        return MultiAgentStrategy(
             temperature=temperature,
             max_tokens=max_tokens,
             base_url=base_url,

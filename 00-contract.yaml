@@ -51,9 +51,9 @@ model:
       4 vòng có thể vượt 4096 -> lúc đó set options.num_ctx cao hơn trong client.
 
 endpoint:
-  host: "192.168.31.16"
+  host: "localhost"
   port: 11434
-  base_url: "http://192.168.31.16:11434"
+  base_url: "http://localhost:11434"
   chat_api: "POST /api/chat"
   embed_api: "POST /api/embeddings"
   pull_api: "POST /api/pull"                # pull model từ xa, không cần vào máy chủ
