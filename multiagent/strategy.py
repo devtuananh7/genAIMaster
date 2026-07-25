@@ -210,15 +210,18 @@ class MultiAgentStrategy:
           Vòng 1-N : Reviewer nhận xét → Programmer sửa code → Execute → nếu pass: return
           Sau N vòng: trả về code cuối cùng
 
-        Mỗi vòng (trừ vòng 0) gồm 2 lần gọi AI:
-          Lần 1: Reviewer Agent (phân tích lỗi, không viết code)
-          Lần 2: Programmer Agent (đọc nhận xét, viết lại code)
-
         Returns:
             str: Đoạn code Python tốt nhất sau các vòng trao đổi.
         """
         last_code = ""
         execution_result = None
+
+        # Metadata theo dõi số vòng (run.py sẽ đọc sau khi solve() kết thúc)
+        self._rounds_to_pass: int | None = None
+        self._total_rounds: int = 0
+        self._pass_1st_round: bool = False
+        self._internal_records: list[dict] = []
+        self._final_code: str = ""
 
         for iteration in range(self.max_iterations):
 
@@ -247,11 +250,32 @@ class MultiAgentStrategy:
             # ==============================================================
             execution_result = run_executor(code=code, task=task)
 
+            # Khởi tạo record cho vòng này (reviewer_feedback sẽ gán sau nếu fail)
+            record: dict = {
+                "iteration": iteration,
+                "code": code,
+                "execution": {
+                    "status": execution_result.status,
+                    "failed_test": execution_result.failed_test,
+                    "traceback": execution_result.traceback,
+                    "passed_count": execution_result.passed_count,
+                    "total_count": execution_result.total_count,
+                    "duration_ms": execution_result.duration_ms,
+                },
+                "reviewer_feedback": None,
+            }
+
             # ==============================================================
             # BƯỚC C: CHECK (Kiểm tra kết quả)
             # ==============================================================
+            self._total_rounds = iteration + 1
             if execution_result.status == "pass":
-                # Code PASSED: kết thúc vòng lặp, trả về code thành công
+                # Code PASSED: ghi record, kết thúc vòng lặp
+                self._internal_records.append(record)
+                self._rounds_to_pass = iteration + 1
+                if iteration == 0:
+                    self._pass_1st_round = True
+                self._final_code = code
                 return code
 
             # Code FAILED: kích hoạt Reviewer Agent (nếu còn vòng lặp tiếp theo)
@@ -265,11 +289,17 @@ class MultiAgentStrategy:
                 # Reviewer trả về: nhận xét có cấu trúc (Error Location + Root Cause + Fix Direction)
                 review_feedback = self._reviewer_critique(task, code, execution_result)
 
+                # Ghi reviewer_feedback vào record
+                record["reviewer_feedback"] = review_feedback
+
                 # ==============================================================
                 # BƯỚC E: PROGRAMMER ĐỌC NHẬN XÉT → CHUẨN BỊ SINH CODE MỚI
                 # ==============================================================
-                # raw_response sẽ được dùng ở đầu vòng lặp iteration+1
                 raw_response = self._programmer_fix(task, code, review_feedback)
 
+            self._internal_records.append(record)
+
         # Sau max_iterations vòng vẫn không pass → trả về code cuối cùng
+        self._total_rounds = self.max_iterations
+        self._final_code = last_code
         return last_code

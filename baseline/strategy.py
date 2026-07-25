@@ -49,6 +49,14 @@ class BaselineStrategy:
         )
 
     def solve(self, task: Task) -> str:
+        # Metadata theo dõi số vòng (run.py sẽ đọc sau khi solve() kết thúc)
+        # Baseline luôn chạy đúng 1 vòng, không có vòng lặp sửa code
+        self._rounds_to_pass: int | None = None
+        self._total_rounds: int = 1
+        self._pass_1st_round: bool = False
+        self._internal_records: list[dict] = []
+        self._final_code: str = ""
+
         response = generate(
             BASE_SYSTEM_PROMPT,
             self._user_prompt(task),
@@ -57,4 +65,8 @@ class BaselineStrategy:
             base_url=self.base_url,
             model=self.model,
         )
-        return extract_code(response)
+        code = extract_code(response)
+        self._final_code = code
+        # Baseline không execute nội bộ → execution=None, run.py sẽ điền sau
+        self._internal_records = [{"iteration": 0, "code": code, "execution": None}]
+        return code

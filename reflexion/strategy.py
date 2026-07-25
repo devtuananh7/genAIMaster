@@ -139,6 +139,13 @@ class ReflexionStrategy:
         last_code = ""
         execution_result = None
 
+        # Metadata theo dõi số vòng (run.py sẽ đọc sau khi solve() kết thúc)
+        self._rounds_to_pass: int | None = None
+        self._total_rounds: int = 0
+        self._pass_1st_round: bool = False
+        self._internal_records: list[dict] = []
+        self._final_code: str = ""
+
         for iteration in range(self.max_iterations):
 
             # ==============================================================
@@ -154,7 +161,6 @@ class ReflexionStrategy:
 
             else:
                 # Vòng 1, 2, 3: Đọc toàn bộ episodic_memory + đề bài → sinh code mới
-                # Format episodic_memory: gộp các đoạn tự phê có đánh số vòng
                 memory_text = "\n\n".join(
                     f"[Self-critique round {i + 1}]:\n{mem}"
                     for i, mem in enumerate(episodic_memory)
@@ -176,11 +182,32 @@ class ReflexionStrategy:
             # ==============================================================
             execution_result = run_executor(code=code, task=task)
 
+            # Khởi tạo record cho vòng này (self_critique sẽ được gán sau nếu reflect)
+            record: dict = {
+                "iteration": iteration,
+                "code": code,
+                "execution": {
+                    "status": execution_result.status,
+                    "failed_test": execution_result.failed_test,
+                    "traceback": execution_result.traceback,
+                    "passed_count": execution_result.passed_count,
+                    "total_count": execution_result.total_count,
+                    "duration_ms": execution_result.duration_ms,
+                },
+                "self_critique": None,
+            }
+
             # ==============================================================
             # PHA 3: CHECK + REFLECT (Kiểm tra kết quả và tự phê bình)
             # ==============================================================
+            self._total_rounds = iteration + 1
             if execution_result.status == "pass":
-                # Code PASSED: dừng ngay lập tức, không cần tự phê thêm
+                # Code PASSED: ghi record, dừng ngay lập tức
+                self._internal_records.append(record)
+                self._rounds_to_pass = iteration + 1
+                if iteration == 0:
+                    self._pass_1st_round = True
+                self._final_code = code
                 return code
 
             # Code FAILED: bước vào Pha Reflect để sinh đoạn tự phê
@@ -188,11 +215,20 @@ class ReflexionStrategy:
             if iteration < self.max_iterations - 1:
                 feedback = _build_feedback(execution_result)
 
-                # Prompt Reflect: yêu cầu AI phân tích lỗi và tự phê ngắn gọn
+                # Prompt Reflect: đề bài + code + feedback + toàn bộ episodic_memory
+                memory_section = ""
+                if episodic_memory:
+                    memory_text = "\n\n".join(
+                        f"[Self-critique round {i + 1}]:\n{mem}"
+                        for i, mem in enumerate(episodic_memory)
+                    )
+                    memory_section = f"Previous self-critiques:\n{memory_text}\n\n"
+
                 reflect_user_prompt = (
                     f"Problem:\n{task.text}\n\n"
                     f"Code that failed:\n```python\n{code}\n```\n\n"
                     f"Execution feedback:\n{feedback}\n\n"
+                    f"{memory_section}"
                     f"Write a short self-critique (max {MAX_REFLECT_WORDS} words): "
                     f"what went wrong and what you must change."
                 )
@@ -203,8 +239,13 @@ class ReflexionStrategy:
                 if len(words) > MAX_REFLECT_WORDS:
                     self_critique = " ".join(words[:MAX_REFLECT_WORDS]) + "..."
 
-                # Cập nhật episodic_memory: nối thêm đoạn tự phê mới nhất
+                # Ghi self_critique vào record và cập nhật episodic_memory
+                record["self_critique"] = self_critique
                 episodic_memory.append(self_critique)
 
+            self._internal_records.append(record)
+
         # Sau max_iterations vòng vẫn không pass → trả về code cuối cùng
+        self._total_rounds = self.max_iterations
+        self._final_code = last_code
         return last_code
