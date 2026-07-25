@@ -42,6 +42,15 @@ def load_strategy(
             base_url=base_url,
             model=model,
         )
+    elif name == "finetune":
+        # Lazy import — tránh yêu cầu mlx/torch khi chạy strategy khác
+        from finetune.strategy import FinetuneStrategy
+        return FinetuneStrategy(
+            temperature=temperature,
+            max_tokens=max_tokens,
+            base_url=base_url,
+            model=model,
+        )
     raise ValueError(f"Unknown strategy: {name}")
 
 

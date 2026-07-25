@@ -1,0 +1,10 @@
+# M5 Fine-tune — PC RTX 4060 8GB
+# Cài trên PC Windows/Linux, 16GB RAM, RTX 4060 8GB VRAM
+torch>=2.2.0
+transformers>=4.40.0
+peft>=0.11.0
+trl>=0.8.0
+bitsandbytes>=0.43.0
+accelerate>=0.30.0
+datasets>=2.19.0
+huggingface-hub>=0.23.0

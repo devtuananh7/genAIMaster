@@ -14,3 +14,15 @@ __pycache__/
 .agent/
 openspec/
 base_knowledge/
+
+# M5 Fine-tune — file lớn / sinh tự động
+finetune/repos/
+finetune/adapters/
+finetune/data/seed_snippets.json
+finetune/data/raw_pairs.json
+finetune/data/filtered_pairs.json
+finetune/data/filter_stats.json
+finetune/data/train.jsonl
+finetune/data/valid.jsonl
+finetune/data/.generate_checkpoint.json
+finetune/results/
