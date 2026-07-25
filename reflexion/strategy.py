@@ -23,7 +23,7 @@ from __future__ import annotations
 from baseline.strategy import BASE_SYSTEM_PROMPT  # Prompt cơ bản dùng chung với M1
 from harness.executor import run as run_executor   # Sandbox Executor của M0
 from harness.extractor import extract_code         # Bóc tách code Python khỏi văn xuôi AI
-from harness.ollama_client import generate         # Hàm gọi POST /api/chat tới Ollama
+from harness.hf_client import generate             # Client gọi HuggingFace Inference Endpoint
 from harness.types import Task                     # Kiểu dữ liệu bài toán MBPP
 
 # ---------------------------------------------------------------------------

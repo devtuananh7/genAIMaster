@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from harness.extractor import extract_code
-from harness.ollama_client import generate
+from harness.hf_client import generate
 from harness.signature import entry_function_name
 from harness.types import Task
 

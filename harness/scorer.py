@@ -13,7 +13,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from harness.ollama_client import DEFAULT_MODEL
+from harness.hf_client import DEFAULT_HF_MODEL as DEFAULT_MODEL
 from harness.types import Task
 
 

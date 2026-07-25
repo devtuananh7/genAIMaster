@@ -6,7 +6,7 @@ from typing import Any
 from baseline.strategy import BaselineStrategy
 from harness import executor
 from harness.loader import load_tasks
-from harness.ollama_client import DEFAULT_MODEL, resolve_model
+from harness.hf_client import DEFAULT_HF_MODEL as DEFAULT_MODEL, resolve_model
 from harness.scorer import write_results
 from harness.types import Strategy
 from reflexion.strategy import ReflexionStrategy
@@ -107,7 +107,7 @@ def run_strategy(
 
     # Lấy max_iterations và seed từ strategy (nếu có)
     max_iterations = getattr(strategy, "max_iterations", 1)
-    from harness.ollama_client import DEFAULT_SEED
+    from harness.hf_client import DEFAULT_SEED
     seed = DEFAULT_SEED
 
     output_path = write_results(

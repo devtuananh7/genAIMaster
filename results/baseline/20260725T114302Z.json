@@ -1,0 +1,1166 @@
+{
+  "strategy": "baseline",
+  "model_name": "deepseek-coder:1.3b",
+  "timestamp": "20260725T114302Z",
+  "params": {
+    "temperature": 0.2,
+    "max_tokens": 1024,
+    "max_iterations": 1,
+    "seed": 5410
+  },
+  "task_list": [
+    3,
+    4,
+    92,
+    106,
+    111,
+    119,
+    131,
+    135,
+    141,
+    223,
+    224,
+    252,
+    256,
+    272,
+    277,
+    281,
+    295,
+    307,
+    308,
+    398,
+    413,
+    414,
+    415,
+    419,
+    428,
+    435,
+    443,
+    447,
+    452,
+    455,
+    459,
+    463,
+    562,
+    563,
+    577,
+    581,
+    582,
+    594,
+    605,
+    617,
+    620,
+    631,
+    644,
+    730,
+    744,
+    748,
+    751,
+    772,
+    787,
+    798
+  ],
+  "total_pass1": 0.52,
+  "per_task": [
+    {
+      "task_id": 3,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def is_not_prime(n):\n    if n <= 1:\n        return False\n    elif n <= 3:\n        return True\n    elif n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def is_not_prime(n):\n    if n <= 1:\n        return False\n    elif n <= 3:\n        return True\n    elif n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert is_not_prime(2) == False",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpku2rervi\\candidate_test.py\", line 15, in <module>\n    assert is_not_prime(2) == False\n           ^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 4,
+            "duration_ms": 219
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 4,
+      "status": "error_runtime",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def heap_queue_largest(nums, n):\n    # Create a max heap from the list\n    heap = nums[:n]\n    heapq.heapify(heap)\n    \n    # Iterate over the rest of the list\n    for num in nums[n:]:\n        # If the current number is larger than the smallest number in the heap\n        if num > heap[0]:\n            # Replace the smallest number in the heap with the current number\n            heapq.heapreplace(heap, num)\n    \n    # Return the heap in descending order\n    return sorted(heap, reverse=True)",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def heap_queue_largest(nums, n):\n    # Create a max heap from the list\n    heap = nums[:n]\n    heapq.heapify(heap)\n    \n    # Iterate over the rest of the list\n    for num in nums[n:]:\n        # If the current number is larger than the smallest number in the heap\n        if num > heap[0]:\n            # Replace the smallest number in the heap with the current number\n            heapq.heapreplace(heap, num)\n    \n    # Return the heap in descending order\n    return sorted(heap, reverse=True)",
+          "execution": {
+            "status": "error_runtime",
+            "failed_test": "assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],3)==[85, 75, 65]",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmphq6nlxu_\\candidate_test.py\", line 16, in <module>\n    assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],3)==[85, 75, 65]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmphq6nlxu_\\candidate_test.py\", line 4, in heap_queue_largest\n    heapq.heapify(heap)\n    ^^^^^\nNameError: name 'heapq' is not defined. Did you mean: 'heap'? Or did you forget to import 'heapq'?",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 172
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 92,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def is_undulating(n):\n    str_n = str(n)\n    for i in range(len(str_n) - 1):\n        if str_n[i]!= str_n[i + 1]:\n            return False\n    return True",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def is_undulating(n):\n    str_n = str(n)\n    for i in range(len(str_n) - 1):\n        if str_n[i]!= str_n[i + 1]:\n            return False\n    return True",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert is_undulating(1212121) == True",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmps09jz1et\\candidate_test.py\", line 8, in <module>\n    assert is_undulating(1212121) == True\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 171
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 106,
+      "status": "error_runtime",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def add_lists(list1, tuple1):\n    return tuple1 + tuple1 + list1",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def add_lists(list1, tuple1):\n    return tuple1 + tuple1 + list1",
+          "execution": {
+            "status": "error_runtime",
+            "failed_test": "assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpflbp064c\\candidate_test.py\", line 4, in <module>\n    assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpflbp064c\\candidate_test.py\", line 2, in add_lists\n    return tuple1 + tuple1 + list1\n           ~~~~~~~~~~~~~~~~^~~~~~~\nTypeError: can only concatenate tuple (not \"list\") to tuple",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 171
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 111,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def common_in_nested_lists(nested_lists):\n    common = set(nested_lists[0])\n    for i in nested_lists[1:]:\n        common &= set(i)\n    return list(common)",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def common_in_nested_lists(nested_lists):\n    common = set(nested_lists[0])\n    for i in nested_lists[1:]:\n        common &= set(i)\n    return list(common)",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 500
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 119,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def search(arr):\n    for i in range(0, len(arr)-1, 2):\n        if arr[i]!= arr[i+1]:\n            return arr[i]\n    return arr[-1]",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def search(arr):\n    for i in range(0, len(arr)-1, 2):\n        if arr[i]!= arr[i+1]:\n            return arr[i]\n    return arr[-1]",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 483
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 131,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def reverse_vowels(s):\n    vowels = 'aeiouAEIOU'\n    s = list(s)\n    i, j = 0, len(s) - 1\n    while i < j:\n        if s[i] not in vowels:\n            i += 1\n        elif s[j] not in vowels:\n            j -= 1\n        else:\n            s[i], s[j] = s[j], s[i]\n            i += 1\n            j -= 1\n    return ''.join(s)",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def reverse_vowels(s):\n    vowels = 'aeiouAEIOU'\n    s = list(s)\n    i, j = 0, len(s) - 1\n    while i < j:\n        if s[i] not in vowels:\n            i += 1\n        elif s[j] not in vowels:\n            j -= 1\n        else:\n            s[i], s[j] = s[j], s[i]\n            i += 1\n            j -= 1\n    return ''.join(s)",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 468
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 135,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def hexagonal_num(n):\n    return n * (5 * n - 3) // 2",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def hexagonal_num(n):\n    return n * (5 * n - 3) // 2",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert hexagonal_num(10) == 190",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpjjrp6cw6\\candidate_test.py\", line 4, in <module>\n    assert hexagonal_num(10) == 190\n           ^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 203
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 141,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def pancake_sort(arr):\n    def flip(arr, k):\n        for i in range(k//2):\n            arr[i], arr[k-i-1] = arr[k-i-1], arr[i]\n\n    for i in range(len(arr)-1, 0, -1):\n        max_idx = 0\n        for j in range(i+1):\n            if arr[j] > arr[max_idx]:\n                max_idx = j\n        flip(arr, max_idx+1)\n        flip(arr, i+1)\n    return arr",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def pancake_sort(arr):\n    def flip(arr, k):\n        for i in range(k//2):\n            arr[i], arr[k-i-1] = arr[k-i-1], arr[i]\n\n    for i in range(len(arr)-1, 0, -1):\n        max_idx = 0\n        for j in range(i+1):\n            if arr[j] > arr[max_idx]:\n                max_idx = j\n        flip(arr, max_idx+1)\n        flip(arr, i+1)\n    return arr",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 468
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 223,
+      "status": "error_runtime",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def is_majority(arr, n, x):\n    count = 0\n    for i in range(n):\n        if arr[i] == x:\n            count += 1\n    if count > n // 2:\n        return True\n    else:\n        return False",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def is_majority(arr, n, x):\n    count = 0\n    for i in range(n):\n        if arr[i] == x:\n            count += 1\n    if count > n // 2:\n        return True\n    else:\n        return False",
+          "execution": {
+            "status": "error_runtime",
+            "failed_test": "assert is_majority([1, 1, 2, 2], 5, 1) == False",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpfd1l1vc1\\candidate_test.py\", line 11, in <module>\n    assert is_majority([1, 1, 2, 2], 5, 1) == False\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpfd1l1vc1\\candidate_test.py\", line 4, in is_majority\n    if arr[i] == x:\n       ~~~^^^\nIndexError: list index out of range",
+            "passed_count": 3,
+            "total_count": 4,
+            "duration_ms": 593
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 224,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def count_Set_Bits(n):\n    count = 0\n    while n:\n        count += n & 1\n        n >>= 1\n    return count",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def count_Set_Bits(n):\n    count = 0\n    while n:\n        count += n & 1\n        n >>= 1\n    return count",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 453
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 252,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def convert(z):\n    r = abs(z)\n    theta = (1j if z.imag < 0 else 1) * (2 * 3.141592653589793 * abs(z.real))\n    return r, theta",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def convert(z):\n    r = abs(z)\n    theta = (1j if z.imag < 0 else 1) * (2 * 3.141592653589793 * abs(z.real))\n    return r, theta",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert convert(1) == (1.0, 0.0)",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmp0e0msv73\\candidate_test.py\", line 6, in <module>\n    assert convert(1) == (1.0, 0.0)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 187
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 256,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def count_Primes_nums(n):\n    def is_prime(num):\n        if num < 2:\n            return False\n        for i in range(2, int(num**0.5) + 1):\n            if num % i == 0:\n                return False\n        return True\n\n    count = 0\n    for i in range(n):\n        if is_prime(i):\n            count += 1\n    return count",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def count_Primes_nums(n):\n    def is_prime(num):\n        if num < 2:\n            return False\n        for i in range(2, int(num**0.5) + 1):\n            if num % i == 0:\n                return False\n        return True\n\n    count = 0\n    for i in range(n):\n        if is_prime(i):\n            count += 1\n    return count",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 562
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 272,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def rear_extract(lst):\n    return [i[-1] for i in lst]",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def rear_extract(lst):\n    return [i[-1] for i in lst]",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 436
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 277,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def dict_filter(d, n):\n    return {k: v for k, v in d.items() if v >= n}",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def dict_filter(d, n):\n    return {k: v for k, v in d.items() if v >= n}",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 514
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 281,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def all_unique(lst):\n    return len(lst) == len(set(lst))",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def all_unique(lst):\n    return len(lst) == len(set(lst))",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 483
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 295,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def sum_div(n):\n    sum = 0\n    for i in range(1, n + 1):\n        if n % i == 0:\n            sum += i\n    return sum",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def sum_div(n):\n    sum = 0\n    for i in range(1, n + 1):\n        if n % i == 0:\n            sum += i\n    return sum",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert sum_div(8)==7",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpmu6hzqbp\\candidate_test.py\", line 8, in <module>\n    assert sum_div(8)==7\n           ^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 219
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 307,
+      "status": "error_runtime",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def colon_tuplex(tup, index, value):\n    tup[index] = value\n    return tup",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def colon_tuplex(tup, index, value):\n    tup[index] = value\n    return tup",
+          "execution": {
+            "status": "error_runtime",
+            "failed_test": "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,50)==(\"HELLO\", 5, [50], True)",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmp2u_8d65k\\candidate_test.py\", line 5, in <module>\n    assert colon_tuplex((\"HELLO\", 5, [], True) ,2,50)==(\"HELLO\", 5, [50], True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmp2u_8d65k\\candidate_test.py\", line 2, in colon_tuplex\n    tup[index] = value\n    ~~~^^^^^^^\nTypeError: 'tuple' object does not support item assignment",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 171
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 308,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def large_product(list1, list2, n):\n    # Sort the lists in descending order\n    list1.sort(reverse=True)\n    list2.sort(reverse=True)\n\n    # Initialize an empty list to store the largest products\n    products = []\n\n    # Iterate over the first n elements of both lists\n    for i in range(n):\n        # Multiply the i-th element of list1 with the i-th element of list2\n        product = list1[i] * list2[i]\n        # Append the product to the products list\n        products.append(product)\n\n    # Return the products list\n    return products",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def large_product(list1, list2, n):\n    # Sort the lists in descending order\n    list1.sort(reverse=True)\n    list2.sort(reverse=True)\n\n    # Initialize an empty list to store the largest products\n    products = []\n\n    # Iterate over the first n elements of both lists\n    for i in range(n):\n        # Multiply the i-th element of list1 with the i-th element of list2\n        product = list1[i] * list2[i]\n        # Append the product to the products list\n        products.append(product)\n\n    # Return the products list\n    return products",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],3)==[60, 54, 50]",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpvn27wkmg\\candidate_test.py\", line 19, in <module>\n    assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],3)==[60, 54, 50]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 156
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 398,
+      "status": "error_runtime",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def sum_of_digits(lst):\n    def sum_of_digits_inner(lst):\n        total = 0\n        for i in lst:\n            if isinstance(i, list):\n                total += sum_of_digits_inner(i)\n            else:\n                total += sum(map(int, str(i)))\n        return total\n    return sum_of_digits_inner(lst)",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def sum_of_digits(lst):\n    def sum_of_digits_inner(lst):\n        total = 0\n        for i in lst:\n            if isinstance(i, list):\n                total += sum_of_digits_inner(i)\n            else:\n                total += sum(map(int, str(i)))\n        return total\n    return sum_of_digits_inner(lst)",
+          "execution": {
+            "status": "error_runtime",
+            "failed_test": "assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmp3uj0y9xm\\candidate_test.py\", line 12, in <module>\n    assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmp3uj0y9xm\\candidate_test.py\", line 10, in sum_of_digits\n    return sum_of_digits_inner(lst)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmp3uj0y9xm\\candidate_test.py\", line 6, in sum_of_digits_inner\n    total += sum_of_digits_inner(i)\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmp3uj0y9xm\\candidate_test.py\", line 8, in sum_of_digits_inner\n    total += sum(map(int, str(i)))\n             ^^^^^^^^^^^^^^^^^^^^^\nValueError: invalid literal for int() with base 10: 'b'",
+            "passed_count": 1,
+            "total_count": 3,
+            "duration_ms": 328
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 413,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def extract_nth_element(lst, n):\n    return [item[n] for item in lst]",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def extract_nth_element(lst, n):\n    return [item[n] for item in lst]",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 390
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 414,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def overlapping(seq1, seq2):\n    return any(item in seq2 for item in seq1)",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def overlapping(seq1, seq2):\n    return any(item in seq2 for item in seq1)",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 547
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 415,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def max_Product(arr):\n    if len(arr) < 2:\n        return None\n    max_product = arr[0] * arr[1]\n    min_product = arr[0] * arr[1]\n    max_so_far = max_product\n    min_so_far = min_product\n    for i in range(2, len(arr)):\n        if arr[i] < 0:\n            max_product = max(arr[i], max_product * arr[i])\n            min_product = min(arr[i], min_product * arr[i])\n        else:\n            max_product = max(arr[i], max_product * arr[i], min_so_far * arr[i])\n            min_product = min(arr[i], min_product * arr[i], max_so_far * arr[i])\n        max_so_far = max(max_so_far, max_product)\n        min_so_far = min(min_so_far, min_product)\n    return (max_so_far, min_so_far)",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def max_Product(arr):\n    if len(arr) < 2:\n        return None\n    max_product = arr[0] * arr[1]\n    min_product = arr[0] * arr[1]\n    max_so_far = max_product\n    min_so_far = min_product\n    for i in range(2, len(arr)):\n        if arr[i] < 0:\n            max_product = max(arr[i], max_product * arr[i])\n            min_product = min(arr[i], min_product * arr[i])\n        else:\n            max_product = max(arr[i], max_product * arr[i], min_so_far * arr[i])\n            min_product = min(arr[i], min_product * arr[i], max_so_far * arr[i])\n        max_so_far = max(max_so_far, max_product)\n        min_so_far = min(min_so_far, min_product)\n    return (max_so_far, min_so_far)",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmp6by8u6lo\\candidate_test.py\", line 19, in <module>\n    assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 203
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 419,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def round_and_sum(numbers):\n    total = 0\n    for num in numbers:\n        total += round(num)\n    return total",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def round_and_sum(numbers):\n    total = 0\n    for num in numbers:\n        total += round(num)\n    return total",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert round_and_sum([22.4, 4.0, -16.22, -9.10, 11.00, -12.22, 14.20, -5.20, 17.50])==243",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmp_v_fjdyr\\candidate_test.py\", line 7, in <module>\n    assert round_and_sum([22.4, 4.0, -16.22, -9.10, 11.00, -12.22, 14.20, -5.20, 17.50])==243\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 187
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 428,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def shell_sort(arr):\n    n = len(arr)\n    gap = n // 2\n\n    while gap > 0:\n        for i in range(gap, n):\n            temp = arr[i]\n            j = i\n            while j >= gap and arr[j - gap] > temp:\n                arr[j] = arr[j - gap]\n                j -= gap\n            arr[j] = temp\n        gap //= 2\n    return arr",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def shell_sort(arr):\n    n = len(arr)\n    gap = n // 2\n\n    while gap > 0:\n        for i in range(gap, n):\n            temp = arr[i]\n            j = i\n            while j >= gap and arr[j - gap] > temp:\n                arr[j] = arr[j - gap]\n                j -= gap\n            arr[j] = temp\n        gap //= 2\n    return arr",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 453
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 435,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def last_Digit(n):\n    return abs(n) % 10",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def last_Digit(n):\n    return abs(n) % 10",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 812
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 443,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def largest_neg(lst):\n    largest = lst[0]\n    for num in lst:\n        if num < largest:\n            largest = num\n    return largest",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def largest_neg(lst):\n    largest = lst[0]\n    for num in lst:\n        if num < largest:\n            largest = num\n    return largest",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 483
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 447,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def cube_nums(lst):\n    return [num ** 3 for num in lst]",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def cube_nums(lst):\n    return [num ** 3 for num in lst]",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 468
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 452,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def loss_amount(sale_price, actual_price):\n    if sale_price > actual_price:\n        return sale_price - actual_price\n    else:\n        return 0",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def loss_amount(sale_price, actual_price):\n    if sale_price > actual_price:\n        return sale_price - actual_price\n    else:\n        return 0",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert loss_amount(1500,1200)==0",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpg0lgns5k\\candidate_test.py\", line 7, in <module>\n    assert loss_amount(1500,1200)==0\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 139
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 455,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def check_monthnumb_number(month_number):\n    if month_number in [1, 3, 5, 7, 8, 10, 12]:\n        return True\n    elif month_number in [4, 6, 9, 11]:\n        return False\n    else:\n        return \"Invalid month number\"",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def check_monthnumb_number(month_number):\n    if month_number in [1, 3, 5, 7, 8, 10, 12]:\n        return True\n    elif month_number in [4, 6, 9, 11]:\n        return False\n    else:\n        return \"Invalid month number\"",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert check_monthnumb_number(2)==False",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmp5tulffut\\candidate_test.py\", line 9, in <module>\n    assert check_monthnumb_number(2)==False\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 1,
+            "total_count": 3,
+            "duration_ms": 281
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 459,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def remove_uppercase(s):\n    return ''.join(c for c in s if c.islower())",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def remove_uppercase(s):\n    return ''.join(c for c in s if c.islower())",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 406
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 463,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def max_subarray_product(arr):\n    if len(arr) == 0:\n        return 0\n    max_product = arr[0]\n    min_product = arr[0]\n    result = arr[0]\n    for i in range(1, len(arr)):\n        if arr[i] < 0:\n            max_product, min_product = min_product, max_product\n        max_product = max(arr[i], max_product * arr[i])\n        min_product = min(arr[i], min_product * arr[i])\n        result = max(result, max_product)\n    return result",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def max_subarray_product(arr):\n    if len(arr) == 0:\n        return 0\n    max_product = arr[0]\n    min_product = arr[0]\n    result = arr[0]\n    for i in range(1, len(arr)):\n        if arr[i] < 0:\n            max_product, min_product = min_product, max_product\n        max_product = max(arr[i], max_product * arr[i])\n        min_product = min(arr[i], min_product * arr[i])\n        result = max(result, max_product)\n    return result",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 422
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 562,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def Find_Max_Length(lst):\n    return max(len(sublist) for sublist in lst)",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def Find_Max_Length(lst):\n    return max(len(sublist) for sublist in lst)",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 468
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 563,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def extract_values(s):\n    return [word.strip('\"') for word in s.split(',')]",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def extract_values(s):\n    return [word.strip('\"') for word in s.split(',')]",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert extract_values('\"Python\", \"PHP\", \"Java\"')==['Python', 'PHP', 'Java']",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpvp8qvivq\\candidate_test.py\", line 4, in <module>\n    assert extract_values('\"Python\", \"PHP\", \"Java\"')==['Python', 'PHP', 'Java']\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 391
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 577,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def last_Digit_Factorial(n):\n    factorial = 1\n    for i in range(1, n + 1):\n        factorial *= i\n        while factorial % 10 == 0:\n            factorial //= 10\n        factorial %= 1000000007\n    return factorial % 10",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def last_Digit_Factorial(n):\n    factorial = 1\n    for i in range(1, n + 1):\n        factorial *= i\n        while factorial % 10 == 0:\n            factorial //= 10\n        factorial %= 1000000007\n    return factorial % 10",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert last_Digit_Factorial(21) == 0",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpoz9smnm3\\candidate_test.py\", line 10, in <module>\n    assert last_Digit_Factorial(21) == 0\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 1,
+            "total_count": 3,
+            "duration_ms": 375
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 581,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def surface_Area(base, height):\n    return 3 * (base ** 2) + (2 * base * height)",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def surface_Area(base, height):\n    return 3 * (base ** 2) + (2 * base * height)",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert surface_Area(3,4) == 33",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpylr3ug_w\\candidate_test.py\", line 4, in <module>\n    assert surface_Area(3,4) == 33\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 171
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 582,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def my_dict(d):\n    if len(d) == 0:\n        return True\n    else:\n        return False",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def my_dict(d):\n    if len(d) == 0:\n        return True\n    else:\n        return False",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 639
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 594,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def diff_even_odd(lst):\n    even = [i for i in lst if i % 2 == 0]\n    odd = [i for i in lst if i % 2!= 0]\n    return abs(even[0] - odd[0])",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def diff_even_odd(lst):\n    even = [i for i in lst if i % 2 == 0]\n    odd = [i for i in lst if i % 2!= 0]\n    return abs(even[0] - odd[0])",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 500
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 605,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def prime_num(n):\n    if n <= 1:\n        return False\n    elif n <= 3:\n        return True\n    elif n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def prime_num(n):\n    if n <= 1:\n        return False\n    elif n <= 3:\n        return True\n    elif n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 422
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 617,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def min_Jumps(point, target):\n    if point[0] > target or point[1] > target:\n        return -1\n    elif point[0] == target or point[1] == target:\n        return 0\n    else:\n        return round(target ** 0.5)",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def min_Jumps(point, target):\n    if point[0] > target or point[1] > target:\n        return -1\n    elif point[0] == target or point[1] == target:\n        return 0\n    else:\n        return round(target ** 0.5)",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert min_Jumps((3,4),11)==3.5",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpfc8a0__t\\candidate_test.py\", line 9, in <module>\n    assert min_Jumps((3,4),11)==3.5\n           ^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 156
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 620,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def largest_subset(nums):\n    if not nums:\n        return 0\n\n    nums.sort()\n    dp = [1] * len(nums)\n    max_length = 1\n\n    for i in range(1, len(nums)):\n        if nums[i] % nums[i - 1] == 0:\n            dp[i] = dp[i - 1] + 1\n        else:\n            dp[i] = 1\n        max_length = max(max_length, dp[i])\n\n    return max_length",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def largest_subset(nums):\n    if not nums:\n        return 0\n\n    nums.sort()\n    dp = [1] * len(nums)\n    max_length = 1\n\n    for i in range(1, len(nums)):\n        if nums[i] % nums[i - 1] == 0:\n            dp[i] = dp[i - 1] + 1\n        else:\n            dp[i] = 1\n        max_length = max(max_length, dp[i])\n\n    return max_length",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert largest_subset([ 1, 3, 6, 13, 17, 18 ]) == 4",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmp__ulh351\\candidate_test.py\", line 18, in <module>\n    assert largest_subset([ 1, 3, 6, 13, 17, 18 ]) == 4\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 139
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 631,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def replace_spaces(text):\n    return text.replace(' ', '_') if '_' in text else text.replace('_','')",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def replace_spaces(text):\n    return text.replace(' ', '_') if '_' in text else text.replace('_','')",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert replace_spaces('Jumanji The Jungle') == 'Jumanji_The_Jungle'",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmptkqcpc4c\\candidate_test.py\", line 4, in <module>\n    assert replace_spaces('Jumanji The Jungle') == 'Jumanji_The_Jungle'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 187
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 644,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def reverse_Array_Upto_K(arr, k):\n    return arr[:k][::-1] + arr[k:]",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def reverse_Array_Upto_K(arr, k):\n    return arr[:k][::-1] + arr[k:]",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 483
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 730,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def consecutive_duplicates(lst):\n    new_lst = [lst[i] for i in range(len(lst)) if i == 0 or lst[i]!= lst[i-1]]\n    return new_lst",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def consecutive_duplicates(lst):\n    new_lst = [lst[i] for i in range(len(lst)) if i == 0 or lst[i]!= lst[i-1]]\n    return new_lst",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 4,
+            "total_count": 4,
+            "duration_ms": 828
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 744,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def check_none(tup):\n    for i in tup:\n        if i is not None:\n            return True\n    return False",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def check_none(tup):\n    for i in tup:\n        if i is not None:\n            return True\n    return False",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert check_none((7, 8, 9, 11, 14)) == False",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpl5216d7o\\candidate_test.py\", line 7, in <module>\n    assert check_none((7, 8, 9, 11, 14)) == False\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 1,
+            "total_count": 3,
+            "duration_ms": 514
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 748,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def capital_words_spaces(s):\n    return''.join(s.split())",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def capital_words_spaces(s):\n    return''.join(s.split())",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert capital_words_spaces(\"PythonProgrammingExamples\") == 'Python Programming Examples'",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpphuuwyej\\candidate_test.py\", line 4, in <module>\n    assert capital_words_spaces(\"PythonProgrammingExamples\") == 'Python Programming Examples'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 1,
+            "total_count": 3,
+            "duration_ms": 483
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 751,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def check_min_heap(arr):\n    n = len(arr)\n    for i in range(n//2 - 1, -1, -1):\n        j = 2*i + 1\n        if j < n and arr[i] > arr[j]:\n            return False\n        if j + 1 < n and arr[i] > arr[j+1]:\n            return False\n    return True",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def check_min_heap(arr):\n    n = len(arr)\n    for i in range(n//2 - 1, -1, -1):\n        j = 2*i + 1\n        if j < n and arr[i] > arr[j]:\n            return False\n        if j + 1 < n and arr[i] > arr[j+1]:\n            return False\n    return True",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 483
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 772,
+      "status": "fail_assert",
+      "rounds_to_pass": null,
+      "total_rounds": 1,
+      "pass_1st_round": false,
+      "final_code": "def remove_length(s, k):\n    words = s.split()\n    new_words = [word for word in words if len(word)!= k]\n    return''.join(new_words)",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def remove_length(s, k):\n    words = s.split()\n    new_words = [word for word in words if len(word)!= k]\n    return''.join(new_words)",
+          "execution": {
+            "status": "fail_assert",
+            "failed_test": "assert remove_length('The person is most value tet', 3) == 'person is most value'",
+            "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\chibtl\\AppData\\Local\\Temp\\tmpnfjhvt45\\candidate_test.py\", line 6, in <module>\n    assert remove_length('The person is most value tet', 3) == 'person is most value'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 171
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 787,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def text_match_three(s):\n    return 'a' in s and s.count('b') >= 3",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def text_match_three(s):\n    return 'a' in s and s.count('b') >= 3",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 4,
+            "total_count": 4,
+            "duration_ms": 890
+          }
+        }
+      ]
+    },
+    {
+      "task_id": 798,
+      "status": "pass",
+      "rounds_to_pass": 1,
+      "total_rounds": 1,
+      "pass_1st_round": true,
+      "final_code": "def _sum(arr):\n    return sum(arr)",
+      "internal_records": [
+        {
+          "iteration": 0,
+          "code": "def _sum(arr):\n    return sum(arr)",
+          "execution": {
+            "status": "pass",
+            "failed_test": null,
+            "traceback": "",
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 625
+          }
+        }
+      ]
+    }
+  ]
+}
