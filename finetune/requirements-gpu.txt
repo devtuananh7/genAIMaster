@@ -1,0 +1,10 @@
+# Cài trên DESKTOP RTX 3080 (CUDA) cho Stage B (train) + Stage C (eval).
+# torch bản CUDA: cài theo hướng dẫn https://pytorch.org (chọn CUDA 12.x)
+#   vd: pip install torch --index-url https://download.pytorch.org/whl/cu121
+torch
+transformers>=4.44
+peft>=0.12
+bitsandbytes>=0.43
+accelerate>=0.33
+datasets
+sentencepiece
