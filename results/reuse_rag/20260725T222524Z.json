@@ -1,0 +1,408 @@
+{
+  "experiment": "input_representation_reuse",
+  "mock": false,
+  "model_name": "deepseek-coder:1.3b",
+  "timestamp": "20260725T222524Z",
+  "params": {
+    "samples": 3,
+    "temperature": 0.2,
+    "max_tokens": 1024,
+    "levels": [
+      0
+    ],
+    "package": "boltons",
+    "n_tasks": 12
+  },
+  "curve": [
+    {
+      "level": 0,
+      "level_name": "L0_no_api",
+      "reuse_rate": 0.0,
+      "pass_rate": 0.9166666666666666,
+      "avg_context_tokens": 0.0
+    }
+  ],
+  "levels": [
+    {
+      "level": 0,
+      "level_name": "L0_no_api",
+      "reuse_rate": 0.0,
+      "pass_rate": 0.9166666666666666,
+      "avg_context_tokens": 0.0,
+      "per_task": [
+        {
+          "task_id": 1,
+          "wrapper": "split_into_chunks",
+          "target_fqn": "boltons.iterutils.chunked",
+          "context_tokens": 0,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def split_into_chunks(items, size):\n    return [items[i:i+size] for i in range(0, len(items), size)]"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def split_into_chunks(items, size):\n    return [items[i:i+size] for i in range(0, len(items), size)]"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def split_into_chunks(items, size):\n    return [items[i:i+size] for i in range(0, len(items), size)]"
+            }
+          ]
+        },
+        {
+          "task_id": 2,
+          "wrapper": "sliding_windows",
+          "target_fqn": "boltons.iterutils.windowed",
+          "context_tokens": 0,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def sliding_windows(items, size):\n    if size > len(items):\n        raise ValueError(\"Size is larger than the length of the list\")\n    return [tuple(items[i:i+size]) for i in range(len(items)-size+1)]"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def sliding_windows(items, size):\n    if size > len(items):\n        raise ValueError(\"Size is larger than the length of the list\")\n    return [tuple(items[i:i+size]) for i in range(len(items)-size+1)]"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def sliding_windows(items, size):\n    if size > len(items):\n        raise ValueError(\"Size is larger than the length of the list\")\n    return [tuple(items[i:i+size]) for i in range(len(items)-size+1)]"
+            }
+          ]
+        },
+        {
+          "task_id": 3,
+          "wrapper": "first_truthy",
+          "target_fqn": "boltons.iterutils.first",
+          "context_tokens": 0,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def first_truthy(items):\n    for item in items:\n        if item:\n            return item\n    return None"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def first_truthy(items):\n    for item in items:\n        if item:\n            return item\n    return None"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def first_truthy(items):\n    for item in items:\n        if item:\n            return item\n    return None"
+            }
+          ]
+        },
+        {
+          "task_id": 4,
+          "wrapper": "group_numbers",
+          "target_fqn": "boltons.iterutils.bucketize",
+          "context_tokens": 0,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def group_numbers(nums):\n    even = []\n    odd = []\n    for num in nums:\n        if num % 2 == 0:\n            even.append(num)\n        else:\n            odd.append(num)\n    return {'even': even, 'odd': odd}"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def group_numbers(nums):\n    even = []\n    odd = []\n    for num in nums:\n        if num % 2 == 0:\n            even.append(num)\n        else:\n            odd.append(num)\n    return {'even': even, 'odd': odd}"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def group_numbers(nums):\n    even = []\n    odd = []\n    for num in nums:\n        if num % 2 == 0:\n            even.append(num)\n        else:\n            odd.append(num)\n    return {'even': even, 'odd': odd}"
+            }
+          ]
+        },
+        {
+          "task_id": 5,
+          "wrapper": "dedupe_keep_order",
+          "target_fqn": "boltons.iterutils.unique",
+          "context_tokens": 0,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def dedupe_keep_order(items):\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def dedupe_keep_order(items):\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def dedupe_keep_order(items):\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result"
+            }
+          ]
+        },
+        {
+          "task_id": 6,
+          "wrapper": "adjacent_pairs",
+          "target_fqn": "boltons.iterutils.pairwise",
+          "context_tokens": 0,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def adjacent_pairs(items):\n    return [(items[i], items[i + 1]) for i in range(len(items) - 1)]"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def adjacent_pairs(items):\n    return [(items[i], items[i + 1]) for i in range(len(items) - 1)]"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def adjacent_pairs(items):\n    return [(items[i], items[i + 1]) for i in range(len(items) - 1)]"
+            }
+          ]
+        },
+        {
+          "task_id": 7,
+          "wrapper": "flatten_nested",
+          "target_fqn": "boltons.iterutils.flatten",
+          "context_tokens": 0,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def flatten_nested(nested):\n    result = []\n    for i in nested:\n        if isinstance(i, list):\n            result.extend(flatten_nested(i))\n        else:\n            result.append(i)\n    return result"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def flatten_nested(nested):\n    result = []\n    for i in nested:\n        if isinstance(i, list):\n            result.extend(flatten_nested(i))\n        else:\n            result.append(i)\n    return result"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def flatten_nested(nested):\n    result = []\n    for i in nested:\n        if isinstance(i, list):\n            result.extend(flatten_nested(i))\n        else:\n            result.append(i)\n    return result"
+            }
+          ]
+        },
+        {
+          "task_id": 8,
+          "wrapper": "to_slug",
+          "target_fqn": "boltons.strutils.slugify",
+          "context_tokens": 0,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def to_slug(text):\n    return ''.join(e for e in text if e.isalnum() or e.isspace()).replace(' ', '_').lower()"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def to_slug(text):\n    return ''.join(e for e in text if e.isalnum() or e.isspace()).replace(' ', '_').lower()"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def to_slug(text):\n    return ''.join(e for e in text if e.isalnum() or e.isspace()).replace(' ', '_').lower()"
+            }
+          ]
+        },
+        {
+          "task_id": 9,
+          "wrapper": "to_ordinal",
+          "target_fqn": "boltons.strutils.ordinalize",
+          "context_tokens": 0,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def to_ordinal(number):\n    if 11 <= (number % 100) <= 14:\n        return str(number) + 'th'\n    switch = {\n        1:'st',\n        2: 'nd',\n        3: 'rd',\n        4: 'th',\n        5: 'th',\n        6: 'th',\n        7: 'th',\n        8: 'th',\n        9: 'th',\n    }\n    return str(number) + switch.get(number % 10, 'th')"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def to_ordinal(number):\n    if 11 <= (number % 100) <= 14:\n        return str(number) + 'th'\n    switch = {\n        1:'st',\n        2: 'nd',\n        3: 'rd',\n        4: 'th',\n        5: 'th',\n        6: 'th',\n        7: 'th',\n        8: 'th',\n        9: 'th',\n    }\n    return str(number) + switch.get(number % 10, 'th')"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def to_ordinal(number):\n    if 11 <= (number % 100) <= 14:\n        return str(number) + 'th'\n    switch = {\n        1:'st',\n        2: 'nd',\n        3: 'rd',\n        4: 'th',\n        5: 'th',\n        6: 'th',\n        7: 'th',\n        8: 'th',\n        9: 'th',\n    }\n    return str(number) + switch.get(number % 10, 'th')"
+            }
+          ]
+        },
+        {
+          "task_id": 10,
+          "wrapper": "pluralize_unit",
+          "target_fqn": "boltons.strutils.cardinalize",
+          "context_tokens": 0,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def pluralize_unit(noun, count):\n    if count == 1:\n        return noun\n    else:\n        return noun +'s'"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def pluralize_unit(noun, count):\n    if count == 1:\n        return noun\n    else:\n        return noun +'s'"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def pluralize_unit(noun, count):\n    if count == 1:\n        return noun\n    else:\n        return noun +'s'"
+            }
+          ]
+        },
+        {
+          "task_id": 11,
+          "wrapper": "human_size",
+          "target_fqn": "boltons.strutils.bytes2human",
+          "context_tokens": 0,
+          "reuse_rate": 0.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "def human_size(nbytes):\n    if nbytes == 0:\n        return '0B'\n    units = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB']\n    mag = 0\n    while nbytes >= 1024 and mag < len(units):\n        nbytes /= 1024.\n        mag += 1\n    return ('%.2f%s' % (nbytes, units[mag])).rstrip('0123456789')"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "def human_size(nbytes):\n    if nbytes == 0:\n        return '0B'\n    units = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB']\n    mag = 0\n    while nbytes >= 1024 and mag < len(units):\n        nbytes /= 1024.\n        mag += 1\n    return ('%.2f%s' % (nbytes, units[mag])).rstrip('0123456789')"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "def human_size(nbytes):\n    if nbytes == 0:\n        return '0B'\n    units = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB']\n    mag = 0\n    while nbytes >= 1024 and mag < len(units):\n        nbytes /= 1024.\n        mag += 1\n    return ('%.2f%s' % (nbytes, units[mag])).rstrip('0123456789')"
+            }
+          ]
+        },
+        {
+          "task_id": 12,
+          "wrapper": "clamp_value",
+          "target_fqn": "boltons.mathutils.clamp",
+          "context_tokens": 0,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    if x < lower:\n        return lower\n    elif x > upper:\n        return upper\n    else:\n        return x"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    if x < lower:\n        return lower\n    elif x > upper:\n        return upper\n    else:\n        return x"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    if x < lower:\n        return lower\n    elif x > upper:\n        return upper\n    else:\n        return x"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

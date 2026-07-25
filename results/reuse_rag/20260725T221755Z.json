@@ -1,0 +1,1575 @@
+{
+  "experiment": "input_representation_reuse",
+  "mock": false,
+  "model_name": "deepseek-coder:1.3b",
+  "timestamp": "20260725T221755Z",
+  "params": {
+    "samples": 3,
+    "temperature": 0.2,
+    "max_tokens": 1024,
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "package": "boltons",
+    "n_tasks": 12
+  },
+  "curve": [
+    {
+      "level": 1,
+      "level_name": "L1_signature",
+      "reuse_rate": 0.75,
+      "pass_rate": 0.8333333333333334,
+      "avg_context_tokens": 14.666666666666666
+    },
+    {
+      "level": 2,
+      "level_name": "L2_docstring",
+      "reuse_rate": 0.75,
+      "pass_rate": 0.6666666666666666,
+      "avg_context_tokens": 43.333333333333336
+    },
+    {
+      "level": 3,
+      "level_name": "L3_example",
+      "reuse_rate": 0.5,
+      "pass_rate": 0.4166666666666667,
+      "avg_context_tokens": 51.25
+    },
+    {
+      "level": 4,
+      "level_name": "L4_body",
+      "reuse_rate": 0.6666666666666666,
+      "pass_rate": 0.8333333333333334,
+      "avg_context_tokens": 120.75
+    }
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "level_name": "L1_signature",
+      "reuse_rate": 0.75,
+      "pass_rate": 0.8333333333333334,
+      "avg_context_tokens": 14.666666666666666,
+      "per_task": [
+        {
+          "task_id": 1,
+          "wrapper": "split_into_chunks",
+          "target_fqn": "boltons.iterutils.chunked",
+          "context_tokens": 16,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import chunked\n\ndef split_into_chunks(items, size):\n    return [list(chunk) for chunk in chunked(items, size)]"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import chunked\n\ndef split_into_chunks(items, size):\n    return [list(chunk) for chunk in chunked(items, size)]"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import chunked\n\ndef split_into_chunks(items, size):\n    return [list(chunk) for chunk in chunked(items, size)]"
+            }
+          ]
+        },
+        {
+          "task_id": 2,
+          "wrapper": "sliding_windows",
+          "target_fqn": "boltons.iterutils.windowed",
+          "context_tokens": 15,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import windowed\n\ndef sliding_windows(items, size):\n    return list(windowed(items, size))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import windowed\n\ndef sliding_windows(items, size):\n    return list(windowed(items, size))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import windowed\n\ndef sliding_windows(items, size):\n    return list(windowed(items, size))"
+            }
+          ]
+        },
+        {
+          "task_id": 3,
+          "wrapper": "first_truthy",
+          "target_fqn": "boltons.iterutils.first",
+          "context_tokens": 15,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "pass",
+              "code": "# Project API: boltons.iterutils.first\n# Import as: from boltons.iterutils import first\ndef first(iterable, default=None, key=None):\n    return next((x for x in iterable if x), default)\n\ndef first_truthy(items):\n    return first(items, default=None)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "pass",
+              "code": "# Project API: boltons.iterutils.first\n# Import as: from boltons.iterutils import first\ndef first(iterable, default=None, key=None):\n    return next((x for x in iterable if x), default)\n\ndef first_truthy(items):\n    return first(items, default=None)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "pass",
+              "code": "# Project API: boltons.iterutils.first\n# Import as: from boltons.iterutils import first\ndef first(iterable, default=None, key=None):\n    return next((x for x in iterable if x), default)\n\ndef first_truthy(items):\n    return first(items, default=None)"
+            }
+          ]
+        },
+        {
+          "task_id": 4,
+          "wrapper": "group_numbers",
+          "target_fqn": "boltons.iterutils.bucketize",
+          "context_tokens": 16,
+          "reuse_rate": 1.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "from boltons.iterutils import bucketize\n\ndef group_numbers(nums):\n    even_nums = [num for num in nums if num % 2 == 0]\n    odd_nums = [num for num in nums if num % 2!= 0]\n    return dict(even=bucketize(even_nums), odd=bucketize(odd_nums))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "from boltons.iterutils import bucketize\n\ndef group_numbers(nums):\n    even_nums = [num for num in nums if num % 2 == 0]\n    odd_nums = [num for num in nums if num % 2!= 0]\n    return dict(even=bucketize(even_nums), odd=bucketize(odd_nums))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "from boltons.iterutils import bucketize\n\ndef group_numbers(nums):\n    even_nums = [num for num in nums if num % 2 == 0]\n    odd_nums = [num for num in nums if num % 2!= 0]\n    return dict(even=bucketize(even_nums), odd=bucketize(odd_nums))"
+            }
+          ]
+        },
+        {
+          "task_id": 5,
+          "wrapper": "dedupe_keep_order",
+          "target_fqn": "boltons.iterutils.unique",
+          "context_tokens": 14,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import unique\n\ndef dedupe_keep_order(items):\n    return list(unique(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import unique\n\ndef dedupe_keep_order(items):\n    return list(unique(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import unique\n\ndef dedupe_keep_order(items):\n    return list(unique(items))"
+            }
+          ]
+        },
+        {
+          "task_id": 6,
+          "wrapper": "adjacent_pairs",
+          "target_fqn": "boltons.iterutils.pairwise",
+          "context_tokens": 14,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import pairwise\n\ndef adjacent_pairs(items):\n    return list(pairwise(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import pairwise\n\ndef adjacent_pairs(items):\n    return list(pairwise(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import pairwise\n\ndef adjacent_pairs(items):\n    return list(pairwise(items))"
+            }
+          ]
+        },
+        {
+          "task_id": 7,
+          "wrapper": "flatten_nested",
+          "target_fqn": "boltons.iterutils.flatten",
+          "context_tokens": 13,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "# Project API: boltons.iterutils.flatten\n# Import as: from boltons.iterutils import flatten\nfrom boltons.iterutils import flatten\n\ndef flatten_nested(nested):\n    return list(flatten(nested))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "# Project API: boltons.iterutils.flatten\n# Import as: from boltons.iterutils import flatten\nfrom boltons.iterutils import flatten\n\ndef flatten_nested(nested):\n    return list(flatten(nested))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "# Project API: boltons.iterutils.flatten\n# Import as: from boltons.iterutils import flatten\nfrom boltons.iterutils import flatten\n\ndef flatten_nested(nested):\n    return list(flatten(nested))"
+            }
+          ]
+        },
+        {
+          "task_id": 8,
+          "wrapper": "to_slug",
+          "target_fqn": "boltons.strutils.slugify",
+          "context_tokens": 16,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import slugify\n\ndef to_slug(text):\n    return slugify(text)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import slugify\n\ndef to_slug(text):\n    return slugify(text)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import slugify\n\ndef to_slug(text):\n    return slugify(text)"
+            }
+          ]
+        },
+        {
+          "task_id": 9,
+          "wrapper": "to_ordinal",
+          "target_fqn": "boltons.strutils.ordinalize",
+          "context_tokens": 14,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import ordinalize\n\ndef to_ordinal(number):\n    return ordinalize(str(number))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import ordinalize\n\ndef to_ordinal(number):\n    return ordinalize(str(number))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import ordinalize\n\ndef to_ordinal(number):\n    return ordinalize(str(number))"
+            }
+          ]
+        },
+        {
+          "task_id": 10,
+          "wrapper": "pluralize_unit",
+          "target_fqn": "boltons.strutils.cardinalize",
+          "context_tokens": 14,
+          "reuse_rate": 0.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "error_runtime",
+              "code": "# Project API: boltons.strutils.cardinalize\n# Import as: from boltons.strutils import cardinalize\ndef cardinalize(unit_noun, count):\n    return cardinalize(unit_noun, count)\n\ndef pluralize_unit(noun, count):\n    return cardinalize(noun, count) if count == 1 else noun +'s'"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "error_runtime",
+              "code": "# Project API: boltons.strutils.cardinalize\n# Import as: from boltons.strutils import cardinalize\ndef cardinalize(unit_noun, count):\n    return cardinalize(unit_noun, count)\n\ndef pluralize_unit(noun, count):\n    return cardinalize(noun, count) if count == 1 else noun +'s'"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "error_runtime",
+              "code": "# Project API: boltons.strutils.cardinalize\n# Import as: from boltons.strutils import cardinalize\ndef cardinalize(unit_noun, count):\n    return cardinalize(unit_noun, count)\n\ndef pluralize_unit(noun, count):\n    return cardinalize(noun, count) if count == 1 else noun +'s'"
+            }
+          ]
+        },
+        {
+          "task_id": 11,
+          "wrapper": "human_size",
+          "target_fqn": "boltons.strutils.bytes2human",
+          "context_tokens": 14,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import bytes2human\n\ndef human_size(nbytes):\n    return bytes2human(nbytes)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import bytes2human\n\ndef human_size(nbytes):\n    return bytes2human(nbytes)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import bytes2human\n\ndef human_size(nbytes):\n    return bytes2human(nbytes)"
+            }
+          ]
+        },
+        {
+          "task_id": 12,
+          "wrapper": "clamp_value",
+          "target_fqn": "boltons.mathutils.clamp",
+          "context_tokens": 15,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    return min(max(x, lower), upper)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    return min(max(x, lower), upper)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    return min(max(x, lower), upper)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "level_name": "L2_docstring",
+      "reuse_rate": 0.75,
+      "pass_rate": 0.6666666666666666,
+      "avg_context_tokens": 43.333333333333336,
+      "per_task": [
+        {
+          "task_id": 1,
+          "wrapper": "split_into_chunks",
+          "target_fqn": "boltons.iterutils.chunked",
+          "context_tokens": 66,
+          "reuse_rate": 1.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "# Project API: boltons.iterutils.chunked\n# Import as: from boltons.iterutils import chunked\nfrom boltons.iterutils import chunked\n\ndef split_into_chunks(items, size):\n    return [list(chunked(items, size)) for _ in range(size)]"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "# Project API: boltons.iterutils.chunked\n# Import as: from boltons.iterutils import chunked\nfrom boltons.iterutils import chunked\n\ndef split_into_chunks(items, size):\n    return [list(chunked(items, size)) for _ in range(size)]"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "# Project API: boltons.iterutils.chunked\n# Import as: from boltons.iterutils import chunked\nfrom boltons.iterutils import chunked\n\ndef split_into_chunks(items, size):\n    return [list(chunked(items, size)) for _ in range(size)]"
+            }
+          ]
+        },
+        {
+          "task_id": 2,
+          "wrapper": "sliding_windows",
+          "target_fqn": "boltons.iterutils.windowed",
+          "context_tokens": 46,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import windowed\n\ndef sliding_windows(items, size):\n    return list(windowed(items, size))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import windowed\n\ndef sliding_windows(items, size):\n    return list(windowed(items, size))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import windowed\n\ndef sliding_windows(items, size):\n    return list(windowed(items, size))"
+            }
+          ]
+        },
+        {
+          "task_id": 3,
+          "wrapper": "first_truthy",
+          "target_fqn": "boltons.iterutils.first",
+          "context_tokens": 33,
+          "reuse_rate": 0.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "fail_assert",
+              "code": "# Project API: boltons.iterutils.first\n# Import as: from boltons.iterutils import first\ndef first(iterable, default=None, key=None):\n    \"\"\"Return first element of *iterable* that evaluates to ``True``, else\nreturn ``None`` or optional *default*. Similar to :func:`one`.\"\"\"\n    # Your code here\n\n# Function to solve the task\ndef first_truthy(items):\n    return first(items, default=None)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "fail_assert",
+              "code": "# Project API: boltons.iterutils.first\n# Import as: from boltons.iterutils import first\ndef first(iterable, default=None, key=None):\n    \"\"\"Return first element of *iterable* that evaluates to ``True``, else\nreturn ``None`` or optional *default*. Similar to :func:`one`.\"\"\"\n    # Your code here\n\n# Function to solve the task\ndef first_truthy(items):\n    return first(items, default=None)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "fail_assert",
+              "code": "# Project API: boltons.iterutils.first\n# Import as: from boltons.iterutils import first\ndef first(iterable, default=None, key=None):\n    \"\"\"Return first element of *iterable* that evaluates to ``True``, else\nreturn ``None`` or optional *default*. Similar to :func:`one`.\"\"\"\n    # Your code here\n\n# Function to solve the task\ndef first_truthy(items):\n    return first(items, default=None)"
+            }
+          ]
+        },
+        {
+          "task_id": 4,
+          "wrapper": "group_numbers",
+          "target_fqn": "boltons.iterutils.bucketize",
+          "context_tokens": 28,
+          "reuse_rate": 1.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "from boltons.iterutils import bucketize\n\ndef group_numbers(nums):\n    even_nums = [num for num in nums if num % 2 == 0]\n    odd_nums = [num for num in nums if num % 2!= 0]\n    return {'even': list(bucketize(even_nums)), 'odd': list(bucketize(odd_nums))}"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "from boltons.iterutils import bucketize\n\ndef group_numbers(nums):\n    even_nums = [num for num in nums if num % 2 == 0]\n    odd_nums = [num for num in nums if num % 2!= 0]\n    return {'even': list(bucketize(even_nums)), 'odd': list(bucketize(odd_nums))}"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "from boltons.iterutils import bucketize\n\ndef group_numbers(nums):\n    even_nums = [num for num in nums if num % 2 == 0]\n    odd_nums = [num for num in nums if num % 2!= 0]\n    return {'even': list(bucketize(even_nums)), 'odd': list(bucketize(odd_nums))}"
+            }
+          ]
+        },
+        {
+          "task_id": 5,
+          "wrapper": "dedupe_keep_order",
+          "target_fqn": "boltons.iterutils.unique",
+          "context_tokens": 36,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import unique\n\ndef dedupe_keep_order(items):\n    return list(unique(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import unique\n\ndef dedupe_keep_order(items):\n    return list(unique(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import unique\n\ndef dedupe_keep_order(items):\n    return list(unique(items))"
+            }
+          ]
+        },
+        {
+          "task_id": 6,
+          "wrapper": "adjacent_pairs",
+          "target_fqn": "boltons.iterutils.pairwise",
+          "context_tokens": 26,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import pairwise\n\ndef adjacent_pairs(items):\n    return list(pairwise(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import pairwise\n\ndef adjacent_pairs(items):\n    return list(pairwise(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import pairwise\n\ndef adjacent_pairs(items):\n    return list(pairwise(items))"
+            }
+          ]
+        },
+        {
+          "task_id": 7,
+          "wrapper": "flatten_nested",
+          "target_fqn": "boltons.iterutils.flatten",
+          "context_tokens": 29,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "# Project API: boltons.iterutils.flatten\n# Import as: from boltons.iterutils import flatten\nfrom boltons.iterutils import flatten\n\ndef flatten_nested(nested):\n    return list(flatten(nested))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "# Project API: boltons.iterutils.flatten\n# Import as: from boltons.iterutils import flatten\nfrom boltons.iterutils import flatten\n\ndef flatten_nested(nested):\n    return list(flatten(nested))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "# Project API: boltons.iterutils.flatten\n# Import as: from boltons.iterutils import flatten\nfrom boltons.iterutils import flatten\n\ndef flatten_nested(nested):\n    return list(flatten(nested))"
+            }
+          ]
+        },
+        {
+          "task_id": 8,
+          "wrapper": "to_slug",
+          "target_fqn": "boltons.strutils.slugify",
+          "context_tokens": 61,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import slugify\n\ndef to_slug(text):\n    return slugify(text)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import slugify\n\ndef to_slug(text):\n    return slugify(text)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import slugify\n\ndef to_slug(text):\n    return slugify(text)"
+            }
+          ]
+        },
+        {
+          "task_id": 9,
+          "wrapper": "to_ordinal",
+          "target_fqn": "boltons.strutils.ordinalize",
+          "context_tokens": 58,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import ordinalize\n\ndef to_ordinal(number):\n    return ordinalize(number)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import ordinalize\n\ndef to_ordinal(number):\n    return ordinalize(number)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import ordinalize\n\ndef to_ordinal(number):\n    return ordinalize(number)"
+            }
+          ]
+        },
+        {
+          "task_id": 10,
+          "wrapper": "pluralize_unit",
+          "target_fqn": "boltons.strutils.cardinalize",
+          "context_tokens": 29,
+          "reuse_rate": 0.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "error_runtime",
+              "code": "# Project API: boltons.strutils.cardinalize\n# Import as: from boltons.strutils import cardinalize\ndef cardinalize(unit_noun, count):\n    \"\"\"Conditionally pluralizes a singular word *unit_noun* if\n*count* is not one, preserving case when possible.\"\"\"\n    return cardinalize(unit_noun, count)\n\ndef pluralize_unit(noun, count):\n    \"\"\"Returns the singular noun when count is 1 and the pluralized noun otherwise.\"\"\"\n    return cardinalize(noun, count) if count!= 1 else noun"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "error_runtime",
+              "code": "# Project API: boltons.strutils.cardinalize\n# Import as: from boltons.strutils import cardinalize\ndef cardinalize(unit_noun, count):\n    \"\"\"Conditionally pluralizes a singular word *unit_noun* if\n*count* is not one, preserving case when possible.\"\"\"\n    return cardinalize(unit_noun, count)\n\ndef pluralize_unit(noun, count):\n    \"\"\"Returns the singular noun when count is 1 and the pluralized noun otherwise.\"\"\"\n    return cardinalize(noun, count) if count!= 1 else noun"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "error_runtime",
+              "code": "# Project API: boltons.strutils.cardinalize\n# Import as: from boltons.strutils import cardinalize\ndef cardinalize(unit_noun, count):\n    \"\"\"Conditionally pluralizes a singular word *unit_noun* if\n*count* is not one, preserving case when possible.\"\"\"\n    return cardinalize(unit_noun, count)\n\ndef pluralize_unit(noun, count):\n    \"\"\"Returns the singular noun when count is 1 and the pluralized noun otherwise.\"\"\"\n    return cardinalize(noun, count) if count!= 1 else noun"
+            }
+          ]
+        },
+        {
+          "task_id": 11,
+          "wrapper": "human_size",
+          "target_fqn": "boltons.strutils.bytes2human",
+          "context_tokens": 41,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import bytes2human\n\ndef human_size(nbytes):\n    return bytes2human(nbytes)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import bytes2human\n\ndef human_size(nbytes):\n    return bytes2human(nbytes)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import bytes2human\n\ndef human_size(nbytes):\n    return bytes2human(nbytes)"
+            }
+          ]
+        },
+        {
+          "task_id": 12,
+          "wrapper": "clamp_value",
+          "target_fqn": "boltons.mathutils.clamp",
+          "context_tokens": 67,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    return min(max(x, lower), upper)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    return min(max(x, lower), upper)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    return min(max(x, lower), upper)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "level_name": "L3_example",
+      "reuse_rate": 0.5,
+      "pass_rate": 0.4166666666666667,
+      "avg_context_tokens": 51.25,
+      "per_task": [
+        {
+          "task_id": 1,
+          "wrapper": "split_into_chunks",
+          "target_fqn": "boltons.iterutils.chunked",
+          "context_tokens": 81,
+          "reuse_rate": 1.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "from boltons.iterutils import chunked\n\ndef split_into_chunks(items, size):\n    return [list(chunked(items, size)) for _ in range(len(items) // size)]"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "from boltons.iterutils import chunked\n\ndef split_into_chunks(items, size):\n    return [list(chunked(items, size)) for _ in range(len(items) // size)]"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "from boltons.iterutils import chunked\n\ndef split_into_chunks(items, size):\n    return [list(chunked(items, size)) for _ in range(len(items) // size)]"
+            }
+          ]
+        },
+        {
+          "task_id": 2,
+          "wrapper": "sliding_windows",
+          "target_fqn": "boltons.iterutils.windowed",
+          "context_tokens": 46,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import windowed\n\ndef sliding_windows(items, size):\n    return list(windowed(items, size))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import windowed\n\ndef sliding_windows(items, size):\n    return list(windowed(items, size))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import windowed\n\ndef sliding_windows(items, size):\n    return list(windowed(items, size))"
+            }
+          ]
+        },
+        {
+          "task_id": 3,
+          "wrapper": "first_truthy",
+          "target_fqn": "boltons.iterutils.first",
+          "context_tokens": 43,
+          "reuse_rate": 0.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.iterutils.first\n# Import as: from boltons.iterutils import first\ndef first(iterable, default=None, key=None):\n    \"\"\"Return first element of *iterable* that evaluates to ``True``, else\nreturn ``None`` or optional *default*. Similar to :func:`one`.\"\"\"\n    # Example:\n    >>> first([0, False, None, [], (), 42])\n    42\n\n# Function to solve the task\ndef first_truthy(items):\n    return first(items)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.iterutils.first\n# Import as: from boltons.iterutils import first\ndef first(iterable, default=None, key=None):\n    \"\"\"Return first element of *iterable* that evaluates to ``True``, else\nreturn ``None`` or optional *default*. Similar to :func:`one`.\"\"\"\n    # Example:\n    >>> first([0, False, None, [], (), 42])\n    42\n\n# Function to solve the task\ndef first_truthy(items):\n    return first(items)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.iterutils.first\n# Import as: from boltons.iterutils import first\ndef first(iterable, default=None, key=None):\n    \"\"\"Return first element of *iterable* that evaluates to ``True``, else\nreturn ``None`` or optional *default*. Similar to :func:`one`.\"\"\"\n    # Example:\n    >>> first([0, False, None, [], (), 42])\n    42\n\n# Function to solve the task\ndef first_truthy(items):\n    return first(items)"
+            }
+          ]
+        },
+        {
+          "task_id": 4,
+          "wrapper": "group_numbers",
+          "target_fqn": "boltons.iterutils.bucketize",
+          "context_tokens": 39,
+          "reuse_rate": 1.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "from boltons.iterutils import bucketize\n\ndef group_numbers(nums):\n    return {'even': list(bucketize(nums, key=lambda x: x % 2 == 0)), 'odd': list(bucketize(nums, key=lambda x: x % 2!= 0))}"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "from boltons.iterutils import bucketize\n\ndef group_numbers(nums):\n    return {'even': list(bucketize(nums, key=lambda x: x % 2 == 0)), 'odd': list(bucketize(nums, key=lambda x: x % 2!= 0))}"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "fail_assert",
+              "code": "from boltons.iterutils import bucketize\n\ndef group_numbers(nums):\n    return {'even': list(bucketize(nums, key=lambda x: x % 2 == 0)), 'odd': list(bucketize(nums, key=lambda x: x % 2!= 0))}"
+            }
+          ]
+        },
+        {
+          "task_id": 5,
+          "wrapper": "dedupe_keep_order",
+          "target_fqn": "boltons.iterutils.unique",
+          "context_tokens": 42,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import unique\n\ndef dedupe_keep_order(items):\n    return list(unique(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import unique\n\ndef dedupe_keep_order(items):\n    return list(unique(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import unique\n\ndef dedupe_keep_order(items):\n    return list(unique(items))"
+            }
+          ]
+        },
+        {
+          "task_id": 6,
+          "wrapper": "adjacent_pairs",
+          "target_fqn": "boltons.iterutils.pairwise",
+          "context_tokens": 38,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import pairwise\n\ndef adjacent_pairs(items):\n    return list(pairwise(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import pairwise\n\ndef adjacent_pairs(items):\n    return list(pairwise(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import pairwise\n\ndef adjacent_pairs(items):\n    return list(pairwise(items))"
+            }
+          ]
+        },
+        {
+          "task_id": 7,
+          "wrapper": "flatten_nested",
+          "target_fqn": "boltons.iterutils.flatten",
+          "context_tokens": 39,
+          "reuse_rate": 0.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.iterutils.flatten\n# Import as: from boltons.iterutils import flatten\ndef flatten(iterable):\n    \"\"\"``flatten()`` returns a collapsed list of all the elements from\n*iterable* while collapsing any nested iterables.\"\"\"\n    # Example:\n    >>> nested = [[1, 2], [[3], [4, 5]]]\n\n    # Use the API to flatten the iterable\n    flattened = flatten(nested)\n\n    # Return the flattened list\n    return flattened"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.iterutils.flatten\n# Import as: from boltons.iterutils import flatten\ndef flatten(iterable):\n    \"\"\"``flatten()`` returns a collapsed list of all the elements from\n*iterable* while collapsing any nested iterables.\"\"\"\n    # Example:\n    >>> nested = [[1, 2], [[3], [4, 5]]]\n\n    # Use the API to flatten the iterable\n    flattened = flatten(nested)\n\n    # Return the flattened list\n    return flattened"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.iterutils.flatten\n# Import as: from boltons.iterutils import flatten\ndef flatten(iterable):\n    \"\"\"``flatten()`` returns a collapsed list of all the elements from\n*iterable* while collapsing any nested iterables.\"\"\"\n    # Example:\n    >>> nested = [[1, 2], [[3], [4, 5]]]\n\n    # Use the API to flatten the iterable\n    flattened = flatten(nested)\n\n    # Return the flattened list\n    return flattened"
+            }
+          ]
+        },
+        {
+          "task_id": 8,
+          "wrapper": "to_slug",
+          "target_fqn": "boltons.strutils.slugify",
+          "context_tokens": 69,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import slugify\n\ndef to_slug(text):\n    return slugify(text)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import slugify\n\ndef to_slug(text):\n    return slugify(text)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import slugify\n\ndef to_slug(text):\n    return slugify(text)"
+            }
+          ]
+        },
+        {
+          "task_id": 9,
+          "wrapper": "to_ordinal",
+          "target_fqn": "boltons.strutils.ordinalize",
+          "context_tokens": 63,
+          "reuse_rate": 0.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.strutils.ordinalize\n# Import as: from boltons.strutils import ordinalize\ndef ordinalize(number, ext_only=False):\n    \"\"\"Turns *number* into its cardinal form, i.e., 1st, 2nd,\n3rd, 4th, etc. If the last character isn't a digit, it returns the\nstring value unchanged.\n\nArgs:\n    number (int or str): Number to be cardinalized.\n    ext_only (bool): Whether to return only the suffix. Default ``False``.\"\"\"\n    # Example:\n    >>> print(ordinalize(1))\n    1st\n\ndef to_ordinal(number):\n    \"\"\"\n    Returns the ordinal string form of an integer.\n    \"\"\"\n    return ordinalize(number)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.strutils.ordinalize\n# Import as: from boltons.strutils import ordinalize\ndef ordinalize(number, ext_only=False):\n    \"\"\"Turns *number* into its cardinal form, i.e., 1st, 2nd,\n3rd, 4th, etc. If the last character isn't a digit, it returns the\nstring value unchanged.\n\nArgs:\n    number (int or str): Number to be cardinalized.\n    ext_only (bool): Whether to return only the suffix. Default ``False``.\"\"\"\n    # Example:\n    >>> print(ordinalize(1))\n    1st\n\ndef to_ordinal(number):\n    \"\"\"\n    Returns the ordinal string form of an integer.\n    \"\"\"\n    return ordinalize(number)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.strutils.ordinalize\n# Import as: from boltons.strutils import ordinalize\ndef ordinalize(number, ext_only=False):\n    \"\"\"Turns *number* into its cardinal form, i.e., 1st, 2nd,\n3rd, 4th, etc. If the last character isn't a digit, it returns the\nstring value unchanged.\n\nArgs:\n    number (int or str): Number to be cardinalized.\n    ext_only (bool): Whether to return only the suffix. Default ``False``.\"\"\"\n    # Example:\n    >>> print(ordinalize(1))\n    1st\n\ndef to_ordinal(number):\n    \"\"\"\n    Returns the ordinal string form of an integer.\n    \"\"\"\n    return ordinalize(number)"
+            }
+          ]
+        },
+        {
+          "task_id": 10,
+          "wrapper": "pluralize_unit",
+          "target_fqn": "boltons.strutils.cardinalize",
+          "context_tokens": 35,
+          "reuse_rate": 0.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.strutils.cardinalize\n# Import as: from boltons.strutils import cardinalize\ndef cardinalize(unit_noun, count):\n    \"\"\"Conditionally pluralizes a singular word *unit_noun* if\n*count* is not one, preserving case when possible.\"\"\"\n    # Example:\n    >>> vowels = 'aeiou'\n\ndef pluralize_unit(noun, count):\n    \"\"\"Returns the singular noun when count is 1 and the pluralized noun otherwise.\"\"\"\n    return cardinalize(noun, count) if count!= 1 else noun"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.strutils.cardinalize\n# Import as: from boltons.strutils import cardinalize\ndef cardinalize(unit_noun, count):\n    \"\"\"Conditionally pluralizes a singular word *unit_noun* if\n*count* is not one, preserving case when possible.\"\"\"\n    # Example:\n    >>> vowels = 'aeiou'\n\ndef pluralize_unit(noun, count):\n    \"\"\"Returns the singular noun when count is 1 and the pluralized noun otherwise.\"\"\"\n    return cardinalize(noun, count) if count!= 1 else noun"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.strutils.cardinalize\n# Import as: from boltons.strutils import cardinalize\ndef cardinalize(unit_noun, count):\n    \"\"\"Conditionally pluralizes a singular word *unit_noun* if\n*count* is not one, preserving case when possible.\"\"\"\n    # Example:\n    >>> vowels = 'aeiou'\n\ndef pluralize_unit(noun, count):\n    \"\"\"Returns the singular noun when count is 1 and the pluralized noun otherwise.\"\"\"\n    return cardinalize(noun, count) if count!= 1 else noun"
+            }
+          ]
+        },
+        {
+          "task_id": 11,
+          "wrapper": "human_size",
+          "target_fqn": "boltons.strutils.bytes2human",
+          "context_tokens": 46,
+          "reuse_rate": 0.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.strutils.bytes2human\n# Import as: from boltons.strutils import bytes2human\ndef bytes2human(nbytes, ndigits=0):\n    \"\"\"Turns an integer value of *nbytes* into a human readable format. Set\n*ndigits* to control how many digits after the decimal point\nshould be shown (default ``0``).\"\"\"\n    # Example:\n    >>> bytes2human(128991)\n    '126K'\n\ndef human_size(nbytes):\n    \"\"\"Format a byte count as a short human-readable string.\"\"\"\n    if nbytes == 0:\n        return '0B'\n    magnitude = 0\n    while nbytes >= 1024 and magnitude < len(bytes2human.units) - 1:\n        nbytes /= 1024.0\n        magnitude += 1\n    f = ('%.{}f%s').format(ndigits, bytes2human.units[magnitude])\n    return f"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.strutils.bytes2human\n# Import as: from boltons.strutils import bytes2human\ndef bytes2human(nbytes, ndigits=0):\n    \"\"\"Turns an integer value of *nbytes* into a human readable format. Set\n*ndigits* to control how many digits after the decimal point\nshould be shown (default ``0``).\"\"\"\n    # Example:\n    >>> bytes2human(128991)\n    '126K'\n\ndef human_size(nbytes):\n    \"\"\"Format a byte count as a short human-readable string.\"\"\"\n    if nbytes == 0:\n        return '0B'\n    magnitude = 0\n    while nbytes >= 1024 and magnitude < len(bytes2human.units) - 1:\n        nbytes /= 1024.0\n        magnitude += 1\n    f = ('%.{}f%s').format(ndigits, bytes2human.units[magnitude])\n    return f"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "syntax_error",
+              "self_defined": false,
+              "status": "error_syntax",
+              "code": "# Project API: boltons.strutils.bytes2human\n# Import as: from boltons.strutils import bytes2human\ndef bytes2human(nbytes, ndigits=0):\n    \"\"\"Turns an integer value of *nbytes* into a human readable format. Set\n*ndigits* to control how many digits after the decimal point\nshould be shown (default ``0``).\"\"\"\n    # Example:\n    >>> bytes2human(128991)\n    '126K'\n\ndef human_size(nbytes):\n    \"\"\"Format a byte count as a short human-readable string.\"\"\"\n    if nbytes == 0:\n        return '0B'\n    magnitude = 0\n    while nbytes >= 1024 and magnitude < len(bytes2human.units) - 1:\n        nbytes /= 1024.0\n        magnitude += 1\n    f = ('%.{}f%s').format(ndigits, bytes2human.units[magnitude])\n    return f"
+            }
+          ]
+        },
+        {
+          "task_id": 12,
+          "wrapper": "clamp_value",
+          "target_fqn": "boltons.mathutils.clamp",
+          "context_tokens": 74,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    return min(max(x, lower), upper)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    return min(max(x, lower), upper)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    return min(max(x, lower), upper)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "level_name": "L4_body",
+      "reuse_rate": 0.6666666666666666,
+      "pass_rate": 0.8333333333333334,
+      "avg_context_tokens": 120.75,
+      "per_task": [
+        {
+          "task_id": 1,
+          "wrapper": "split_into_chunks",
+          "target_fqn": "boltons.iterutils.chunked",
+          "context_tokens": 129,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import chunked\n\ndef split_into_chunks(items, size):\n    return chunked(items, size)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import chunked\n\ndef split_into_chunks(items, size):\n    return chunked(items, size)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import chunked\n\ndef split_into_chunks(items, size):\n    return chunked(items, size)"
+            }
+          ]
+        },
+        {
+          "task_id": 2,
+          "wrapper": "sliding_windows",
+          "target_fqn": "boltons.iterutils.windowed",
+          "context_tokens": 54,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import windowed\n\ndef sliding_windows(items, size):\n    return list(windowed(items, size))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import windowed\n\ndef sliding_windows(items, size):\n    return list(windowed(items, size))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import windowed\n\ndef sliding_windows(items, size):\n    return list(windowed(items, size))"
+            }
+          ]
+        },
+        {
+          "task_id": 3,
+          "wrapper": "first_truthy",
+          "target_fqn": "boltons.iterutils.first",
+          "context_tokens": 146,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import first\n\ndef first_truthy(items):\n    return first(items, key=bool)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import first\n\ndef first_truthy(items):\n    return first(items, key=bool)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import first\n\ndef first_truthy(items):\n    return first(items, key=bool)"
+            }
+          ]
+        },
+        {
+          "task_id": 4,
+          "wrapper": "group_numbers",
+          "target_fqn": "boltons.iterutils.bucketize",
+          "context_tokens": 388,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def group_numbers(nums):\n    return {\n        'even': [num for num in nums if num % 2 == 0],\n        'odd': [num for num in nums if num % 2!= 0]\n    }"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def group_numbers(nums):\n    return {\n        'even': [num for num in nums if num % 2 == 0],\n        'odd': [num for num in nums if num % 2!= 0]\n    }"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def group_numbers(nums):\n    return {\n        'even': [num for num in nums if num % 2 == 0],\n        'odd': [num for num in nums if num % 2!= 0]\n    }"
+            }
+          ]
+        },
+        {
+          "task_id": 5,
+          "wrapper": "dedupe_keep_order",
+          "target_fqn": "boltons.iterutils.unique",
+          "context_tokens": 56,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import unique\n\ndef dedupe_keep_order(items):\n    return list(unique(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import unique\n\ndef dedupe_keep_order(items):\n    return list(unique(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import unique\n\ndef dedupe_keep_order(items):\n    return list(unique(items))"
+            }
+          ]
+        },
+        {
+          "task_id": 6,
+          "wrapper": "adjacent_pairs",
+          "target_fqn": "boltons.iterutils.pairwise",
+          "context_tokens": 132,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import pairwise\n\ndef adjacent_pairs(items):\n    return list(pairwise(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import pairwise\n\ndef adjacent_pairs(items):\n    return list(pairwise(items))"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.iterutils import pairwise\n\ndef adjacent_pairs(items):\n    return list(pairwise(items))"
+            }
+          ]
+        },
+        {
+          "task_id": 7,
+          "wrapper": "flatten_nested",
+          "target_fqn": "boltons.iterutils.flatten",
+          "context_tokens": 50,
+          "reuse_rate": 0.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "error_runtime",
+              "code": "# Project API: boltons.iterutils.flatten\n# Import as: from boltons.iterutils import flatten\n# Full implementation:\ndef flatten(iterable):\n    \"\"\"``flatten()`` returns a collapsed list of all the elements from\n    *iterable* while collapsing any nested iterables.\n\n    >>> nested = [[1, 2], [[3], [4, 5]]]\n    >>> flatten(nested)\n    [1, 2, 3, 4, 5]\n    \"\"\"\n    return list(flatten_iter(iterable))\n\n# Function to flatten nested list\ndef flatten_nested(nested):\n    return flatten(nested)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "error_runtime",
+              "code": "# Project API: boltons.iterutils.flatten\n# Import as: from boltons.iterutils import flatten\n# Full implementation:\ndef flatten(iterable):\n    \"\"\"``flatten()`` returns a collapsed list of all the elements from\n    *iterable* while collapsing any nested iterables.\n\n    >>> nested = [[1, 2], [[3], [4, 5]]]\n    >>> flatten(nested)\n    [1, 2, 3, 4, 5]\n    \"\"\"\n    return list(flatten_iter(iterable))\n\n# Function to flatten nested list\ndef flatten_nested(nested):\n    return flatten(nested)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "error_runtime",
+              "code": "# Project API: boltons.iterutils.flatten\n# Import as: from boltons.iterutils import flatten\n# Full implementation:\ndef flatten(iterable):\n    \"\"\"``flatten()`` returns a collapsed list of all the elements from\n    *iterable* while collapsing any nested iterables.\n\n    >>> nested = [[1, 2], [[3], [4, 5]]]\n    >>> flatten(nested)\n    [1, 2, 3, 4, 5]\n    \"\"\"\n    return list(flatten_iter(iterable))\n\n# Function to flatten nested list\ndef flatten_nested(nested):\n    return flatten(nested)"
+            }
+          ]
+        },
+        {
+          "task_id": 8,
+          "wrapper": "to_slug",
+          "target_fqn": "boltons.strutils.slugify",
+          "context_tokens": 103,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import slugify\n\ndef to_slug(text):\n    return slugify(text)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import slugify\n\ndef to_slug(text):\n    return slugify(text)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import slugify\n\ndef to_slug(text):\n    return slugify(text)"
+            }
+          ]
+        },
+        {
+          "task_id": 9,
+          "wrapper": "to_ordinal",
+          "target_fqn": "boltons.strutils.ordinalize",
+          "context_tokens": 133,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import ordinalize\n\ndef to_ordinal(number):\n    return ordinalize(number)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import ordinalize\n\ndef to_ordinal(number):\n    return ordinalize(number)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import ordinalize\n\ndef to_ordinal(number):\n    return ordinalize(number)"
+            }
+          ]
+        },
+        {
+          "task_id": 10,
+          "wrapper": "pluralize_unit",
+          "target_fqn": "boltons.strutils.cardinalize",
+          "context_tokens": 57,
+          "reuse_rate": 1.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import cardinalize\n\ndef pluralize_unit(noun, count):\n    return cardinalize(noun, count)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import cardinalize\n\ndef pluralize_unit(noun, count):\n    return cardinalize(noun, count)"
+            },
+            {
+              "reused": true,
+              "reuse_detail": "bare_name_import",
+              "self_defined": false,
+              "status": "pass",
+              "code": "from boltons.strutils import cardinalize\n\ndef pluralize_unit(noun, count):\n    return cardinalize(noun, count)"
+            }
+          ]
+        },
+        {
+          "task_id": 11,
+          "wrapper": "human_size",
+          "target_fqn": "boltons.strutils.bytes2human",
+          "context_tokens": 82,
+          "reuse_rate": 0.0,
+          "pass_rate": 0.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "error_runtime",
+              "code": "# Project API: boltons.strutils.bytes2human\n# Import as: from boltons.strutils import bytes2human\n# Full implementation:\ndef bytes2human(nbytes, ndigits=0):\n    \"\"\"Turns an integer value of *nbytes* into a human readable format. Set\n    *ndigits* to control how many digits after the decimal point\n    should be shown (default ``0``).\n\n    >>> bytes2human(128991)\n    '126K'\n    >>> bytes2human(100001221)\n    '95M'\n    >>> bytes2human(0, 2)\n    '0.00B'\n    >>> bytes2human(1024)\n    '1K'\n    \"\"\"\n    abs_bytes = abs(nbytes)\n    for (size, symbol), (next_size, next_symbol) in _SIZE_RANGES:\n        if abs_bytes < next_size:\n            break\n    hnbytes = float(nbytes) / size\n    return '{hnbytes:.{ndigits}f}{symbol}'.format(hnbytes=hnbytes,\n                                                  ndigits=ndigits,\n                                                  symbol=symbol)\n\n# Function to solve the task\ndef human_size(nbytes):\n    return bytes2human(nbytes)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "error_runtime",
+              "code": "# Project API: boltons.strutils.bytes2human\n# Import as: from boltons.strutils import bytes2human\n# Full implementation:\ndef bytes2human(nbytes, ndigits=0):\n    \"\"\"Turns an integer value of *nbytes* into a human readable format. Set\n    *ndigits* to control how many digits after the decimal point\n    should be shown (default ``0``).\n\n    >>> bytes2human(128991)\n    '126K'\n    >>> bytes2human(100001221)\n    '95M'\n    >>> bytes2human(0, 2)\n    '0.00B'\n    >>> bytes2human(1024)\n    '1K'\n    \"\"\"\n    abs_bytes = abs(nbytes)\n    for (size, symbol), (next_size, next_symbol) in _SIZE_RANGES:\n        if abs_bytes < next_size:\n            break\n    hnbytes = float(nbytes) / size\n    return '{hnbytes:.{ndigits}f}{symbol}'.format(hnbytes=hnbytes,\n                                                  ndigits=ndigits,\n                                                  symbol=symbol)\n\n# Function to solve the task\ndef human_size(nbytes):\n    return bytes2human(nbytes)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": true,
+              "status": "error_runtime",
+              "code": "# Project API: boltons.strutils.bytes2human\n# Import as: from boltons.strutils import bytes2human\n# Full implementation:\ndef bytes2human(nbytes, ndigits=0):\n    \"\"\"Turns an integer value of *nbytes* into a human readable format. Set\n    *ndigits* to control how many digits after the decimal point\n    should be shown (default ``0``).\n\n    >>> bytes2human(128991)\n    '126K'\n    >>> bytes2human(100001221)\n    '95M'\n    >>> bytes2human(0, 2)\n    '0.00B'\n    >>> bytes2human(1024)\n    '1K'\n    \"\"\"\n    abs_bytes = abs(nbytes)\n    for (size, symbol), (next_size, next_symbol) in _SIZE_RANGES:\n        if abs_bytes < next_size:\n            break\n    hnbytes = float(nbytes) / size\n    return '{hnbytes:.{ndigits}f}{symbol}'.format(hnbytes=hnbytes,\n                                                  ndigits=ndigits,\n                                                  symbol=symbol)\n\n# Function to solve the task\ndef human_size(nbytes):\n    return bytes2human(nbytes)"
+            }
+          ]
+        },
+        {
+          "task_id": 12,
+          "wrapper": "clamp_value",
+          "target_fqn": "boltons.mathutils.clamp",
+          "context_tokens": 119,
+          "reuse_rate": 0.0,
+          "pass_rate": 1.0,
+          "samples": [
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    return min(max(x, lower), upper)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    return min(max(x, lower), upper)"
+            },
+            {
+              "reused": false,
+              "reuse_detail": "no_reuse_call",
+              "self_defined": false,
+              "status": "pass",
+              "code": "def clamp_value(x, lower, upper):\n    return min(max(x, lower), upper)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
