@@ -99,7 +99,7 @@ class ReflexionStrategy:
         *,
         temperature: float = 0.2,      # Độ sáng tạo thấp -> sinh code ổn định, có thể tái lập
         max_tokens: int = 1024,         # Giới hạn token đầu ra mỗi lần gọi AI
-        max_iterations: int = 10,        # Số vòng lặp tối đa (paper: lợi ích bão hòa vòng 3-4)
+        max_iterations: int = 4,        # Số vòng lặp tối đa (paper: lợi ích bão hòa vòng 3-4)
         base_url: str | None = None,    # URL server Ollama (mặc định: 192.168.31.16:11434)
         model: str | None = None,       # Tên model LLM (mặc định: deepseek-coder:1.3b)
     ) -> None:
