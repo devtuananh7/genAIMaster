@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from harness.extractor import extract_code
-from harness.ollama_client import generate
+from harness.hf_client import generate
 from harness.signature import entry_function_name
 from harness.types import Task
 
@@ -49,12 +49,32 @@ class BaselineStrategy:
         )
 
     def solve(self, task: Task) -> str:
+        # Metadata theo dõi số vòng (run.py sẽ đọc sau khi solve() kết thúc)
+        # Baseline luôn chạy đúng 1 vòng, không có vòng lặp sửa code
+        self._rounds_to_pass: int | None = None
+        self._total_rounds: int = 1
+        self._pass_1st_round: bool = False
+        self._internal_records: list[dict] = []
+        self._final_code: str = ""
+
+        user_prompt = self._user_prompt(task)
         response = generate(
             BASE_SYSTEM_PROMPT,
-            self._user_prompt(task),
+            user_prompt,
             self.temperature,
             self.max_tokens,
             base_url=self.base_url,
             model=self.model,
         )
-        return extract_code(response)
+        code = extract_code(response)
+        self._final_code = code
+        # Baseline không execute nội bộ → execution=None, run.py sẽ điền sau.
+        # Ghi đầy đủ INPUT (generate_prompt) + OUTPUT thô (raw_response).
+        self._internal_records = [{
+            "iteration": 0,
+            "generate_prompt": user_prompt,
+            "raw_response": response,
+            "code": code,
+            "execution": None,
+        }]
+        return code

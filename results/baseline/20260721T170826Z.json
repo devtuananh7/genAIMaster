@@ -1,0 +1,1174 @@
+{
+  "model_name": "deepseek-coder:6.7b",
+  "params": {
+    "temperature": 0.2,
+    "max_tokens": 1024,
+    "samples": 1
+  },
+  "timestamp": "20260721T170826Z",
+  "task_list": [
+    3,
+    4,
+    92,
+    106,
+    111,
+    119,
+    131,
+    135,
+    141,
+    223,
+    224,
+    252,
+    256,
+    272,
+    277,
+    281,
+    295,
+    307,
+    308,
+    398,
+    413,
+    414,
+    415,
+    419,
+    428,
+    435,
+    443,
+    447,
+    452,
+    455,
+    459,
+    463,
+    562,
+    563,
+    577,
+    581,
+    582,
+    594,
+    605,
+    617,
+    620,
+    631,
+    644,
+    730,
+    744,
+    748,
+    751,
+    772,
+    787,
+    798
+  ],
+  "per_task": [
+    {
+      "task_id": 3,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def is_not_prime(n):\n    if n <= 1 or (n % 2 == 0 and n > 2): \n        return True\n    for i in range(3, int(n**0.5) + 1, 2):\n        if n % i == 0:\n            return True\n    return False",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 4,
+            "total_count": 4,
+            "duration_ms": 84
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 4,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "import heapq\n\ndef heap_queue_largest(nums, n):\n    return sorted(heapq.nlargest(n, nums), reverse=True)",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 78
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 92,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def is_undulating(n):\n    s = str(n)\n    if len(s) < 3:\n        return False\n    diff1 = int(s[1]) - int(s[0])\n    for i in range(2, len(s)):\n        diff = int(s[i]) - int(s[i-1])\n        if diff != diff1:\n            return False\n        diff1 = diff\n    return True",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpjkcpdjbv/candidate_test.py\", line 13, in <module>\n    assert is_undulating(1212121) == True\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpjkcpdjbv/candidate_test.py\", line 13, in <module>\n    assert is_undulating(1212121) == True\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert is_undulating(1212121) == True",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 45
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert is_undulating(1212121) == True",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpjkcpdjbv/candidate_test.py\", line 13, in <module>\n    assert is_undulating(1212121) == True\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 106,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def add_lists(lst, tpl):\n    return tpl + tuple(lst)",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 73
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 111,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def common_in_nested_lists(lst):\n    return list(set.intersection(*map(set, lst)))",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 72
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 119,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def search(arr):\n    for i in range(0, len(arr), 2):\n        if (i == len(arr) - 1 or arr[i] != arr[i+1]):\n            return arr[i]\n    return None",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 84
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 131,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def reverse_vowels(s):\n    vowels = \"aeiouAEIOU\"\n    vows = [c for c in s if c in vowels]\n    return ''.join([c if not c in vowels else vows.pop() for c in s])",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 71
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 135,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def hexagonal_num(n):\n    return n*(2*n-1)",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 73
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 141,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def pancake_sort(lst):\n    for i in range(len(lst), 0, -1):\n        max_idx = lst[:i].index(max(lst[:i]))\n        if max_idx != i-1:\n            # Flip the maximum element to its correct position\n            lst[:i+1] = [lst[j] for j in range(i, -1, -1)]\n            \n            # Flip the maximum element to the front\n            lst[0], lst[i] = lst[i], lst[0]\n    return lst",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp0y_22l40/candidate_test.py\", line 12, in <module>\n    assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp0y_22l40/candidate_test.py\", line 6, in pancake_sort\n    lst[:i+1] = [lst[j] for j in range(i, -1, -1)]\n                 ~~~^^^\nIndexError: list index out of range\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp0y_22l40/candidate_test.py\", line 12, in <module>\n    assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp0y_22l40/candidate_test.py\", line 6, in pancake_sort\n    lst[:i+1] = [lst[j] for j in range(i, -1, -1)]\n                 ~~~^^^\nIndexError: list index out of range",
+            "failed_test": "assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 52
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp0y_22l40/candidate_test.py\", line 12, in <module>\n    assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp0y_22l40/candidate_test.py\", line 6, in pancake_sort\n    lst[:i+1] = [lst[j] for j in range(i, -1, -1)]\n                 ~~~^^^\nIndexError: list index out of range"
+      }
+    },
+    {
+      "task_id": 223,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def is_majority(arr, n, x):\n    i = binary_search(arr, n, x)\n    if (i == -1):\n        return False\n    if ((i + n // 2 < n and arr[i + n // 2] != x) or count_occurrences(arr, n, i) > n / 2)):\n        return False\n    else:\n        return True",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpt5zjp0ye/candidate_test.py\", line 5\n    if ((i + n // 2 < n and arr[i + n // 2] != x) or count_occurrences(arr, n, i) > n / 2)):\n                                                                                          ^\nSyntaxError: unmatched ')'\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpt5zjp0ye/candidate_test.py\", line 5\n    if ((i + n // 2 < n and arr[i + n // 2] != x) or count_occurrences(arr, n, i) > n / 2)):\n                                                                                          ^\nSyntaxError: unmatched ')'",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 4,
+            "duration_ms": 43
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpt5zjp0ye/candidate_test.py\", line 5\n    if ((i + n // 2 < n and arr[i + n // 2] != x) or count_occurrences(arr, n, i) > n / 2)):\n                                                                                          ^\nSyntaxError: unmatched ')'"
+      }
+    },
+    {
+      "task_id": 224,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def count_Set_Bits(n):\n    return bin(n).count('1')",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 70
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 252,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def convert(n):\n    real = n\n    imag = 0\n    rho = abs(complex(real, imag))\n    theta = cmath.phase(complex(real, imag))\n    return (rho, theta)",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp8zv2sahj/candidate_test.py\", line 8, in <module>\n    assert convert(1) == (1.0, 0.0)\n           ~~~~~~~^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp8zv2sahj/candidate_test.py\", line 5, in convert\n    theta = cmath.phase(complex(real, imag))\n            ^^^^^\nNameError: name 'cmath' is not defined. Did you forget to import 'cmath'?\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp8zv2sahj/candidate_test.py\", line 8, in <module>\n    assert convert(1) == (1.0, 0.0)\n           ~~~~~~~^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp8zv2sahj/candidate_test.py\", line 5, in convert\n    theta = cmath.phase(complex(real, imag))\n            ^^^^^\nNameError: name 'cmath' is not defined. Did you forget to import 'cmath'?",
+            "failed_test": "assert convert(1) == (1.0, 0.0)",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 47
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert convert(1) == (1.0, 0.0)",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp8zv2sahj/candidate_test.py\", line 8, in <module>\n    assert convert(1) == (1.0, 0.0)\n           ~~~~~~~^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp8zv2sahj/candidate_test.py\", line 5, in convert\n    theta = cmath.phase(complex(real, imag))\n            ^^^^^\nNameError: name 'cmath' is not defined. Did you forget to import 'cmath'?"
+      }
+    },
+    {
+      "task_id": 256,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def count_Primes_nums(n):\n    if n < 2:  # no prime numbers less than 2\n        return 0\n    \n    sieve = [1] * n\n    sieve[0] = 0  # 1 is not a prime number\n    for i in range(1, int(n**0.5) + 1):\n        if sieve[i]:  # if sieve[i] == 1\n            for j in range(i*2, n, i+1):\n                sieve[j] = 0  # mark multiples of prime numbers as non-prime\n    return sum(sieve)",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpyu541puf/candidate_test.py\", line 13, in <module>\n    assert count_Primes_nums(10) == 4\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpyu541puf/candidate_test.py\", line 13, in <module>\n    assert count_Primes_nums(10) == 4\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert count_Primes_nums(10) == 4",
+            "passed_count": 1,
+            "total_count": 3,
+            "duration_ms": 61
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert count_Primes_nums(10) == 4",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpyu541puf/candidate_test.py\", line 13, in <module>\n    assert count_Primes_nums(10) == 4\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 272,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def rear_extract(lst):\n    return [i[-1] for i in lst]",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 69
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 277,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def dict_filter(dictionary, n):\n    return {key: value for key, value in dictionary.items() if value >= n}",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 71
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 281,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def all_unique(lst):\n    return len(set(lst)) == len(lst)",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 71
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 295,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def sum_div(n):\n    divisors = [i for i in range(1, n+1) if n % i == 0]\n    return sum(divisors)",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp1rkmciaf/candidate_test.py\", line 5, in <module>\n    assert sum_div(8)==7\n           ^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp1rkmciaf/candidate_test.py\", line 5, in <module>\n    assert sum_div(8)==7\n           ^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert sum_div(8)==7",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 44
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert sum_div(8)==7",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp1rkmciaf/candidate_test.py\", line 5, in <module>\n    assert sum_div(8)==7\n           ^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 307,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def colon_tuplex(input_tuple, index, value):\n    list_tuple = list(input_tuple)\n    list_tuple[index] = [value] if type(list_tuple[index]) == int else value\n    return tuple(list_tuple)",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp140x1qka/candidate_test.py\", line 6, in <module>\n    assert colon_tuplex((\"HELLO\", 5, [], True) ,2,50)==(\"HELLO\", 5, [50], True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp140x1qka/candidate_test.py\", line 6, in <module>\n    assert colon_tuplex((\"HELLO\", 5, [], True) ,2,50)==(\"HELLO\", 5, [50], True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,50)==(\"HELLO\", 5, [50], True)",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 47
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,50)==(\"HELLO\", 5, [50], True)",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp140x1qka/candidate_test.py\", line 6, in <module>\n    assert colon_tuplex((\"HELLO\", 5, [], True) ,2,50)==(\"HELLO\", 5, [50], True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 308,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def large_product(list1, list2, n):\n    products = [a * b for a in list1 for b in list2]\n    products.sort(reverse=True)\n    return products[:n]",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 72
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 398,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def sum_of_digits(lst):\n    total = 0\n    for i in lst:\n        if type(i) == int:\n            if i < 0:\n                i = -i\n            while i > 0:\n                total += i % 10\n                i //= 10\n    return total",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpxvu_bhx_/candidate_test.py\", line 12, in <module>\n    assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpxvu_bhx_/candidate_test.py\", line 12, in <module>\n    assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19",
+            "passed_count": 1,
+            "total_count": 3,
+            "duration_ms": 64
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpxvu_bhx_/candidate_test.py\", line 12, in <module>\n    assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 413,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def extract_nth_element(lst, n):\n    return [i[n] for i in lst]",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 71
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 414,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def overlapping(seq1, seq2):\n    return any(item in seq1 for item in seq2)",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 72
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 415,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def max_Product(arr):\n    arr = sorted(arr)\n    return (arr[-1], arr[-2]) if abs(arr[0]*arr[1]) < abs(arr[-1]*arr[-2]) else (arr[0], arr[1])",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpx66lltwg/candidate_test.py\", line 5, in <module>\n    assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpx66lltwg/candidate_test.py\", line 5, in <module>\n    assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 46
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpx66lltwg/candidate_test.py\", line 5, in <module>\n    assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 419,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def round_and_sum(lst):\n    rounded = [round(num) for num in lst]\n    return sum(rounded)*len(rounded)",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 70
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 428,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def shell_sort(arr):\n    n = len(arr)\n    gap = n // 2\n    \n    while gap > 0:\n        for i in range(gap, n):\n            temp = arr[i]\n            \n            j = i\n            while j >= gap and arr[j - gap] > temp:\n                arr[j] = arr[j - gap]\n                j -= gap\n                \n            arr[j] = temp\n        \n        gap //= 2\n    \n    return arr",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 72
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 435,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def last_Digit(n):\n    return abs(n) % 10",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 69
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 443,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def largest_neg(lst):\n    return max(i for i in lst if i < 0)",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpe30ye1cz/candidate_test.py\", line 4, in <module>\n    assert largest_neg([1,2,3,-4,-6]) == -6\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpe30ye1cz/candidate_test.py\", line 4, in <module>\n    assert largest_neg([1,2,3,-4,-6]) == -6\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert largest_neg([1,2,3,-4,-6]) == -6",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 46
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert largest_neg([1,2,3,-4,-6]) == -6",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpe30ye1cz/candidate_test.py\", line 4, in <module>\n    assert largest_neg([1,2,3,-4,-6]) == -6\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 447,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def cube_nums(lst):\n    return [i**3 for i in lst]",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 71
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 452,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def loss_amount(original_price, selling_price):\n    if original_price > selling_price:\n        return original_price - selling_price\n    else:\n        return 0",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpcw3joozt/candidate_test.py\", line 7, in <module>\n    assert loss_amount(1500,1200)==0\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpcw3joozt/candidate_test.py\", line 7, in <module>\n    assert loss_amount(1500,1200)==0\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert loss_amount(1500,1200)==0",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 42
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert loss_amount(1500,1200)==0",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpcw3joozt/candidate_test.py\", line 7, in <module>\n    assert loss_amount(1500,1200)==0\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 455,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def check_monthnumb_number(month):\n    if month in [1, 3, 5, 7, 8, 10, 12]:\n        return True\n    else:\n        return False",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 70
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 459,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def remove_uppercase(s):\n    return ''.join([c for c in s if not c.isupper()])",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 66
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 463,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def max_subarray_product(nums):\n    if not nums: return 0\n    \n    max_so_far = min_so_far = result = nums[0]\n    \n    for i in range(1, len(nums)):\n        if nums[i] < 0: max_so_far, min_so_far = min_so_far, max_so_far\n        max_so_far = max(nums[i], max_so_far * nums[i])\n        min_so_far = min(nums[i], min_so_far * nums[i])\n        \n        result = max(result, max_so_far)\n    \n    return result",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 71
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 562,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def Find_Max_Length(lst):\n    return max([len(sublist) for sublist in lst])",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 70
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 563,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "import re\n\ndef extract_values(s):\n    return re.findall('\"([^\"]*)\"', s)",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 76
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 577,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def last_Digit_Factorial(n):\n    if n == 0 or n == 1:\n        return 1\n    \n    fact = 1\n    for i in range(2, n+1):\n        fact *= i\n        \n    while fact % 10 == 0:\n        fact //= 10\n        \n    return fact % 10",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp_mz5vupn/candidate_test.py\", line 14, in <module>\n    assert last_Digit_Factorial(21) == 0\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp_mz5vupn/candidate_test.py\", line 14, in <module>\n    assert last_Digit_Factorial(21) == 0\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert last_Digit_Factorial(21) == 0",
+            "passed_count": 1,
+            "total_count": 3,
+            "duration_ms": 57
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert last_Digit_Factorial(21) == 0",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp_mz5vupn/candidate_test.py\", line 14, in <module>\n    assert last_Digit_Factorial(21) == 0\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 581,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def surface_Area(base, height):\n    return 2*base**2 + 4*(base/2)*(height-1)",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp9jsbnnun/candidate_test.py\", line 4, in <module>\n    assert surface_Area(3,4) == 33\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp9jsbnnun/candidate_test.py\", line 4, in <module>\n    assert surface_Area(3,4) == 33\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert surface_Area(3,4) == 33",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 47
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert surface_Area(3,4) == 33",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp9jsbnnun/candidate_test.py\", line 4, in <module>\n    assert surface_Area(3,4) == 33\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 582,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def my_dict(d):\n    return not bool(d)",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 70
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 594,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def diff_even_odd(lst):\n    even = next((x for x in lst if x % 2 == 0), None)\n    odd = next((x for x in lst if x % 2 != 0), None)\n    return abs(even - odd) if even and odd else float('inf')",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 70
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 605,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def prime_num(n):\n    if n <= 1 or (n % 2 == 0 and n > 2): \n        return False\n    for i in range(3, int(n**0.5) + 1, 2):\n        if n % i == 0:\n            return False\n    return True",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 71
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 617,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "import math\n\ndef min_Jumps((d, dy), s):\n    if d == 0 and dy == 0:\n        return 0\n    \n    # Calculate gcd of d and dy to find the common divisor.\n    g = math.gcd(d, dy)\n    \n    # Return the minimum number of jumps required.\n    return (d//g + dy//g - 1 if g else max(d, dy))",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpphewb5nx/candidate_test.py\", line 3\n    def min_Jumps((d, dy), s):\n                  ^^^^^^^\nSyntaxError: Function parameters cannot be parenthesized\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpphewb5nx/candidate_test.py\", line 3\n    def min_Jumps((d, dy), s):\n                  ^^^^^^^\nSyntaxError: Function parameters cannot be parenthesized",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 39
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpphewb5nx/candidate_test.py\", line 3\n    def min_Jumps((d, dy), s):\n                  ^^^^^^^\nSyntaxError: Function parameters cannot be parenthesized"
+      }
+    },
+    {
+      "task_id": 620,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def largest_subset(lst):\n    lst = sorted(lst)\n    n = len(lst)\n    \n    # Initialize lengths of longest divisible subset ending at each index\n    length = [1]*n \n\n    for i in range (1 , n):\n        for j in range(0 , i):\n            if lst[i]%lst[j] == 0 and length[i]<length[j]+1 :\n                length[i] = length[j]+1\n \n    return max(length)",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 70
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 631,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def replace_spaces(s):\n    if ' ' in s:\n        return s.replace(' ', '_')\n    else:\n        return s.replace('_', ' ')",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 70
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 644,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def reverse_Array_Upto_K(arr, k):\n    return arr[:k][::-1] + arr[k:]",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 70
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 730,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def consecutive_duplicates(lst):\n    new_list = [lst[i] for i in range(len(lst)) if i == 0 or lst[i] != lst[i-1]]\n    return new_list",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 4,
+            "total_count": 4,
+            "duration_ms": 83
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 744,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def check_none(tup):\n    return any(i is None for i in tup)",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 64
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 748,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def capital_words_spaces(s):\n    return ' '.join([''.join([ch for ch in word if ch.isupper()]) for word in s.split(' ')])",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp3x92qaql/candidate_test.py\", line 4, in <module>\n    assert capital_words_spaces(\"Python\") == 'Python'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp3x92qaql/candidate_test.py\", line 4, in <module>\n    assert capital_words_spaces(\"Python\") == 'Python'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert capital_words_spaces(\"Python\") == 'Python'",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 45
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert capital_words_spaces(\"Python\") == 'Python'",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp3x92qaql/candidate_test.py\", line 4, in <module>\n    assert capital_words_spaces(\"Python\") == 'Python'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 751,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def check_min_heap(arr):\n    n = len(arr)\n  \n    # If current node is leaf node then return True as it's a min heap\n    for i in range(int(n/2)): \n        if arr[i] > arr[2*i+1]: \n            return False\n        if 2*i+2 < n and arr[i] > arr[2*i+2]: \n            return False\n    # If we reach here then the array represents min heap.\n    return True",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 71
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 772,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def remove_length(s, k):\n    return ' '.join([word for word in s.split() if len(word) != k])",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 70
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 787,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "import re\n\ndef text_match_three(text):\n    pattern = 'abbbb'\n    if re.search(pattern,  text):\n        return True\n    else:\n        return False",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 4,
+            "total_count": 4,
+            "duration_ms": 94
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 798,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def _sum(arr):\n    return sum(arr)",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 68
+          }
+        }
+      ],
+      "error": null
+    }
+  ],
+  "total_pass1": 0.7
+}

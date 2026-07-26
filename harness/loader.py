@@ -72,8 +72,12 @@ def _all_records(dataset: Any) -> list[dict[str, Any]]:
     return records
 
 
-def select_tasks(seed: int = SEED) -> list[dict[str, Any]]:
+def select_tasks(seed: int = SEED, size: int = SUBSET_SIZE) -> list[dict[str, Any]]:
     from datasets import load_dataset
+
+    if size % QUINTILE_COUNT != 0:
+        raise ValueError(f"size ({size}) phải chia hết cho {QUINTILE_COUNT} quintile")
+    per_quintile = size // QUINTILE_COUNT
 
     try:
         dataset = load_dataset("mbpp", "sanitized")
@@ -94,23 +98,23 @@ def select_tasks(seed: int = SEED) -> list[dict[str, Any]]:
         start = idx * len(candidates) // QUINTILE_COUNT
         end = (idx + 1) * len(candidates) // QUINTILE_COUNT
         bucket = candidates[start:end]
-        if len(bucket) < TASKS_PER_QUINTILE:
-            raise RuntimeError(f"Not enough MBPP candidates in bucket {idx + 1}")
-        selected.extend(rng.sample(bucket, TASKS_PER_QUINTILE))
+        if len(bucket) < per_quintile:
+            raise RuntimeError(f"Not enough MBPP candidates in bucket {idx + 1} (cần {per_quintile}, có {len(bucket)})")
+        selected.extend(rng.sample(bucket, per_quintile))
 
     selected.sort(key=lambda record: int(record["task_id"]))
-    if len(selected) != SUBSET_SIZE:
-        raise RuntimeError(f"Expected {SUBSET_SIZE} tasks, selected {len(selected)}")
+    if len(selected) != size:
+        raise RuntimeError(f"Expected {size} tasks, selected {len(selected)}")
     return [_normalize_task(record) for record in selected]
 
 
-def write_selected_tasks(path: str | Path, *, overwrite: bool = False) -> list[dict[str, Any]]:
+def write_selected_tasks(path: str | Path, *, overwrite: bool = False, size: int = SUBSET_SIZE) -> list[dict[str, Any]]:
     output_path = Path(path)
     if output_path.exists() and not overwrite:
         with output_path.open("r", encoding="utf-8") as fh:
             return json.load(fh)
 
-    tasks = select_tasks()
+    tasks = select_tasks(size=size)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", encoding="utf-8") as fh:
         json.dump(tasks, fh, ensure_ascii=False, indent=2)
@@ -136,9 +140,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Select and freeze 50 MBPP tasks.")
     parser.add_argument("--output", default="data/selected_tasks.json")
     parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument("--size", type=int, default=SUBSET_SIZE)
     args = parser.parse_args()
 
-    tasks = write_selected_tasks(args.output, overwrite=args.overwrite)
+    tasks = write_selected_tasks(args.output, overwrite=args.overwrite, size=args.size)
     print(f"wrote {len(tasks)} tasks to {args.output}")
 
 

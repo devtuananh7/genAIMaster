@@ -1,0 +1,5 @@
+level,level_name,reuse_rate,pass_rate,avg_context_tokens
+1,L1_signature,0.7500,0.8333,14.67
+2,L2_docstring,0.7500,0.6667,43.33
+3,L3_example,0.5000,0.4167,51.25
+4,L4_body,0.6667,0.8333,120.75

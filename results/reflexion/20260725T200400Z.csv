@@ -1,0 +1,56 @@
+strategy,model,task_id,status,pass_1st_round,rounds_to_pass,total_rounds,failed_test
+reflexion,deepseek-coder:1.3b,3,fail_assert,False,,15,assert is_not_prime(2) == False
+reflexion,deepseek-coder:1.3b,4,fail_assert,False,,15,"assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],3)==[85, 75, 65]"
+reflexion,deepseek-coder:1.3b,92,fail_assert,False,,15,assert is_undulating(1991) == False
+reflexion,deepseek-coder:1.3b,106,fail_assert,False,,15,"assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)"
+reflexion,deepseek-coder:1.3b,111,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,119,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,131,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,135,fail_assert,False,,15,assert hexagonal_num(10) == 190
+reflexion,deepseek-coder:1.3b,141,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,223,pass,False,2,2,
+reflexion,deepseek-coder:1.3b,224,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,252,error_runtime,False,,15,"assert convert(1) == (1.0, 0.0)"
+reflexion,deepseek-coder:1.3b,256,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,272,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,277,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,281,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,295,fail_assert,False,,15,assert sum_div(8)==7
+reflexion,deepseek-coder:1.3b,307,error_runtime,False,,15,"assert colon_tuplex((""HELLO"", 5, [], True) ,2,50)==(""HELLO"", 5, [50], True)"
+reflexion,deepseek-coder:1.3b,308,fail_assert,False,,15,"assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],3)==[60, 54, 50]"
+reflexion,deepseek-coder:1.3b,398,fail_assert,False,,15,"assert sum_of_digits([10,2,56])==14"
+reflexion,deepseek-coder:1.3b,413,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,414,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,415,fail_assert,False,,15,"assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)"
+reflexion,deepseek-coder:1.3b,419,fail_assert,False,,15,"assert round_and_sum([22.4, 4.0, -16.22, -9.10, 11.00, -12.22, 14.20, -5.20, 17.50])==243"
+reflexion,deepseek-coder:1.3b,428,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,435,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,443,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,447,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,452,fail_assert,False,,15,"assert loss_amount(1500,1200)==0"
+reflexion,deepseek-coder:1.3b,455,pass,False,2,2,
+reflexion,deepseek-coder:1.3b,459,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,463,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,562,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,563,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,577,fail_assert,False,,15,assert last_Digit_Factorial(21) == 0
+reflexion,deepseek-coder:1.3b,581,fail_assert,False,,15,"assert surface_Area(3,4) == 33"
+reflexion,deepseek-coder:1.3b,582,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,594,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,605,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,617,fail_assert,False,,15,"assert min_Jumps((3,4),11)==3.5"
+reflexion,deepseek-coder:1.3b,620,fail_assert,False,,15,"assert largest_subset([ 1, 3, 6, 13, 17, 18 ]) == 4"
+reflexion,deepseek-coder:1.3b,631,fail_assert,False,,15,assert replace_spaces('The_Avengers') == 'The Avengers'
+reflexion,deepseek-coder:1.3b,644,fail_assert,False,,15,"assert reverse_Array_Upto_K([1, 2, 3, 4, 5, 6],4) == [4, 3, 2, 1, 5, 6]"
+reflexion,deepseek-coder:1.3b,730,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,744,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,748,fail_assert,False,,15,"assert capital_words_spaces(""PythonProgrammingExamples"") == 'Python Programming Examples'"
+reflexion,deepseek-coder:1.3b,751,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,772,fail_assert,False,,15,"assert remove_length('The person is most value tet', 3) == 'person is most value'"
+reflexion,deepseek-coder:1.3b,787,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,798,pass,True,1,1,
+
+strategy,reflexion
+model,deepseek-coder:1.3b
+total_tasks,50
+pass@1,0.5800
