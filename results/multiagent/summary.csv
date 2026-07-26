@@ -149,3 +149,103 @@ multiagent,deepseek-coder:1.3b,20260726T012244Z,800,pass,True,1,1,
 multiagent,deepseek-coder:1.3b,20260726T012244Z,801,fail_assert,False,,4,"assert test_three_equal(1,2,2) == 2"
 multiagent,deepseek-coder:1.3b,20260726T012244Z,803,pass,True,1,1,
 multiagent,deepseek-coder:1.3b,20260726T012244Z,805,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,3,fail_assert,False,,10,assert is_not_prime(2) == False
+multiagent,deepseek-coder:1.3b,20260725T191915Z,4,pass,False,2,2,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,92,fail_assert,False,,10,assert is_undulating(1212121) == True
+multiagent,deepseek-coder:1.3b,20260725T191915Z,106,error_runtime,False,,10,"assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)"
+multiagent,deepseek-coder:1.3b,20260725T191915Z,111,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,119,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,131,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,135,fail_assert,False,,10,assert hexagonal_num(10) == 190
+multiagent,deepseek-coder:1.3b,20260725T191915Z,141,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,223,error_runtime,False,,10,"assert is_majority([1, 1, 2, 2], 5, 1) == False"
+multiagent,deepseek-coder:1.3b,20260725T191915Z,224,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,252,pass,False,2,2,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,256,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,272,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,277,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,281,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,295,fail_assert,False,,10,assert sum_div(8)==7
+multiagent,deepseek-coder:1.3b,20260725T191915Z,307,fail_assert,False,,10,"assert colon_tuplex((""HELLO"", 5, [], True) ,2,50)==(""HELLO"", 5, [50], True)"
+multiagent,deepseek-coder:1.3b,20260725T191915Z,308,fail_assert,False,,10,"assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],3)==[60, 54, 50]"
+multiagent,deepseek-coder:1.3b,20260725T191915Z,398,pass,False,6,6,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,413,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,414,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,415,fail_assert,False,,10,"assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)"
+multiagent,deepseek-coder:1.3b,20260725T191915Z,419,pass,False,2,2,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,428,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,435,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,443,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,447,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,452,fail_assert,False,,10,"assert loss_amount(1500,1200)==0"
+multiagent,deepseek-coder:1.3b,20260725T191915Z,455,fail_assert,False,,10,assert check_monthnumb_number(2)==False
+multiagent,deepseek-coder:1.3b,20260725T191915Z,459,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,463,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,562,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,563,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,577,fail_assert,False,,10,assert last_Digit_Factorial(4) == 4
+multiagent,deepseek-coder:1.3b,20260725T191915Z,581,fail_assert,False,,10,"assert surface_Area(3,4) == 33"
+multiagent,deepseek-coder:1.3b,20260725T191915Z,582,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,594,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,605,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,617,fail_assert,False,,10,"assert min_Jumps((3,4),11)==3.5"
+multiagent,deepseek-coder:1.3b,20260725T191915Z,620,fail_assert,False,,10,"assert largest_subset([ 1, 3, 6, 13, 17, 18 ]) == 4"
+multiagent,deepseek-coder:1.3b,20260725T191915Z,631,fail_assert,False,,10,assert replace_spaces('Jumanji The Jungle') == 'Jumanji_The_Jungle'
+multiagent,deepseek-coder:1.3b,20260725T191915Z,644,fail_assert,False,,10,"assert reverse_Array_Upto_K([1, 2, 3, 4, 5, 6],4) == [4, 3, 2, 1, 5, 6]"
+multiagent,deepseek-coder:1.3b,20260725T191915Z,730,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,744,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,748,fail_assert,False,,10,"assert capital_words_spaces(""Python"") == 'Python'"
+multiagent,deepseek-coder:1.3b,20260725T191915Z,751,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,772,fail_assert,False,,10,"assert remove_length('The person is most value tet', 3) == 'person is most value'"
+multiagent,deepseek-coder:1.3b,20260725T191915Z,787,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T191915Z,798,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,3,fail_assert,False,,15,assert is_not_prime(2) == False
+multiagent,deepseek-coder:1.3b,20260725T200050Z,4,pass,False,2,2,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,92,fail_assert,False,,15,assert is_undulating(1212121) == True
+multiagent,deepseek-coder:1.3b,20260725T200050Z,106,error_runtime,False,,15,"assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)"
+multiagent,deepseek-coder:1.3b,20260725T200050Z,111,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,119,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,131,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,135,fail_assert,False,,15,assert hexagonal_num(10) == 190
+multiagent,deepseek-coder:1.3b,20260725T200050Z,141,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,223,error_runtime,False,,15,"assert is_majority([1, 1, 2, 2], 5, 1) == False"
+multiagent,deepseek-coder:1.3b,20260725T200050Z,224,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,252,pass,False,2,2,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,256,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,272,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,277,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,281,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,295,fail_assert,False,,15,assert sum_div(8)==7
+multiagent,deepseek-coder:1.3b,20260725T200050Z,307,fail_assert,False,,15,"assert colon_tuplex((""HELLO"", 5, [], True) ,2,50)==(""HELLO"", 5, [50], True)"
+multiagent,deepseek-coder:1.3b,20260725T200050Z,308,fail_assert,False,,15,"assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],3)==[60, 54, 50]"
+multiagent,deepseek-coder:1.3b,20260725T200050Z,398,pass,False,4,4,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,413,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,414,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,415,fail_assert,False,,15,"assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)"
+multiagent,deepseek-coder:1.3b,20260725T200050Z,419,pass,False,2,2,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,428,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,435,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,443,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,447,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,452,fail_assert,False,,15,"assert loss_amount(1500,1200)==0"
+multiagent,deepseek-coder:1.3b,20260725T200050Z,455,fail_assert,False,,15,assert check_monthnumb_number(2)==False
+multiagent,deepseek-coder:1.3b,20260725T200050Z,459,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,463,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,562,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,563,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,577,fail_assert,False,,15,assert last_Digit_Factorial(4) == 4
+multiagent,deepseek-coder:1.3b,20260725T200050Z,581,fail_assert,False,,15,"assert surface_Area(3,4) == 33"
+multiagent,deepseek-coder:1.3b,20260725T200050Z,582,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,594,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,605,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,617,fail_assert,False,,15,"assert min_Jumps((3,4),11)==3.5"
+multiagent,deepseek-coder:1.3b,20260725T200050Z,620,fail_assert,False,,15,"assert largest_subset([ 1, 3, 6, 13, 17, 18 ]) == 4"
+multiagent,deepseek-coder:1.3b,20260725T200050Z,631,fail_assert,False,,15,assert replace_spaces('Jumanji The Jungle') == 'Jumanji_The_Jungle'
+multiagent,deepseek-coder:1.3b,20260725T200050Z,644,fail_assert,False,,15,"assert reverse_Array_Upto_K([1, 2, 3, 4, 5, 6],4) == [4, 3, 2, 1, 5, 6]"
+multiagent,deepseek-coder:1.3b,20260725T200050Z,730,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,744,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,748,fail_assert,False,,15,"assert capital_words_spaces(""Python"") == 'Python'"
+multiagent,deepseek-coder:1.3b,20260725T200050Z,751,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,772,fail_assert,False,,15,"assert remove_length('The person is most value tet', 3) == 'person is most value'"
+multiagent,deepseek-coder:1.3b,20260725T200050Z,787,pass,True,1,1,
+multiagent,deepseek-coder:1.3b,20260725T200050Z,798,pass,True,1,1,

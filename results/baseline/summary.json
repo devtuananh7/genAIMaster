@@ -720,6 +720,365 @@
   {
     "strategy": "baseline",
     "model": "deepseek-coder:1.3b",
+    "timestamp": "20260725T162216Z",
+    "total_pass1": 0.52,
+    "total_tasks": 50,
+    "per_task_summary": [
+      {
+        "task_id": 3,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 4,
+        "status": "error_runtime",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 92,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 106,
+        "status": "error_runtime",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 111,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 119,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 131,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 135,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 141,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 223,
+        "status": "error_runtime",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 224,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 252,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 256,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 272,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 277,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 281,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 295,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 307,
+        "status": "error_runtime",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 308,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 398,
+        "status": "error_runtime",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 413,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 414,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 415,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 419,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 428,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 435,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 443,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 447,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 452,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 455,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 459,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 463,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 562,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 563,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 577,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 581,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 582,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 594,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 605,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 617,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 620,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 631,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 644,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 730,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 744,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 748,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 751,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 772,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 1,
+        "pass_1st_round": false
+      },
+      {
+        "task_id": 787,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      },
+      {
+        "task_id": 798,
+        "status": "pass",
+        "rounds_to_pass": 1,
+        "total_rounds": 1,
+        "pass_1st_round": true
+      }
+    ]
+  },
+  {
+    "strategy": "baseline",
+    "model": "deepseek-coder:1.3b",
     "timestamp": "20260725T231225Z",
     "total_pass1": 0.52,
     "total_tasks": 50,
