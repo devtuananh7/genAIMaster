@@ -20,6 +20,7 @@ def load_strategy(
     max_tokens: int,
     base_url: str | None,
     model: str | None,
+    max_iterations: int | None = None,
 ) -> Strategy:
     if name == "baseline":
         return BaselineStrategy(
@@ -29,19 +30,25 @@ def load_strategy(
             model=model,
         )
     elif name == "reflexion":
-        return ReflexionStrategy(
+        kwargs: dict = dict(
             temperature=temperature,
             max_tokens=max_tokens,
             base_url=base_url,
             model=model,
         )
+        if max_iterations is not None:
+            kwargs["max_iterations"] = max_iterations
+        return ReflexionStrategy(**kwargs)
     elif name == "multiagent":
-        return MultiAgentStrategy(
+        kwargs_ma: dict = dict(
             temperature=temperature,
             max_tokens=max_tokens,
             base_url=base_url,
             model=model,
         )
+        if max_iterations is not None:
+            kwargs_ma["max_iterations"] = max_iterations
+        return MultiAgentStrategy(**kwargs_ma)
     raise ValueError(f"Unknown strategy: {name}")
 
 
@@ -134,6 +141,8 @@ def main() -> None:
     parser.add_argument("--max-tokens", type=int, default=1024)
     parser.add_argument("--base-url")
     parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--max-iterations", type=int, default=None,
+                        help="Max loop iterations for reflexion/multiagent")
     args = parser.parse_args()
 
     strategy = load_strategy(
@@ -142,6 +151,7 @@ def main() -> None:
         max_tokens=args.max_tokens,
         base_url=args.base_url,
         model=args.model,
+        max_iterations=args.max_iterations,
     )
     output_path = run_strategy(
         strategy=strategy,
