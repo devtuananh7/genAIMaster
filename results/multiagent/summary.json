@@ -2,15 +2,15 @@
   {
     "strategy": "multiagent",
     "model": "deepseek-coder:1.3b",
-    "timestamp": "20260725T191915Z",
-    "total_pass1": 0.62,
+    "timestamp": "20260725T160011Z",
+    "total_pass1": 0.6,
     "total_tasks": 50,
     "per_task_summary": [
       {
         "task_id": 3,
         "status": "fail_assert",
         "rounds_to_pass": null,
-        "total_rounds": 10,
+        "total_rounds": 4,
         "pass_1st_round": false
       },
       {
@@ -24,14 +24,14 @@
         "task_id": 92,
         "status": "fail_assert",
         "rounds_to_pass": null,
-        "total_rounds": 10,
+        "total_rounds": 4,
         "pass_1st_round": false
       },
       {
         "task_id": 106,
         "status": "error_runtime",
         "rounds_to_pass": null,
-        "total_rounds": 10,
+        "total_rounds": 4,
         "pass_1st_round": false
       },
       {
@@ -59,7 +59,7 @@
         "task_id": 135,
         "status": "fail_assert",
         "rounds_to_pass": null,
-        "total_rounds": 10,
+        "total_rounds": 4,
         "pass_1st_round": false
       },
       {
@@ -73,7 +73,7 @@
         "task_id": 223,
         "status": "error_runtime",
         "rounds_to_pass": null,
-        "total_rounds": 10,
+        "total_rounds": 4,
         "pass_1st_round": false
       },
       {
@@ -122,28 +122,28 @@
         "task_id": 295,
         "status": "fail_assert",
         "rounds_to_pass": null,
-        "total_rounds": 10,
+        "total_rounds": 4,
         "pass_1st_round": false
       },
       {
         "task_id": 307,
-        "status": "fail_assert",
+        "status": "error_runtime",
         "rounds_to_pass": null,
-        "total_rounds": 10,
+        "total_rounds": 4,
         "pass_1st_round": false
       },
       {
         "task_id": 308,
         "status": "fail_assert",
         "rounds_to_pass": null,
-        "total_rounds": 10,
+        "total_rounds": 4,
         "pass_1st_round": false
       },
       {
         "task_id": 398,
-        "status": "pass",
-        "rounds_to_pass": 6,
-        "total_rounds": 6,
+        "status": "error_runtime",
+        "rounds_to_pass": null,
+        "total_rounds": 4,
         "pass_1st_round": false
       },
       {
@@ -164,14 +164,14 @@
         "task_id": 415,
         "status": "fail_assert",
         "rounds_to_pass": null,
-        "total_rounds": 10,
+        "total_rounds": 4,
         "pass_1st_round": false
       },
       {
         "task_id": 419,
-        "status": "pass",
-        "rounds_to_pass": 2,
-        "total_rounds": 2,
+        "status": "fail_assert",
+        "rounds_to_pass": null,
+        "total_rounds": 4,
         "pass_1st_round": false
       },
       {
@@ -206,1104 +206,8 @@
         "task_id": 452,
         "status": "fail_assert",
         "rounds_to_pass": null,
-        "total_rounds": 10,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 455,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 10,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 459,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 463,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 562,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 563,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 577,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 10,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 581,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 10,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 582,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 594,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 605,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 617,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 10,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 620,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 10,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 631,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 10,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 644,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 10,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 730,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 744,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 748,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 10,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 751,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 772,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 10,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 787,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 798,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      }
-    ]
-  },
-  {
-    "strategy": "multiagent",
-    "model": "deepseek-coder:1.3b",
-    "timestamp": "20260725T200050Z",
-    "total_pass1": 0.62,
-    "total_tasks": 50,
-    "per_task_summary": [
-      {
-        "task_id": 3,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 4,
-        "status": "pass",
-        "rounds_to_pass": 2,
-        "total_rounds": 2,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 92,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 106,
-        "status": "error_runtime",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 111,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 119,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 131,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 135,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 141,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 223,
-        "status": "error_runtime",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 224,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 252,
-        "status": "pass",
-        "rounds_to_pass": 2,
-        "total_rounds": 2,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 256,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 272,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 277,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 281,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 295,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 307,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 308,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 398,
-        "status": "pass",
-        "rounds_to_pass": 4,
         "total_rounds": 4,
         "pass_1st_round": false
-      },
-      {
-        "task_id": 413,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 414,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 415,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 419,
-        "status": "pass",
-        "rounds_to_pass": 2,
-        "total_rounds": 2,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 428,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 435,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 443,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 447,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 452,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 455,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 459,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 463,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 562,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 563,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 577,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 581,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 582,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 594,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 605,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 617,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 620,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 631,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 644,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 730,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 744,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 748,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 751,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 772,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 15,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 787,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 798,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      }
-    ]
-  },
-  {
-    "strategy": "multiagent",
-    "model": "deepseek-coder:1.3b",
-    "timestamp": "20260726T012244Z",
-    "total_pass1": 0.7066666666666667,
-    "total_tasks": 150,
-    "per_task_summary": [
-      {
-        "task_id": 3,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 6,
-        "status": "pass",
-        "rounds_to_pass": 2,
-        "total_rounds": 2,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 8,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 11,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 16,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 18,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 57,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 59,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 79,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 86,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 88,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 90,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 92,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 93,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 97,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 99,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 105,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 106,
-        "status": "error_runtime",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 109,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 111,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 113,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 116,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 119,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 125,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 133,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 135,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 137,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 139,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 140,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 141,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 142,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 145,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 162,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 163,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 166,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 167,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 168,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 222,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 226,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 232,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 235,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 237,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 239,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 248,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 252,
-        "status": "pass",
-        "rounds_to_pass": 2,
-        "total_rounds": 2,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 257,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 261,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 262,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 267,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 270,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 271,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 272,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 277,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 283,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 285,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 292,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 295,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 306,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 309,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 310,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 312,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 392,
-        "status": "error_runtime",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 398,
-        "status": "error_runtime",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 399,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 401,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 405,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 408,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 410,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 412,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 414,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 417,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 418,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 419,
-        "status": "pass",
-        "rounds_to_pass": 4,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 420,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 422,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 429,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 430,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 431,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 435,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 439,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 447,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 453,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 454,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
       },
       {
         "task_id": 455,
@@ -1313,56 +217,21 @@
         "pass_1st_round": false
       },
       {
-        "task_id": 457,
+        "task_id": 459,
         "status": "pass",
         "rounds_to_pass": 1,
         "total_rounds": 1,
         "pass_1st_round": true
       },
       {
-        "task_id": 458,
+        "task_id": 463,
         "status": "pass",
         "rounds_to_pass": 1,
         "total_rounds": 1,
         "pass_1st_round": true
       },
       {
-        "task_id": 461,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 465,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 474,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 477,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 557,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 560,
+        "task_id": 562,
         "status": "pass",
         "rounds_to_pass": 1,
         "total_rounds": 1,
@@ -1376,35 +245,7 @@
         "pass_1st_round": true
       },
       {
-        "task_id": 564,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 567,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 568,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 579,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 580,
+        "task_id": 577,
         "status": "fail_assert",
         "rounds_to_pass": null,
         "total_rounds": 4,
@@ -1418,77 +259,21 @@
         "pass_1st_round": false
       },
       {
-        "task_id": 586,
+        "task_id": 582,
         "status": "pass",
         "rounds_to_pass": 1,
         "total_rounds": 1,
         "pass_1st_round": true
       },
       {
-        "task_id": 589,
-        "status": "pass",
-        "rounds_to_pass": 2,
-        "total_rounds": 2,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 590,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 591,
+        "task_id": 594,
         "status": "pass",
         "rounds_to_pass": 1,
         "total_rounds": 1,
         "pass_1st_round": true
       },
       {
-        "task_id": 592,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 596,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 600,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 602,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 604,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 606,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 607,
+        "task_id": 605,
         "status": "pass",
         "rounds_to_pass": 1,
         "total_rounds": 1,
@@ -1502,21 +287,7 @@
         "pass_1st_round": false
       },
       {
-        "task_id": 618,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 622,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 627,
+        "task_id": 620,
         "status": "fail_assert",
         "rounds_to_pass": null,
         "total_rounds": 4,
@@ -1530,27 +301,6 @@
         "pass_1st_round": false
       },
       {
-        "task_id": 638,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 639,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 640,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
         "task_id": 644,
         "status": "fail_assert",
         "rounds_to_pass": null,
@@ -1558,84 +308,7 @@
         "pass_1st_round": false
       },
       {
-        "task_id": 722,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 723,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 724,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 726,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
         "task_id": 730,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 733,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 734,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 735,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 736,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 738,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 740,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 741,
         "status": "pass",
         "rounds_to_pass": 1,
         "total_rounds": 1,
@@ -1649,56 +322,14 @@
         "pass_1st_round": true
       },
       {
-        "task_id": 745,
-        "status": "pass",
-        "rounds_to_pass": 4,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 752,
+        "task_id": 748,
         "status": "fail_assert",
         "rounds_to_pass": null,
         "total_rounds": 4,
         "pass_1st_round": false
       },
       {
-        "task_id": 759,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 762,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 763,
-        "status": "pass",
-        "rounds_to_pass": 2,
-        "total_rounds": 2,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 769,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 770,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 771,
+        "task_id": 751,
         "status": "pass",
         "rounds_to_pass": 1,
         "total_rounds": 1,
@@ -1712,28 +343,7 @@
         "pass_1st_round": false
       },
       {
-        "task_id": 773,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 783,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 796,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 797,
+        "task_id": 787,
         "status": "pass",
         "rounds_to_pass": 1,
         "total_rounds": 1,
@@ -1741,34 +351,6 @@
       },
       {
         "task_id": 798,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 800,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 801,
-        "status": "fail_assert",
-        "rounds_to_pass": null,
-        "total_rounds": 4,
-        "pass_1st_round": false
-      },
-      {
-        "task_id": 803,
-        "status": "pass",
-        "rounds_to_pass": 1,
-        "total_rounds": 1,
-        "pass_1st_round": true
-      },
-      {
-        "task_id": 805,
         "status": "pass",
         "rounds_to_pass": 1,
         "total_rounds": 1,
