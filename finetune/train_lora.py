@@ -182,7 +182,7 @@ def train_peft(
     print(f"═══ PEFT QLoRA Training ═══", file=sys.stderr)
     print(f"  Model:       {model}", file=sys.stderr)
     print(f"  Device:      {torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'}", file=sys.stderr)
-    print(f"  VRAM:        {torch.cuda.get_device_properties(0).total_mem / 1e9:.1f} GB" if torch.cuda.is_available() else "  VRAM:        N/A", file=sys.stderr)
+    print(f"  VRAM:        {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f} GB" if torch.cuda.is_available() else "  VRAM:        N/A", file=sys.stderr)
     print(f"  Epochs:      {epochs}", file=sys.stderr)
     print(f"  Batch:       {batch_size} × {grad_accum} = {batch_size * grad_accum} effective", file=sys.stderr)
     print(f"  LoRA:        r={lora_rank}, alpha={lora_alpha}", file=sys.stderr)
@@ -246,8 +246,8 @@ def train_peft(
         eval_strategy="epoch",
         save_strategy="epoch",
         save_total_limit=2,
-        fp16=True,
-        max_seq_length=max_seq_len,
+        bf16=True,
+        max_length=max_seq_len,
         dataset_text_field="text",
         packing=False,
         report_to="none",  # không dùng wandb
