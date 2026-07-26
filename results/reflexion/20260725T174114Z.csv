@@ -1,0 +1,56 @@
+strategy,model,task_id,status,pass_1st_round,rounds_to_pass,total_rounds,failed_test
+reflexion,deepseek-coder:1.3b,3,error_syntax,False,,4,
+reflexion,deepseek-coder:1.3b,4,fail_assert,False,,4,"assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],3)==[85, 75, 65]"
+reflexion,deepseek-coder:1.3b,92,fail_assert,False,,4,assert is_undulating(1212121) == True
+reflexion,deepseek-coder:1.3b,106,error_runtime,False,,4,"assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)"
+reflexion,deepseek-coder:1.3b,111,error_syntax,False,,4,
+reflexion,deepseek-coder:1.3b,119,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,131,error_syntax,False,,4,
+reflexion,deepseek-coder:1.3b,135,error_runtime,False,,4,assert hexagonal_num(10) == 190
+reflexion,deepseek-coder:1.3b,141,error_runtime,False,,4,"assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]"
+reflexion,deepseek-coder:1.3b,223,error_runtime,False,,4,"assert is_majority([1, 2, 3, 3, 3, 3, 10], 7, 3) == True"
+reflexion,deepseek-coder:1.3b,224,pass,False,2,2,
+reflexion,deepseek-coder:1.3b,252,error_runtime,False,,4,"assert convert(1) == (1.0, 0.0)"
+reflexion,deepseek-coder:1.3b,256,error_runtime,False,,4,assert count_Primes_nums(5) == 2
+reflexion,deepseek-coder:1.3b,272,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,277,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,281,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,295,error_runtime,False,,4,assert sum_div(8)==7
+reflexion,deepseek-coder:1.3b,307,error_runtime,False,,4,"assert colon_tuplex((""HELLO"", 5, [], True) ,2,50)==(""HELLO"", 5, [50], True)"
+reflexion,deepseek-coder:1.3b,308,error_syntax,False,,4,
+reflexion,deepseek-coder:1.3b,398,error_runtime,False,,4,"assert sum_of_digits([10,2,56])==14"
+reflexion,deepseek-coder:1.3b,413,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,414,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,415,error_runtime,False,,4,"assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)"
+reflexion,deepseek-coder:1.3b,419,fail_assert,False,,4,"assert round_and_sum([22.4, 4.0, -16.22, -9.10, 11.00, -12.22, 14.20, -5.20, 17.50])==243"
+reflexion,deepseek-coder:1.3b,428,error_syntax,False,,4,
+reflexion,deepseek-coder:1.3b,435,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,443,error_runtime,False,,4,"assert largest_neg([1,2,3,-4,-6]) == -6"
+reflexion,deepseek-coder:1.3b,447,pass,True,1,1,
+reflexion,deepseek-coder:1.3b,452,fail_assert,False,,4,"assert loss_amount(1500,1200)==0"
+reflexion,deepseek-coder:1.3b,455,error_runtime,False,,4,assert check_monthnumb_number(5)==True
+reflexion,deepseek-coder:1.3b,459,error_runtime,False,,4,assert remove_uppercase('cAstyoUrFavoRitETVshoWs') == 'cstyoravoitshos'
+reflexion,deepseek-coder:1.3b,463,error_syntax,False,,4,
+reflexion,deepseek-coder:1.3b,562,error_runtime,False,,4,"assert Find_Max_Length([[1],[1,4],[5,6,7,8]]) == 4"
+reflexion,deepseek-coder:1.3b,563,fail_assert,False,,4,"assert extract_values('""Python"", ""PHP"", ""Java""')==['Python', 'PHP', 'Java']"
+reflexion,deepseek-coder:1.3b,577,error_syntax,False,,4,
+reflexion,deepseek-coder:1.3b,581,error_runtime,False,,4,"assert surface_Area(3,4) == 33"
+reflexion,deepseek-coder:1.3b,582,error_syntax,False,,4,
+reflexion,deepseek-coder:1.3b,594,pass,False,2,2,
+reflexion,deepseek-coder:1.3b,605,pass,False,4,4,
+reflexion,deepseek-coder:1.3b,617,error_syntax,False,,4,
+reflexion,deepseek-coder:1.3b,620,error_syntax,False,,4,
+reflexion,deepseek-coder:1.3b,631,error_runtime,False,,4,assert replace_spaces('Jumanji The Jungle') == 'Jumanji_The_Jungle'
+reflexion,deepseek-coder:1.3b,644,error_syntax,False,,4,
+reflexion,deepseek-coder:1.3b,730,error_runtime,False,,4,"assert consecutive_duplicates([0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4 ])==[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 4]"
+reflexion,deepseek-coder:1.3b,744,error_runtime,False,,4,"assert check_none((10, 4, 5, 6, None)) == True"
+reflexion,deepseek-coder:1.3b,748,fail_assert,False,,4,"assert capital_words_spaces(""PythonProgrammingExamples"") == 'Python Programming Examples'"
+reflexion,deepseek-coder:1.3b,751,error_syntax,False,,4,
+reflexion,deepseek-coder:1.3b,772,error_runtime,False,,4,"assert remove_length('The person is most value tet', 3) == 'person is most value'"
+reflexion,deepseek-coder:1.3b,787,error_syntax,False,,4,
+reflexion,deepseek-coder:1.3b,798,pass,True,1,1,
+
+strategy,reflexion
+model,deepseek-coder:1.3b
+total_tasks,50
+pass@1,0.2400
