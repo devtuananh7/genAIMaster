@@ -34,7 +34,7 @@ from __future__ import annotations
 from baseline.strategy import BASE_SYSTEM_PROMPT  # Prompt gốc dùng chung với M1, M2
 from harness.executor import run as run_executor   # Sandbox Executor của M0
 from harness.extractor import extract_code         # Bóc tách code Python khỏi văn xuôi AI
-from harness.ollama_client import generate         # Hàm gọi POST /api/chat tới Ollama
+from harness.hf_client import generate             # Client gọi HuggingFace Inference Endpoint
 from harness.types import Task                     # Kiểu dữ liệu bài toán MBPP
 
 # ---------------------------------------------------------------------------
@@ -149,19 +149,14 @@ class MultiAgentStrategy:
             model=self.model,
         )
 
-    def _reviewer_critique(self, task: Task, code: str, result) -> str:
+    def _reviewer_critique(self, task: Task, code: str, result) -> tuple[str, str]:
         """
         Gọi Reviewer Agent để sinh ra nhận xét có cấu trúc về đoạn code bị lỗi.
 
         Tuân thủ ràng buộc cứng: Reviewer KHÔNG viết code hộ (được ép trong system prompt).
 
-        Args:
-            task   : Bài toán MBPP hiện tại.
-            code   : Đoạn code bị lỗi của Programmer.
-            result : ExecutionResult từ Sandbox M0.
-
         Returns:
-            str: Nhận xét có cấu trúc (Error Location + Root Cause + Fix Direction).
+            (reviewer_prompt, review_feedback): INPUT gửi Reviewer + OUTPUT nhận xét.
         """
         # Phần thông tin thực thi (tùy cấu hình reviewer_sees_execution)
         if self.reviewer_sees_execution:
@@ -178,19 +173,14 @@ class MultiAgentStrategy:
             f"Execution result:\n{execution_context}\n\n"
             f"Please provide your structured code review."
         )
-        return self._call_model(REVIEWER_SYSTEM_PROMPT, reviewer_prompt)
+        return reviewer_prompt, self._call_model(REVIEWER_SYSTEM_PROMPT, reviewer_prompt)
 
-    def _programmer_fix(self, task: Task, code: str, review_feedback: str) -> str:
+    def _programmer_fix(self, task: Task, code: str, review_feedback: str) -> tuple[str, str]:
         """
         Gọi Programmer Agent để viết lại code dựa trên nhận xét của Reviewer.
 
-        Args:
-            task           : Bài toán MBPP hiện tại.
-            code           : Đoạn code cũ bị lỗi.
-            review_feedback: Nhận xét có cấu trúc từ Reviewer Agent.
-
         Returns:
-            str: Đoạn code Python mới đã được sửa (raw response, chưa extract).
+            (programmer_prompt, raw_response): INPUT gửi Programmer + OUTPUT thô (chưa extract).
         """
         programmer_prompt = (
             f"Problem:\n{task.text}\n\n"
@@ -199,7 +189,7 @@ class MultiAgentStrategy:
             f"Senior Reviewer's feedback:\n{review_feedback}\n\n"
             f"Based on the reviewer's structured feedback, write the corrected Python function."
         )
-        return self._call_model(PROGRAMMER_FIX_SYSTEM_PROMPT, programmer_prompt)
+        return programmer_prompt, self._call_model(PROGRAMMER_FIX_SYSTEM_PROMPT, programmer_prompt)
 
     def solve(self, task: Task) -> str:
         """
@@ -230,16 +220,16 @@ class MultiAgentStrategy:
             # ==============================================================
             if iteration == 0:
                 # Vòng 0: Programmer sinh code ban đầu (giống hệt Baseline M1)
-                user_prompt = (
+                programmer_prompt = (
                     f"Problem:\n{task.text}\n\n"
                     f"Unit tests:\n" + "\n".join(task.test_list)
                 )
-                raw_response = self._call_model(BASE_SYSTEM_PROMPT, user_prompt)
+                raw_response = self._call_model(BASE_SYSTEM_PROMPT, programmer_prompt)
 
             else:
                 # Vòng 1, 2, 3: Programmer đọc nhận xét của Reviewer và sửa lại code
-                # (raw_response đã được tính trong phần Reviewer bên dưới)
-                pass  # raw_response đã được gán từ cuối vòng trước
+                # (programmer_prompt + raw_response đã được tính cuối vòng trước)
+                pass
 
             # Bóc tách code Python từ phản hồi markdown của Programmer
             code = extract_code(raw_response)
@@ -253,7 +243,9 @@ class MultiAgentStrategy:
             # Khởi tạo record cho vòng này (reviewer_feedback sẽ gán sau nếu fail)
             record: dict = {
                 "iteration": iteration,
-                "code": code,
+                "programmer_prompt": programmer_prompt,  # INPUT gửi Programmer
+                "raw_response": raw_response,             # OUTPUT thô Programmer (trước extract)
+                "code": code,                             # code sau bóc tách
                 "execution": {
                     "status": execution_result.status,
                     "failed_test": execution_result.failed_test,
@@ -262,7 +254,8 @@ class MultiAgentStrategy:
                     "total_count": execution_result.total_count,
                     "duration_ms": execution_result.duration_ms,
                 },
-                "reviewer_feedback": None,
+                "reviewer_prompt": None,                  # INPUT gửi Reviewer (nếu có)
+                "reviewer_feedback": None,                # OUTPUT nhận xét Reviewer
             }
 
             # ==============================================================
@@ -287,15 +280,16 @@ class MultiAgentStrategy:
                 # Reviewer đọc: đề bài + code lỗi + ExecutionResult
                 # Reviewer KHÔNG được viết code (ép trong system prompt)
                 # Reviewer trả về: nhận xét có cấu trúc (Error Location + Root Cause + Fix Direction)
-                review_feedback = self._reviewer_critique(task, code, execution_result)
+                reviewer_prompt, review_feedback = self._reviewer_critique(task, code, execution_result)
 
-                # Ghi reviewer_feedback vào record
+                # Ghi reviewer prompt (INPUT) + feedback (OUTPUT) vào record
+                record["reviewer_prompt"] = reviewer_prompt
                 record["reviewer_feedback"] = review_feedback
 
                 # ==============================================================
                 # BƯỚC E: PROGRAMMER ĐỌC NHẬN XÉT → CHUẨN BỊ SINH CODE MỚI
                 # ==============================================================
-                raw_response = self._programmer_fix(task, code, review_feedback)
+                programmer_prompt, raw_response = self._programmer_fix(task, code, review_feedback)
 
             self._internal_records.append(record)
 

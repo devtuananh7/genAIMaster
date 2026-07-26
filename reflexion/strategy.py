@@ -185,7 +185,9 @@ class ReflexionStrategy:
             # Khởi tạo record cho vòng này (self_critique sẽ được gán sau nếu reflect)
             record: dict = {
                 "iteration": iteration,
-                "code": code,
+                "generate_prompt": user_prompt,     # INPUT gửi model để sinh code
+                "raw_response": raw_response,        # OUTPUT thô của model (trước extract)
+                "code": code,                        # code sau khi bóc tách
                 "execution": {
                     "status": execution_result.status,
                     "failed_test": execution_result.failed_test,
@@ -194,7 +196,8 @@ class ReflexionStrategy:
                     "total_count": execution_result.total_count,
                     "duration_ms": execution_result.duration_ms,
                 },
-                "self_critique": None,
+                "reflect_prompt": None,              # INPUT gửi model để tự phê (nếu có)
+                "self_critique": None,               # OUTPUT tự phê
             }
 
             # ==============================================================
@@ -239,7 +242,8 @@ class ReflexionStrategy:
                 if len(words) > MAX_REFLECT_WORDS:
                     self_critique = " ".join(words[:MAX_REFLECT_WORDS]) + "..."
 
-                # Ghi self_critique vào record và cập nhật episodic_memory
+                # Ghi prompt reflect (INPUT) + self_critique (OUTPUT) vào record
+                record["reflect_prompt"] = reflect_user_prompt
                 record["self_critique"] = self_critique
                 episodic_memory.append(self_critique)
 

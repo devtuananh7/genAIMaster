@@ -59,7 +59,23 @@ def run_strategy(
 
     print("task_id,status")
     for task in tasks:
-        code = strategy.solve(task)
+        # Chống lỗi cho run dài (150 bài): 1 bài lỗi (vd HF timeout hết retry)
+        # KHÔNG được làm sập cả run — ghi stub và đi tiếp.
+        try:
+            code = strategy.solve(task)
+        except Exception as exc:  # noqa: BLE001
+            print(f"{task.task_id},error_harness ({type(exc).__name__})")
+            per_task.append({
+                "task_id": task.task_id,
+                "status": "error_harness",
+                "rounds_to_pass": None,
+                "total_rounds": getattr(strategy, "_total_rounds", 0),
+                "pass_1st_round": False,
+                "final_code": "",
+                "internal_records": getattr(strategy, "_internal_records", []),
+                "error": f"{type(exc).__name__}: {exc}",
+            })
+            continue
         result = executor.run(code, task)
 
         # Đọc metadata từ strategy (được gán trong solve())

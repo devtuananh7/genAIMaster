@@ -37,14 +37,20 @@ Mỗi module tấn công một thành phần khác nhau — đây là "xương s
 
 ## 3. Kết quả tổng hợp (số liệu thật)
 
-| Module | Kỹ thuật | Metric chính | Kết quả |
+**Kết quả chốt trên tập 150 bài MBPP (cùng backend HF, McNemar ghép cặp):**
+
+| Module | Kỹ thuật | Metric chính | Kết quả (150 bài) |
 |--------|----------|--------------|---------|
-| **M0** | Harness (executor + MBPP loader + scorer) | hạ tầng | 50 task đóng băng, pass@1 tự động |
-| **M1** | Baseline (1 lần sinh) | pass@1 | **52%** (26/50) — *22% nếu KHÔNG cấp chữ ký hàm* |
-| **M2** | Reflexion (tự gỡ lỗi ≤4 vòng) | pass@1 | **60%** (30/50) — **+8 điểm** so baseline |
+| **M0** | Harness (executor + MBPP loader + scorer) | hạ tầng | tập 50 & 150 bài đóng băng, pass@1 tự động |
+| **M1** | Baseline (1 lần sinh) | pass@1 | **62.0%** (93/150) — *22% nếu KHÔNG cấp chữ ký hàm* |
+| **M2** | Reflexion (tự gỡ lỗi ≤4 vòng) | pass@1 | **70.0%** (105/150) — **+8.0đ**, McNemar p=0.0095 ✓ |
 | **M3** | Reuse RAG (API-grounded, 4 mức context) | reuse-rate | **0% → 75%** (no-RAG → có API); pass 92%→≤83% |
-| **M4** | Multi-Agent (Programmer↔Reviewer) | pass@1 | **20%** (số liệu cũ, backend ollama — xem caveat trong tài liệu M4) |
+| **M4** | Multi-Agent (Programmer↔Reviewer) | pass@1 | **70.7%** (106/150) — **+8.7đ**, p=0.0088 ✓; ngang M2 (p=1.0) |
 | **M5** | QLoRA fine-tune 1.3b-base | pass@1 before/after | *pipeline sẵn sàng, chưa có số liệu (chạy trên RTX 3080)* |
+
+> Tập 50 bài (bản đầu): baseline 52% · M2 60% · M4 20% (backend ollama, đã lỗi thời). Tập
+> **150 bài** là bản chốt: delta +8đ **có ý nghĩa thống kê** (p<0.01) — ở 50 bài thì chưa.
+> M4 sau khi sửa về **cùng backend HF** đạt 70.7%, **ngang M2** (không khác biệt, p=1.0).
 
 **Hai phát hiện xuyên suốt:**
 1. **Brute-force resampling vô ích với model yếu** (M1): bắn 5 mẫu temp cao chỉ hoà với 1

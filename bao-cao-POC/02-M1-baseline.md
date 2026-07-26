@@ -45,10 +45,14 @@ hệ học thuật:
 
 | Cấu hình | pass@1 |
 |----------|--------|
-| **Baseline chốt** (có chữ ký hàm, temp 0.2, HF endpoint) | **52%** (26/50) |
+| **Baseline chốt — tập 150 bài** (có chữ ký hàm, temp 0.2, HF) | **62.0%** (93/150) |
+| Baseline — tập 50 bài (cùng cấu hình) | 52% (26/50) |
 | *Ablation:* KHÔNG cấp chữ ký hàm (bản đầu, Ollama) | 22% (11/50) |
 | Sampling 1 mẫu (temp 0.8) | 12% |
 | Sampling best-of-5 (temp 0.8) | 22% |
+
+> Con số chốt để M2/M4 so vào là **62% trên tập 150 bài** (mẫu lớn hơn → delta của M2/M4 đạt
+> ý nghĩa thống kê). Tập 50 bài (52%) chênh do mẫu nhỏ khác phân bố độ khó.
 
 **Phân loại lỗi (bản 22%, greedy — trước khi thêm chữ ký hàm):**
 

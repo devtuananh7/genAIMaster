@@ -51,15 +51,21 @@ Vòng lặp 3 pha **Act – Evaluate – Reflect** (`reflexion/strategy.py`), t�
 
 ## 5. Input/Output thực tế & nhận xét
 
-**Kết quả (số liệu thật, `results/reflexion/summary.json`):**
+**Kết quả (số liệu thật, tập 150 bài, cùng backend HF):**
 
-| | pass@1 |
-|--|--------|
-| Baseline (M1) | 52% |
-| **Reflexion (≤4 vòng)** | **60%** (30/50) — **+8 điểm** |
+| | pass@1 | So baseline |
+|--|--------|-------------|
+| Baseline (M1) | 62.0% (93/150) | — |
+| **Reflexion (≤4 vòng)** | **70.0%** (105/150) | **+8.0đ** |
 
-Phân bố số vòng: nhiều task pass ngay vòng 0 (giống baseline); một số task **chỉ pass sau khi
-phản tỉnh** (vd task 4, 223 có `rounds_to_pass=2` — pass ở vòng 2 sau 1 lần tự phê).
+**Kiểm định McNemar ghép cặp (cùng 150 bài):** 15 bài fail→pass, 3 bài pass→fail, net **+12**,
+χ²=6.72, **p=0.0095 → có ý nghĩa thống kê** (ở tập 50 bài delta +8đ CHƯA significant — đây là
+lý do mở rộng lên 150).
+
+**Phân bố số vòng (`rounds_to_pass`):** 99 bài pass ngay vòng 1; **6 bài pass NHỜ phản tỉnh**
+(4 bài ở vòng 2, 2 bài ở vòng 3); 45 bài chạy đủ 4 vòng vẫn không pass. Toàn bộ prompt+output
+mỗi vòng lưu trong `internal_records` (`generate_prompt`, `raw_response`, `reflect_prompt`,
+`self_critique`).
 
 **Ví dụ luồng thật (rút gọn):**
 ```

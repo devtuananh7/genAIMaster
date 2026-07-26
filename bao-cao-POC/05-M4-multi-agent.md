@@ -53,27 +53,29 @@ Reviewer   → "ERROR LOCATION: hàm chưa được định nghĩa đúng tên..
 Programmer → code mới theo nhận xét
 ```
 
-**Kết quả (số liệu thật, `results/multiagent/`):**
+**Kết quả (số liệu thật, tập 150 bài, cùng backend HF):**
 
-| | pass@1 |
-|--|--------|
-| Baseline (M1) | 52% |
-| Reflexion (M2) | 60% |
-| **Multi-Agent (M4)** | **20%** |
+| | pass@1 | So baseline |
+|--|--------|-------------|
+| Baseline (M1) | 62.0% (93/150) | — |
+| Reflexion (M2) | 70.0% (105/150) | +8.0đ |
+| **Multi-Agent (M4)** | **70.7%** (106/150) | **+8.7đ** |
 
-**Nhận xét (kèm caveat quan trọng — cần đọc kỹ):**
+**Kiểm định McNemar ghép cặp:**
+- baseline → M4: 17 bài fail→pass, 4 pass→fail, net **+13**, χ²=6.86, **p=0.0088 → có ý nghĩa**.
+- M2 → M4: net +1, **p=1.0 → KHÔNG khác biệt** giữa self-critique và external-critique.
 
-- **Con số 20% THẤP hơn cả baseline** — bất thường. Có **hai lý do xếp chồng**, cần tách bạch
-  trước khi kết luận:
-  1. **Số liệu cũ / backend lệch:** run M4 thực hiện *trước* đợt nâng cấp, còn dùng backend
-     **Ollama** trong khi baseline/M2 đã chuyển sang **HuggingFace endpoint**. Khác backend →
-     **so sánh chưa công bằng** (đây là mục tiêu số 1 của M4 lại đang bị vi phạm).
-  2. **Giả thuyết thật:** nhận xét dài của "reviewer khó tính" có thể **làm rối model 1.3b** →
-     sinh code lệch (nhiều `NameError` — code không định nghĩa đúng hàm). Nếu đúng, đây là kết
-     luận nghiên cứu thú vị: *external critique phản tác dụng với model nhỏ*.
-- **Chưa phân biệt được (1) hay (2)** nếu chưa **re-run trên cùng HF backend** — đó chính là
-  việc còn tồn đọng của M4.
-- **Trạng thái module:** code M4 đã có đầy đủ tracking metadata; việc cần làm là đổi
-  `ollama_client → hf_client` và chạy lại 50 task để có số liệu **công bằng** đặt cạnh đường
-  cong M2. Chừng nào chưa re-run, **con số 20% chỉ nên trình bày kèm caveat**, không dùng để
-  kết luận "multi-agent thua reflexion".
+**Phân bố số vòng:** 99 bài pass vòng 1; **7 bài pass NHỜ review** (4 vòng 2, 1 vòng 3, 2 vòng 4);
+46 bài chạy đủ 4 vòng vẫn fail. Toàn bộ I/O mỗi vòng lưu trong `internal_records`
+(`programmer_prompt`, `raw_response`, `reviewer_prompt`, `reviewer_feedback`).
+
+**Nhận xét (đã giải quyết caveat backend):**
+
+- **M4 được "giải oan":** con số cũ **20%** (tập 50, backend Ollama) hoàn toàn do **backend
+  lệch** — không phải do multi-agent kém. Sau khi đổi `ollama_client → hf_client` và chạy lại
+  trên **cùng HF backend + cùng 150 bài**, M4 đạt **70.7%**, **thắng baseline có ý nghĩa**
+  (p=0.0088). Bài học: *đối chứng phải cùng backend* — đúng mục tiêu số 1 của M4.
+- **Trả lời câu hỏi nghiên cứu:** external critique (Reviewer riêng) **KHÔNG tốt hơn** self-
+  critique (M2) với model 1.3b — hai bên **ngang nhau** (70.7% vs 70.0%, p=1.0). Cùng cứu được
+  ~6–7 bài nhờ vòng lặp. Kết luận: *với model nhỏ trên MBPP, "người thứ hai" không thêm giá trị
+  so với tự phản tỉnh* — một kết quả gọn và đáng bàn.

@@ -57,9 +57,10 @@ class BaselineStrategy:
         self._internal_records: list[dict] = []
         self._final_code: str = ""
 
+        user_prompt = self._user_prompt(task)
         response = generate(
             BASE_SYSTEM_PROMPT,
-            self._user_prompt(task),
+            user_prompt,
             self.temperature,
             self.max_tokens,
             base_url=self.base_url,
@@ -67,6 +68,13 @@ class BaselineStrategy:
         )
         code = extract_code(response)
         self._final_code = code
-        # Baseline không execute nội bộ → execution=None, run.py sẽ điền sau
-        self._internal_records = [{"iteration": 0, "code": code, "execution": None}]
+        # Baseline không execute nội bộ → execution=None, run.py sẽ điền sau.
+        # Ghi đầy đủ INPUT (generate_prompt) + OUTPUT thô (raw_response).
+        self._internal_records = [{
+            "iteration": 0,
+            "generate_prompt": user_prompt,
+            "raw_response": response,
+            "code": code,
+            "execution": None,
+        }]
         return code

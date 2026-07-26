@@ -1,0 +1,1270 @@
+{
+  "model_name": "deepseek-coder:1.3b",
+  "params": {
+    "temperature": 0.2,
+    "max_tokens": 1024,
+    "samples": 1
+  },
+  "timestamp": "20260721T160400Z",
+  "task_list": [
+    3,
+    4,
+    92,
+    106,
+    111,
+    119,
+    131,
+    135,
+    141,
+    223,
+    224,
+    252,
+    256,
+    272,
+    277,
+    281,
+    295,
+    307,
+    308,
+    398,
+    413,
+    414,
+    415,
+    419,
+    428,
+    435,
+    443,
+    447,
+    452,
+    455,
+    459,
+    463,
+    562,
+    563,
+    577,
+    581,
+    582,
+    594,
+    605,
+    617,
+    620,
+    631,
+    644,
+    730,
+    744,
+    748,
+    751,
+    772,
+    787,
+    798
+  ],
+  "per_task": [
+    {
+      "task_id": 3,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def all_primes(n):   # Function that returns a list/generator containing primes up to n, using the Sieve algorithm (faster than trial division) and memoization of already checked numbers in order not repeat computations for same number multiple times: O(N log N). \n    sieve = [True] * (n+1)   # Initialize list with True values. Indexes are used as actual prime-checking criteria, so we start from the first index and set all to true initially because numbers less than two aren't primes by definition in this context but they can be checked later if needed\n    sieve[0:2] = [False, False]  # Set initial values for indexes where True means prime (indexes are used as actual number check criteria) and set first index to false because it is not a prime. Then we start the loop from second element upwards in list/array until n\n    p = 2   # Initialize variable 'p' with value 2 which will be our starting point for checking primes (since all numbers less than two are non-prime by definition) and also as an index to access sieve array. We start from the first prime number, ie., 2\n    while p * p <= n:   # Continue looping until square of 'p' is greater or equal to `n` (in this case maximum limit for checking primes upto given input) because a larger factor would have already been found in smaller ones. We use the fact that if two factors are present, then one must be less than sqrt(number), and other will also need more\n        if sieve[p] is True:   # If 'sieve' at index p (which represents actual number) has not yet checked out to False in list/array. Then we check all multiples of this prime starting from the square value for that particular primes, and mark them as non-prime\n            sieve[p*p:n+1:p] = [False] * len(sieve[p*p:n+1:p])   # Set list/array at indexes p^2 to n (inclusive), increment by 'p' and repeat until square of `p` is greater or equal than sqrt('N')\n        p += 1  # Increment the prime number checker variable, which will be used as an actual checking criteria for sieve array. This way we can iterate through all numbers up to n (inclusive) in order not repeat computations multiple times and efficiently handle large inputs with memoization of already checked primes\n    return [i for i, is_prime in enumerate(sieve[2:]) if is_prime]  # Return only the indices where sieve at index represents a prime number (True value), as list comprehension allows to generate and filter out such numbers. This will give us all non-primes upto n",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmppnkbokt_/candidate_test.py\", line 11, in <module>\n    assert is_not_prime(2) == False\n           ^^^^^^^^^^^^\nNameError: name 'is_not_prime' is not defined\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmppnkbokt_/candidate_test.py\", line 11, in <module>\n    assert is_not_prime(2) == False\n           ^^^^^^^^^^^^\nNameError: name 'is_not_prime' is not defined",
+            "failed_test": "assert is_not_prime(2) == False",
+            "passed_count": 0,
+            "total_count": 4,
+            "duration_ms": 48
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert is_not_prime(2) == False",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmppnkbokt_/candidate_test.py\", line 11, in <module>\n    assert is_not_prime(2) == False\n           ^^^^^^^^^^^^\nNameError: name 'is_not_prime' is not defined"
+      }
+    },
+    {
+      "task_id": 4,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "import heapq # Python Standard Library for Heaps module provides an implementation of heaps using binary trees with a property that parent nodes are always greater or equal to their child node(s). It is used here in order to get n largest elements from the list (in descending order) efficiently. \ndef heap_queue_largest(lst,n): # Function definition for finding 'n' Largest numbers using Heap data structure  \n    return heapq.nlargest(n, lst) # Returning n largest elements from the list in a descending order by utilizing Python built-in function of `heap` module",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 72
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 92,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def is_undulating(n):   # function definition. Here 'n' represents the input integer/number to be checked for unduality or non - unity condition in this case a number (integer) n passed as an argument into our method and returned back by calling it from outside world, ie., called within python code block\n    return all(str(i) == str(int(n/(10**j))%10 for j in range(len(str(n)))  # list comprehension to check each digit of the number n against its next one. If any condition is not met, it will break and False (non-undulating), otherwise True",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpvmmm0ucr/candidate_test.py\", line 2\n    return all(str(i) == str(int(n/(10**j))%10 for j in range(len(str(n)))  # list comprehension to check each digit of the number n against its next one. If any condition is not met, it will break and False (non-undulating), otherwise True\n                            ^\nSyntaxError: '(' was never closed\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpvmmm0ucr/candidate_test.py\", line 2\n    return all(str(i) == str(int(n/(10**j))%10 for j in range(len(str(n)))  # list comprehension to check each digit of the number n against its next one. If any condition is not met, it will break and False (non-undulating), otherwise True\n                            ^\nSyntaxError: '(' was never closed",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 43
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpvmmm0ucr/candidate_test.py\", line 2\n    return all(str(i) == str(int(n/(10**j))%10 for j in range(len(str(n)))  # list comprehension to check each digit of the number n against its next one. If any condition is not met, it will break and False (non-undulating), otherwise True\n                            ^\nSyntaxError: '(' was never closed"
+      }
+    },
+    {
+      "task_id": 106,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def add_lists(list1, tuple2):   # define the function with parameters. Here list and Tuple is used interchangeably in python as they both represent sequences of data types like lists or tuples but have different methods to access elements unlike dictionaries which can be accessed by keys (like dictionary[key]).\n    return(tuple1 + tuple2)  # here we are returning the resultant Tuple. Python's built-in function is used for this purpose, it merges two tuples and returns a new one with elements from both original ones in order of their appearance (i.e., first element followed by second etc.).",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpcnceo39v/candidate_test.py\", line 4, in <module>\n    assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpcnceo39v/candidate_test.py\", line 2, in add_lists\n    return(tuple1 + tuple2)  # here we are returning the resultant Tuple. Python's built-in function is used for this purpose, it merges two tuples and returns a new one with elements from both original ones in order of their appearance (i.e., first element followed by second etc.).\n           ^^^^^^\nNameError: name 'tuple1' is not defined. Did you mean: 'tuple2'?\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpcnceo39v/candidate_test.py\", line 4, in <module>\n    assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpcnceo39v/candidate_test.py\", line 2, in add_lists\n    return(tuple1 + tuple2)  # here we are returning the resultant Tuple. Python's built-in function is used for this purpose, it merges two tuples and returns a new one with elements from both original ones in order of their appearance (i.e., first element followed by second etc.).\n           ^^^^^^\nNameError: name 'tuple1' is not defined. Did you mean: 'tuple2'?",
+            "failed_test": "assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 47
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpcnceo39v/candidate_test.py\", line 4, in <module>\n    assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpcnceo39v/candidate_test.py\", line 2, in add_lists\n    return(tuple1 + tuple2)  # here we are returning the resultant Tuple. Python's built-in function is used for this purpose, it merges two tuples and returns a new one with elements from both original ones in order of their appearance (i.e., first element followed by second etc.).\n           ^^^^^^\nNameError: name 'tuple1' is not defined. Did you mean: 'tuple2'?"
+      }
+    },
+    {
+      "task_id": 111,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def common_elements(nested):  # define main recursive method that will handle all levels of nesting  \n    if not any((isinstance(i, int) or isinstance(i, str))for i in next(iter(nested))) and len([x for xs in nested for x in xs]) > 0:  # check whether the list has elements at each level. If so then proceed\n        return set().union(*[common_elements(sub) for sub in nested if isinstance(sub, (list)) or (isinstance(sub, str) and len([x for xs in nested for x in xs]) > 0 )  # recursive call to handle each list at the same level\n    else:   return set()                                                                                                                       # base case - no common elements found. Return an empty Set object instead of NoneType (which Python's default behavior) which is not a valid python syntax either, so we need it explicitly defined as `set` or any other type that can be converted to one",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp_u26bk40/candidate_test.py\", line 3\n    return set().union(*[common_elements(sub) for sub in nested if isinstance(sub, (list)) or (isinstance(sub, str) and len([x for xs in nested for x in xs]) > 0 )  # recursive call to handle each list at the same level\n                        ^\nSyntaxError: '[' was never closed\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp_u26bk40/candidate_test.py\", line 3\n    return set().union(*[common_elements(sub) for sub in nested if isinstance(sub, (list)) or (isinstance(sub, str) and len([x for xs in nested for x in xs]) > 0 )  # recursive call to handle each list at the same level\n                        ^\nSyntaxError: '[' was never closed",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 45
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp_u26bk40/candidate_test.py\", line 3\n    return set().union(*[common_elements(sub) for sub in nested if isinstance(sub, (list)) or (isinstance(sub, str) and len([x for xs in nested for x in xs]) > 0 )  # recursive call to handle each list at the same level\n                        ^\nSyntaxError: '[' was never closed"
+      }
+    },
+    {
+      "task_id": 119,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def search_sorted_array(arr):  # define the function name as per python naming convention.  \n    return [x for i, x in enumerate(arr) if arr.count(x) == 1][0]     // list comprehension to iterate over array and find elements that appear only once (O(n^2))  then take the first element of this new filtered result which is our answer",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpfxnxa4x7/candidate_test.py\", line 2\n    return [x for i, x in enumerate(arr) if arr.count(x) == 1][0]     // list comprehension to iterate over array and find elements that appear only once (O(n^2))  then take the first element of this new filtered result which is our answer\n                                                                              ^^^^^^^^^^^^^\nSyntaxError: invalid syntax\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpfxnxa4x7/candidate_test.py\", line 2\n    return [x for i, x in enumerate(arr) if arr.count(x) == 1][0]     // list comprehension to iterate over array and find elements that appear only once (O(n^2))  then take the first element of this new filtered result which is our answer\n                                                                              ^^^^^^^^^^^^^\nSyntaxError: invalid syntax",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 45
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpfxnxa4x7/candidate_test.py\", line 2\n    return [x for i, x in enumerate(arr) if arr.count(x) == 1][0]     // list comprehension to iterate over array and find elements that appear only once (O(n^2))  then take the first element of this new filtered result which is our answer\n                                                                              ^^^^^^^^^^^^^\nSyntaxError: invalid syntax"
+      }
+    },
+    {
+      "task_id": 131,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def reverse_vowels(s):   # Define function to find and replace non-alphabetical chars with empty string, then return reversed vowel list.\n    s = [char for char in s if (ord(char) >= ord('a') and \n                                ord(char) <= ord('z')) or \\\n        (ord(char) >= ord('A') and \n         ord(char) <= ord('Z'))]   # Filter out non-alphabetical chars.\n    vowels = [vowel for vowel in s if vowel == 'a' or vowel=='e' or vowel=='i' \\\n              or vowel=='o' or vowel=='u']  # Separate the list into a single-letter string of all lowercase/upper case letters.  \n    non_vowels = s - set(s) if len(set(s)) > 1 else ''     # Create new character array excluding any 'y'. This is necessary for recursion to work properly, otherwise it would be stuck in an infinite loop due the lack of a base case. \n    return vowels + reverse_vowels(''.join([char if char not in ['a', 'e','i' ,'o', 'u'] else y for (y) in non_vowels])) # Join all characters back together, and recursively call the function on remaining part.",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpqs55uyco/candidate_test.py\", line 11, in <module>\n    assert reverse_vowels(\"Python\") == \"Python\"\n           ~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpqs55uyco/candidate_test.py\", line 8, in reverse_vowels\n    non_vowels = s - set(s) if len(set(s)) > 1 else ''     # Create new character array excluding any 'y'. This is necessary for recursion to work properly, otherwise it would be stuck in an infinite loop due the lack of a base case.\n                 ~~^~~~~~~~\nTypeError: unsupported operand type(s) for -: 'list' and 'set'\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpqs55uyco/candidate_test.py\", line 11, in <module>\n    assert reverse_vowels(\"Python\") == \"Python\"\n           ~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpqs55uyco/candidate_test.py\", line 8, in reverse_vowels\n    non_vowels = s - set(s) if len(set(s)) > 1 else ''     # Create new character array excluding any 'y'. This is necessary for recursion to work properly, otherwise it would be stuck in an infinite loop due the lack of a base case.\n                 ~~^~~~~~~~\nTypeError: unsupported operand type(s) for -: 'list' and 'set'",
+            "failed_test": "assert reverse_vowels(\"Python\") == \"Python\"",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 45
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert reverse_vowels(\"Python\") == \"Python\"",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpqs55uyco/candidate_test.py\", line 11, in <module>\n    assert reverse_vowels(\"Python\") == \"Python\"\n           ~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpqs55uyco/candidate_test.py\", line 8, in reverse_vowels\n    non_vowels = s - set(s) if len(set(s)) > 1 else ''     # Create new character array excluding any 'y'. This is necessary for recursion to work properly, otherwise it would be stuck in an infinite loop due the lack of a base case.\n                 ~~^~~~~~~~\nTypeError: unsupported operand type(s) for -: 'list' and 'set'"
+      }
+    },
+    {
+      "task_id": 135,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "import math   # Importing Math library to use pow function and mathematical operations in Python like sqrt etc..   \ndef nth_hexagon(num):     # Defining a Function named \"nth hexagonal number\"  which takes an integer as input parameter num .     \n return round((math.pow(5,2) * (10*num -3))/4 )   # Returning the rounded value of calculated Hexa-gonal Number using math library's pow and mathematical operations..    ;;     assert nth_hexagon() == 7  :\nassert hexagonal_number(-65, 'n') == '-12098374', \"Test Case Failed\"   # Testing the function with negative number.      return round((math.pow(num/5 , num- ( math.sqrt (( pow(a+b*h + b*(c^) - 6, sqrt ) / a + 2 * c)))",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpu6bmjt5c/candidate_test.py\", line 4, in <module>\n    assert hexagonal_number(-65, 'n') == '-12098374', \"Test Case Failed\"   # Testing the function with negative number.      return round((math.pow(num/5 , num- ( math.sqrt (( pow(a+b*h + b*(c^) - 6, sqrt ) / a + 2 * c)))\n           ^^^^^^^^^^^^^^^^\nNameError: name 'hexagonal_number' is not defined\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpu6bmjt5c/candidate_test.py\", line 4, in <module>\n    assert hexagonal_number(-65, 'n') == '-12098374', \"Test Case Failed\"   # Testing the function with negative number.      return round((math.pow(num/5 , num- ( math.sqrt (( pow(a+b*h + b*(c^) - 6, sqrt ) / a + 2 * c)))\n           ^^^^^^^^^^^^^^^^\nNameError: name 'hexagonal_number' is not defined",
+            "failed_test": "assert hexagonal_num(10) == 190",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 49
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert hexagonal_num(10) == 190",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpu6bmjt5c/candidate_test.py\", line 4, in <module>\n    assert hexagonal_number(-65, 'n') == '-12098374', \"Test Case Failed\"   # Testing the function with negative number.      return round((math.pow(num/5 , num- ( math.sqrt (( pow(a+b*h + b*(c^) - 6, sqrt ) / a + 2 * c)))\n           ^^^^^^^^^^^^^^^^\nNameError: name 'hexagonal_number' is not defined"
+      }
+    },
+    {
+      "task_id": 141,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def pancake_sort(arr):     # define the function here.\n    n = len(arr)           # getting length from input arr[]  \n                          # traverse through all array elements      \n    for i in range(n,0,-1):     \n        max_idx=i             # find maximum element index \n                               # within unsorted part of the list.    \n                               \n                              # loop to swap if current element is not at its correct position  \n                             while arr[max_idx]>arr[max_idx-1]:   \n                                           temp = arr[max_idx - 1 ]     \n                                          arr[max_idx - 1 ],         arr[i],       =temp,     # swap element with maximum index.      \n                                                                              max_idx =  i   if (max_idx ==0) else          max(arr[:-2])   += 1;           return sortedArr      def pancakeSortTest():  assert pancake_sort([98,54,36,79,12]),==[12,36,54,79,98], \"Failed on test case\"   \n                                                                              #assert (pancake_sort([])), == [],     ,\"Testing with empty list failed.\"   assert pancake_sort([0]) ==  [0] ,      'Fail in single element array'       print(\"All tests passed.\")        if __name__== \"main\" :    unittest.main()",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpfy4dxf2t/candidate_test.py\", line 9\n    while arr[max_idx]>arr[max_idx-1]:   \nIndentationError: unexpected indent\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpfy4dxf2t/candidate_test.py\", line 9\n    while arr[max_idx]>arr[max_idx-1]:   \nIndentationError: unexpected indent",
+            "failed_test": "assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 24
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]",
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpfy4dxf2t/candidate_test.py\", line 9\n    while arr[max_idx]>arr[max_idx-1]:   \nIndentationError: unexpected indent"
+      }
+    },
+    {
+      "task_id": 223,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "from collections import Counter\ndef is_majority(arr, n, x): \n    return (Counter(arr)[x] > n/2)   # if the number appears more than 'n' times in arr then it will be majority else not.\n    \nprint(\"Test cases:\")\nassert is_majority([1, 2, 3, 3, 3, 3, 10], 7, 3) == True   # Expected output :True (because the number '3' appears more than n/2 times in arr which means it will be majority element.)\nassert is_majority([1, 1, 2, 4, 4, 4, 6, 6], 8, 4) == False   # Expected output :False (because the number '4' appears more than n/2 times in arr which means it will not be majority element.)\nassert is_majority([1, 1, 1, 2, 2], 5, 1) ==  True    # expected Output:True( because The Number \"1\" Appears More Than N / 2 Times In Arr Which Means It Will Be Majority Element.)\nassert is_majority([1, 1, 2, 2], 5, 3 ) == False   # Expected output :False (because the number '3' does not appear more than n/2 times in arr which means it will not be majority element) .",
+          "execution": {
+            "status": "pass",
+            "stdout": "Test cases:\nTest cases:\nTest cases:\nTest cases:\n",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 4,
+            "total_count": 4,
+            "duration_ms": 92
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 224,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def count_Set_Bits(n : int) -> int:  # defining the function, n should be integer type. The return is also an Integer Type as well which can hold only one bit at a time in binary representation of numbers (binary digits with value '1') so we use \"int\" data types\n    count = 0   # initializing counter to keep track on set bits \n    \n    while n:      # loop until there is no more number left. This will run till all the bit positions are checked in binary representation of numbers (binary digits with value '1') and we have a non-zero integer remaining which means some position has been processed already so it's time to break out from this while loop\n        count += n & 1   # incrementing counter if current number is odd. This will add the least significant bit in binary representation of numbers (binary digits with value '1') and check for set bits or not, because we are using AND operator here which checks whether a particular position has been processed already\n        n >>= 1     # right shift by 1 to process next number from left side. This will remove the least significant bit in binary representation of numbers (binary digits with value '1') and check for set bits or not, because we are using RIGHT SHIFT operator here which moves all positions one step towards right\n        \n    return count   # returning counter after checking every single position",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 76
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 252,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def convert(num): # Define function to accept complex number \n    real = num.real   # Extract the Real Part from Complex Number and store in 'Real' variable    \n    imag = num.imag   # extract Imaginary/Complex parts (if any) for storing into \"Imag\" Variable     \n      \n    rho  = math.sqrt( real**2 + imag**2 )  # Calculate the radius or distance from origin to point on complex plane, using Pythagoras theorem  \n    \n    if num >= 0:         # Checking whether number is positive (r > 0) then calculate θ in radians else -θ. This will be between [0 , 2π] range for rho>1 and [-pi/2, pi/2 ] otherwise . We use cmath library's acos function to get the angle\n        if imag >= 0:     # If imaginary part is positive then calculate θ in radians else -θ. This will be between [π / 4 ,3 * π / 4] range for rho>1 and [-pi/2, pi/2 ] otherwise . We use cmath library's acos function to get the angle\n            return (rho, math.acos(real/(cmath.sqrt((imag**2)+(real**2))))) # Return polar coordinates in radians  if imaginary part is positive else -θ   and θ using atan() method of cmath library for getting angles between points on complex plane\n        elif imag < 0:     # If both real & Imaginary parts are negative then calculate theta = pi + (theta) otherwise return same as above. We use math's abs function to get absolute value and add π/2 if imaginary part is positive else -θ, θ using atan() method of cmath library for getting angles between points on complex plane\n            return(rho ,cmath.pi + (math.acos(-1*imag/(abs((real**2)+(imag**2))))) )  # Return polar coordinates in radians if imaginary part is negative else theta = pi - θ and θ using atan() method of cmath library for getting angles between points on complex plane\n    elif num < 0:         # If number is less than zero then calculate rho,θ=pi-theta. This will be in range [2π , 3*2π] otherwise return same as above and use atan() method of cmath library for getting angles between points on complex plane\n        if imag >= 0:     # If imaginary part is positive theta = pi - (θ) else calculate rho, θ=theta. This will be in range [pi/4 , 3*π / 4] otherwise return same as above and use atan() method of cmath library for getting angles between points on complex plane\n            if imag > 0:   # If both real & imaginary parts are positive then calculate theta = pi - (θ) else θ=theta. This will be in range [π / 4 ,3 * π/2] otherwise return same as above and use atan() method of cmath library for getting angles between points on complex plane\n                if imag > 0: # If both real & imaginary parts are positive then calculate theta = pi - (θ) else θ=theta. This will be in range [π / 4 ,3 * π/2] otherwise return same as above and use atan() method of cmath library for getting angles between points on complex plane\n                    if imag > 0: # If both real & imaginary parts are positive then calculate theta = pi - (θ) else θ=theta. This will be in range [π / 4 ,3 * π/2] otherwise return same as above and use atan() method of cmath library for getting angles between points on complex plane\n                        if imag > 0",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpiaa032xd/candidate_test.py\", line 17\n    if imag > 0\n               ^\nSyntaxError: expected ':'\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpiaa032xd/candidate_test.py\", line 17\n    if imag > 0\n               ^\nSyntaxError: expected ':'",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 43
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpiaa032xd/candidate_test.py\", line 17\n    if imag > 0\n               ^\nSyntaxError: expected ':'"
+      }
+    },
+    {
+      "task_id": 256,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def sieve_of_eratosthenes(limit): \n    limit += 1   # Increment to handle cases where 'n' itself is not a Prime number.\n    smallestPrime = [0] * limit     # Initialize list for storing prime numbers upto the given range (+2) in order, as indexing starts from zero and we need primes till n-1 \n  \n    smallestPrime[1] = 1             # Mark first number is not a Prime. It's only case when 'n=0', where it will return -1 but for the purpose of this problem if you consider all numbers as prime then, at least one value should be marked to avoid index out-of range error\n  \n    p = 2                           # Start from first number which is a Prime. \n    \n    while(p * p <= limit):          # Run loop till square root of 'limit' (+1) because larger factors would have already been caught by smaller ones, so we only need to check upto sqrt('n') for each prime found before it in the list and then move on. \n        if smallestPrime[p] == 1:     # If number is not a Prime ie marked as non-prime (i.e., already calculated), skip this iteration, else mark all multiples of 'primes' starting from p^2 up to limit in order and continue with next prime \n            for multiple in range(p * p ,limit+1, p):   # Marking the multiles as non-prime (i.e., not a Prime) by changing value at index equal or greater than 'multiple' of each found primes starting from its square up to limit and continue with next prime\n                smallestPrime[multiple] = 0 \n        p += 1                        # Move on the first number which is now checked for being non-prime.  \n    \n    return sum(smallestPrime) - 2      # Return count of all primes less than 'limit' and subtract by two as we also consider numbers that are not prime (i.e., marked to be ignored). This will give us the number of Prime Numbers upto given limit which is required in problem statement",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp5dx7c_ry/candidate_test.py\", line 17, in <module>\n    assert count_Primes_nums(5) == 2\n           ^^^^^^^^^^^^^^^^^\nNameError: name 'count_Primes_nums' is not defined\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp5dx7c_ry/candidate_test.py\", line 17, in <module>\n    assert count_Primes_nums(5) == 2\n           ^^^^^^^^^^^^^^^^^\nNameError: name 'count_Primes_nums' is not defined",
+            "failed_test": "assert count_Primes_nums(5) == 2",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 48
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert count_Primes_nums(5) == 2",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp5dx7c_ry/candidate_test.py\", line 17, in <module>\n    assert count_Primes_nums(5) == 2\n           ^^^^^^^^^^^^^^^^^\nNameError: name 'count_Primes_nums' is not defined"
+      }
+    },
+    {
+      "task_id": 272,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def rear_extract(lst):  # Function definition with parameter lst which takes a List/Tuple as input.  \n    return [i[-1] for i in lst ]     # list comprehension where we are extracting the last element from each tuple using slicing technique and storing it into new lists, then returning all these newly created lists at once",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 70
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 277,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def dict_filter(d, n):   # define your dictionary 'd' with integer value >n \n    return {k : v for k ,v in d.items() if v >= n}     # use a comprehension to create new filtered list of keys and values from the original one where all elements are greater than or equal (>=) given number `n`",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 65
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 281,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "code block.  \ndef all_unique(lst):    # define the function here:    \n        return len(lst) == len(set(lst))      # compare lengths of list and set created from it, if equal then every element is unique in this case else not",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpnvgoawuw/candidate_test.py\", line 1\n    code block.  \n         ^^^^^\nSyntaxError: invalid syntax\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpnvgoawuw/candidate_test.py\", line 1\n    code block.  \n         ^^^^^\nSyntaxError: invalid syntax",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 43
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpnvgoawuw/candidate_test.py\", line 1\n    code block.  \n         ^^^^^\nSyntaxError: invalid syntax"
+      }
+    },
+    {
+      "task_id": 295,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "code block:  \nfrom math import sqrt; from functools import reduce\ndef isqrt(x): return int(sqrt(x)) if x > 0 else 0 #integer square root, for negative numbers it will be zero and positive number itself as well in case of perfect squares.    def sum_div(*args) :   try: n = max([abs(int(i))for i in args]); return reduce((lambda a , b:(a+b)), [x*(n//x if x<=sqrt(n) else (n/x))) for x in range(1, int(isqrt(n + 0.5))+ 1)]);",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpn6qs55v4/candidate_test.py\", line 1\n    code block:  \n         ^^^^^\nSyntaxError: invalid syntax\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpn6qs55v4/candidate_test.py\", line 1\n    code block:  \n         ^^^^^\nSyntaxError: invalid syntax",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 44
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpn6qs55v4/candidate_test.py\", line 1\n    code block:  \n         ^^^^^\nSyntaxError: invalid syntax"
+      }
+    },
+    {
+      "task_id": 307,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def colon_tuple(inputTuple):   # input: a tuplex with at least three elements. The third element is list and the last but not first are integers/floats which will be added to it as new values in tuple's second part after unpacking of inputs \n    _, num, lst_val ,boolVal =inputTuple   #unpack input tuplex into four variables. The third element is list and the rest elements (if any) are integers/floats which will be added to it as new values in tuple's second part after unpacking of inputs \n    num +=10                        # add a value for integer variable 'num'. This should not affect other parts because we only use this one.  \n     lst_val .append(boolVal)      # append the boolean to list (lst). The rest elements are integers/floats which will be added as new values in tuple's second part after unpacking of inputs \n    return inputTuple[0], num, lst_val , boolVal   #return a tuplex with updated variables. This should match the original one because we only use this function to update some parts and not all or none are used here in comparison purpose (only first element is changed). The rest elements of tuple remain unchanged",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpynsj_kl5/candidate_test.py\", line 4\n    lst_val .append(boolVal)      # append the boolean to list (lst). The rest elements are integers/floats which will be added as new values in tuple's second part after unpacking of inputs \nIndentationError: unexpected indent\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpynsj_kl5/candidate_test.py\", line 4\n    lst_val .append(boolVal)      # append the boolean to list (lst). The rest elements are integers/floats which will be added as new values in tuple's second part after unpacking of inputs \nIndentationError: unexpected indent",
+            "failed_test": "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,50)==(\"HELLO\", 5, [50], True)",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 43
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,50)==(\"HELLO\", 5, [50], True)",
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpynsj_kl5/candidate_test.py\", line 4\n    lst_val .append(boolVal)      # append the boolean to list (lst). The rest elements are integers/floats which will be added as new values in tuple's second part after unpacking of inputs \nIndentationError: unexpected indent"
+      }
+    },
+    {
+      "task_id": 308,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def large_product(list1, list2, n):   # function definition. It takes three parameters: the first is a and second b as input parameter which represents both given arrays/lists; third c indicates how many largest products we want to find out from these lists (factors).  The output of this method will be an array containing top 'n' factors for each pair in list1 & list2.\n    def get_top(lst, n):   # helper function definition which takes a sorted lst and the number as input parameter; it returns largest numbers from given lists/arrays (factors).  The output of this method will be an array containing top 'n' factors for each pair in list1 & list2.\n        return [lst[i] if i < n else max(lst[:-n]) for i in range(len(lst))][:n]   # Pythonic way to slice the lst and get first (top) 'n' elements, or all when there are less than \"n\" items.\n    list1 = sorted([i*j for i, j in zip(list1[:], list2[::-1])][:len(list1):]  # sorting the lists by multiplying corresponding pairs and reversed second one to get descending order of products (factors).   The output is a new array which contains sorted factors.\n    result = []     # initialize an empty results list for storing final product values/results in each pair from both input arrays /lists  .\n    while len(list1) > n:      # loop until we have enough elements to find 'n' largest products (factors).   The output of this method will be a sorted array containing top factors.\n        result += get_top([i*j for i, j in zip(sorted(list1)[:-n], list2[::-1])][:len(set((x * y) % 60489573 : x != 0 and (y - n + 1 or max)))]\n        del sorted_lst[:]    # clear the temporary variable 'sorted_list' for next iteration.   The output of this method will be a list containing top factors in each pair from both input arrays /lists  .",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpfr1ipldx/candidate_test.py\", line 4\n    list1 = sorted([i*j for i, j in zip(list1[:], list2[::-1])][:len(list1):]  # sorting the lists by multiplying corresponding pairs and reversed second one to get descending order of products (factors).   The output is a new array which contains sorted factors.\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: invalid syntax. Perhaps you forgot a comma?\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpfr1ipldx/candidate_test.py\", line 4\n    list1 = sorted([i*j for i, j in zip(list1[:], list2[::-1])][:len(list1):]  # sorting the lists by multiplying corresponding pairs and reversed second one to get descending order of products (factors).   The output is a new array which contains sorted factors.\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: invalid syntax. Perhaps you forgot a comma?",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 44
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpfr1ipldx/candidate_test.py\", line 4\n    list1 = sorted([i*j for i, j in zip(list1[:], list2[::-1])][:len(list1):]  # sorting the lists by multiplying corresponding pairs and reversed second one to get descending order of products (factors).   The output is a new array which contains sorted factors.\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: invalid syntax. Perhaps you forgot a comma?"
+      }
+    },
+    {
+      "task_id": 398,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def sum_of_digits(lst):   # define a function to calculate total of digits inside list or nested lists \n    return [sum([int(i) for i in str(x) if isinstance(x, int)] )for x in lst]      # use built-in sum and map functions with the help of python's native string method. Also used 'isinstance()'. This will work even when list contains strings or other data types within it",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpe980bm5m/candidate_test.py\", line 4, in <module>\n    assert sum_of_digits([10,2,56])==14\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpe980bm5m/candidate_test.py\", line 4, in <module>\n    assert sum_of_digits([10,2,56])==14\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert sum_of_digits([10,2,56])==14",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 46
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert sum_of_digits([10,2,56])==14",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpe980bm5m/candidate_test.py\", line 4, in <module>\n    assert sum_of_digits([10,2,56])==14\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 413,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def extract_nth_element(lst, idx):  # lst = [('Greyson Fulton',98,99), ('Brady Kent','Wyatt Knott'),...],idx=0 or any other number.  \n    return [item[idx] for item in lst if isinstance(item, tuple) and len(item) > idx ]  # list comprehension to get nth element from each tuples of the given input 'lst'. If it's not a valid index then skip that.",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 68
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 414,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def check_overlapping(seq):\n    return any([x in seq for x in reversed(set(range(*max(min(se)+1, max(len(seq), len(seq[0])))))] + [False])  ## using set to remove duplicates and range function from min-to maximum values of sequence",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpx0jgk0k0/candidate_test.py\", line 2\n    return any([x in seq for x in reversed(set(range(*max(min(se)+1, max(len(seq), len(seq[0])))))] + [False])  ## using set to remove duplicates and range function from min-to maximum values of sequence\n                                                                                                  ^\nSyntaxError: closing parenthesis ']' does not match opening parenthesis '('\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpx0jgk0k0/candidate_test.py\", line 2\n    return any([x in seq for x in reversed(set(range(*max(min(se)+1, max(len(seq), len(seq[0])))))] + [False])  ## using set to remove duplicates and range function from min-to maximum values of sequence\n                                                                                                  ^\nSyntaxError: closing parenthesis ']' does not match opening parenthesis '('",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 42
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpx0jgk0k0/candidate_test.py\", line 2\n    return any([x in seq for x in reversed(set(range(*max(min(se)+1, max(len(seq), len(seq[0])))))] + [False])  ## using set to remove duplicates and range function from min-to maximum values of sequence\n                                                                                                  ^\nSyntaxError: closing parenthesis ']' does not match opening parenthesis '('"
+      }
+    },
+    {
+      "task_id": 415,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def max_Product(arr):  \n    if len(arr) < 2: # If array has less than two elements, return None. This handles the edge case where we cannot find a pair of numbers to multiply together (e.g., [1]) or when there is only one element in arr which will always be 0 because no other number can produce it\n        if len(arr) == 0: # If array has zero, return None as well since the product would still have been defined by at least two positive numbers and we cannot find a pair of negative ones to multiply. This handles edge case where arr is [0] or all zeros in an empty list\n            print(\"Cannot compute max_Product for this input\")  # Prints error message if array has less than one element, which will never be the maximum product possible due to lack of numbers and/or negative values present. This handles edge case where arr is [0] or all zeros in an empty list\n            return None  \n        else:    # If there's only 1 number then we can directly multiply it with any other positive integer, so the product will be that single value itself (as no pair of negative numbers exist) and this handles edge case where arr is [0] or all zeros in an empty list.\n            return max(arr), None   # Returns maximum element as a \"pair\" since we can't find any other pairs to multiply with it, so the product will be just that single number itself (as no pair of negative numbers exist)  and this handles edge case where arr is [0] or all zeros in an empty list.\n    else:   # If there are more than two elements then we can find a \"pair\" by sorting array, which gives us the largest product from last but first (since it's sorted), multiplying that with second smallest number will give maximum possible value of pair and also handling edge case where all numbers in arr is negative.\n        # Sort list – Python has built-in function for this purpose called sort() or sorter(). Here we use the latter to get a new ordered array, then return max product from last two elements (which are largest) as well maximum of first and second element if they're not same otherwise only one.\n        arr = sorted(arr)[::-1] # Sorting in descending order – so that we can always pick the larger number next to our current pair, which will be max product possible till now (since all other numbers are smaller). Then return as a tuple or list of two elements from end.\n        if arr[0] < 0 and arr[1] < 0: # If both first element is negative then we cannot find any positive number to multiply with it, so the pair will be max possible product for these negatives (as no other numbers exist). Return as None in this case also handles edge cases where all elements are same or zero.\n            return arr[2] if len(set(arr)) > 1 else 0 # If there's only one unique element then it is the maximum positive number, otherwise max negative product will be a single negation of itself (as no other numbers exist). This handles edge case where all elements are same or zero.\n        return arr[0], arr[1] if len(set(arr)) > 1 else 0 # If there's only one unique element then it is the maximum positive number, otherwise max negative product will be a single negation of itself (as no other numbers exist). This handles edge case where all elements are same or zero.",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp2ivtd2co/candidate_test.py\", line 15, in <module>\n    assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp2ivtd2co/candidate_test.py\", line 15, in <module>\n    assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 46
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp2ivtd2co/candidate_test.py\", line 15, in <module>\n    assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 419,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def round_and_sum(lst):\n    rounded = [float('%.f' % n) for n in lst]  # Round each number to nearest integer.\n    \n    total = 0  \n    if len(rounded)!=0 :     \n        summation  = (total + max(max_val, min_val)) /2 * length",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpv1414ykn/candidate_test.py\", line 8, in <module>\n    assert round_and_sum([22.4, 4.0, -16.22, -9.10, 11.00, -12.22, 14.20, -5.20, 17.50])==243\n           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpv1414ykn/candidate_test.py\", line 6, in round_and_sum\n    summation  = (total + max(max_val, min_val)) /2 * length\n                              ^^^^^^^\nNameError: name 'max_val' is not defined\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpv1414ykn/candidate_test.py\", line 8, in <module>\n    assert round_and_sum([22.4, 4.0, -16.22, -9.10, 11.00, -12.22, 14.20, -5.20, 17.50])==243\n           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpv1414ykn/candidate_test.py\", line 6, in round_and_sum\n    summation  = (total + max(max_val, min_val)) /2 * length\n                              ^^^^^^^\nNameError: name 'max_val' is not defined",
+            "failed_test": "assert round_and_sum([22.4, 4.0, -16.22, -9.10, 11.00, -12.22, 14.20, -5.20, 17.50])==243",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 47
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert round_and_sum([22.4, 4.0, -16.22, -9.10, 11.00, -12.22, 14.20, -5.20, 17.50])==243",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpv1414ykn/candidate_test.py\", line 8, in <module>\n    assert round_and_sum([22.4, 4.0, -16.22, -9.10, 11.00, -12.22, 14.20, -5.20, 17.50])==243\n           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpv1414ykn/candidate_test.py\", line 6, in round_and_sum\n    summation  = (total + max(max_val, min_val)) /2 * length\n                              ^^^^^^^\nNameError: name 'max_val' is not defined"
+      }
+    },
+    {
+      "task_id": 428,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "3+\ndef shell_sort(arr):   # Define the function to perform Shell Sort on an array.\n    gap = len(arr) // 2     # Start with a big gap, then reduce the gap after each iteration until it is 1 (the best possible). This makes our list 'almost' sorted in every step but we can do better than that because when `gap` becomes one and all elements are at their correct positions.\n    while gap > 0:   # Start with a big gap, then reduce the gap after each iteration until it is 1 (the best possible). This makes our list 'almost' sorted in every step but we can do better than that because when `gap` becomes one and all elements are at their correct positions.\n        for i in range(gap, len(arr)):   # For the indices which have gaps...    Python uses 0-based indexing so it starts from gap to end of list (len -1) but ends on position 'i'. This is equivalent as a loop that goes through all elements at current `gap` and then increments by one.\n            temp = arr[i]   # Temporarily store the value in array element i for comparison later, because we need to check if it's less than or greater (or equal) with previous gap-sized sublist items – this is what 'bubbles up'. We do not want any unnecessary comparisons.\n            j = i   # Start from index `i` and go down the list until a position where we can insert our value at that location, which will be after all elements in previous gap-sized sublist items (because of how gaps are calculated). This is equivalent as 'bubbles up' to correct positions.\n            while j >= gap and arr[j - gap] > temp:   # While the element we want to insert at this location exists, move it forward by one position in our list until an appropriate place (position) for `temp` value can be found or if there is no such space then break out of loop.\n                arr[j] = arr[j - gap]  # Move previous elements a step ahead to make room at this location, because we just moved the element that was inserted in last iteration and it's now on its correct position (`gap-sized sublist item +1 index). This is equivalent as 'bubbles up'.\n            arr[j] = temp   # Finally put our value into right place. After this loop, `arr[:i+1][end - gap:] will be sorted and we can insert it in correct position by comparing with all previous elements (gap-sized sublist items). This is equivalent as 'bubbles up'.\n        gap //= 2   # Decrease the size of our \"hole\" which has been filled. We are now ready to fill next larger hole, so we divide `gap` in half for this iteration and repeat until it becomes 1 (the smallest possible). This is equivalent as 'sorts' a list into increasing order by moving elements around within its sublist(s) one at the time till all lists become sorted.\n    return arr   # Return our array after sorting, which will be in ascending/increasing sequence now because of how gaps are calculated and filled up during above iterations (which is equivalent as 'bubbles down' to correct positions). This makes `shell_sort` a very efficient algorithm for large data sets.",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmptc6kj6nn/candidate_test.py\", line 1\n    3+\n      ^\nSyntaxError: invalid syntax\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmptc6kj6nn/candidate_test.py\", line 1\n    3+\n      ^\nSyntaxError: invalid syntax",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 43
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmptc6kj6nn/candidate_test.py\", line 1\n    3+\n      ^\nSyntaxError: invalid syntax"
+      }
+    },
+    {
+      "task_id": 435,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def findLastNumberInListOfNumbersEndsWith(num_list, numToFind):  # Function to check last digit in list and return True/False.  \n    result = [i % 10 for i in reversed(num_list)]     # Reversing the numbers because we want from right side (last) of number which ends with 'x' or not, so it should be checked starting form last to first one by using list comprehension.  \n    return numToFind == result[0]  # If found then returns True else False . It will check for the given digit at end from right side in reversed order of numbers if any number ends with that particular value, it should be returned as true otherwise false is to represent not present or wrong.",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpmyfbz6_t/candidate_test.py\", line 5, in <module>\n    assert last_Digit(123) == 3\n           ^^^^^^^^^^\nNameError: name 'last_Digit' is not defined\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpmyfbz6_t/candidate_test.py\", line 5, in <module>\n    assert last_Digit(123) == 3\n           ^^^^^^^^^^\nNameError: name 'last_Digit' is not defined",
+            "failed_test": "assert last_Digit(123) == 3",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 46
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert last_Digit(123) == 3",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpmyfbz6_t/candidate_test.py\", line 5, in <module>\n    assert last_Digit(123) == 3\n           ^^^^^^^^^^\nNameError: name 'last_Digit' is not defined"
+      }
+    },
+    {
+      "task_id": 443,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def largest_neg(lst):  # define your python function here  \n    return max([i for i in lst if i < 0])     # use a List Comprehension and the builtin 'max' method to find maximum value from list of negative numbers.\nprint(\"Test cases:\")\nassert largest_neg([1,2,3,-4,-6]) == -6  # pass these tests here  \nlargest_neg([1,2,3,-8,-9])    #pass the test case for second one    \nlargest_neg([1,2,3,4,-1])      #test with third scenario.",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "Test cases:\n",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp6onw18p_/candidate_test.py\", line 4, in <module>\n    assert largest_neg([1,2,3,-4,-6]) == -6  # pass these tests here\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp6onw18p_/candidate_test.py\", line 4, in <module>\n    assert largest_neg([1,2,3,-4,-6]) == -6  # pass these tests here\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert largest_neg([1,2,3,-4,-6]) == -6",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 47
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert largest_neg([1,2,3,-4,-6]) == -6",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp6onw18p_/candidate_test.py\", line 4, in <module>\n    assert largest_neg([1,2,3,-4,-6]) == -6  # pass these tests here\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 447,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def cube_nums(lst):   # define your list here    \n    return [x**3 for x in lst]      # use map() and an anonymous function (also called \"Lambda\") to cubes all elements. The result is returned as a new List/Array with the same length of input array 'list'.  This can be achieved using Python's list comprehension feature which provides compact way by applying operations on each element in iterable object",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 69
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 452,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def loss_amount(sale, original):   # define sale and original amount here respectively   \n     return max((original - sale),0)      # subtract the sales from 'Original' Amount. If it is greater than zero then that means there was a profit so we are returning 0 otherwise not (loss). Max function ensures to always get positive value if any of them gets negative and hence, loss can be returned as maximum possible amount\n    \n# Testing our functions with the given tests:   # Assert statements will pass only when these conditions hold true. If they don't then it throws an error message \nassert(loss_amount(1500,1200)==0), \"Test failed\"    # should return zero as there is no loss in first case (sale > original amount).  \nprint(\"First test passed\")    \n        \nassert(loss_amount(100,200) == 100 ),  \"Second Test Failed. Expected: {}, but got : {}\".format('Zero', result )    # should return zero as there is no loss in second case (sale = original amount).  \nprint(\"second test passed\")    \n        \nassert(loss_amount(2000,5000)==3000 ), \"Third Test Failed. Expected: {}, but got : {}\".format('Zero', result )    # should return zero as there is no loss in third case (sale > original amount).  \nprint(\"third test passed\")",
+          "execution": {
+            "status": "pass",
+            "stdout": "First test passed\nsecond test passed\nthird test passed\nFirst test passed\nsecond test passed\nthird test passed\nFirst test passed\nsecond test passed\nthird test passed\n",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 70
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 455,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def check_monthnumb(num): # define the function here. It should take a number (1-12) representing one of these months and return True if it's February or April which has only two days; otherwise False:\n    monthdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] # list of months with their day counts. February has only two days\n    return monthdays[num - 1 ] == 2   # if the number is in range (i.e., it's a valid numeral) and its corresponding count equals to 'two', then True; otherwise False:",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpaifkeqo7/candidate_test.py\", line 5, in <module>\n    assert check_monthnumb_number(5)==True\n           ^^^^^^^^^^^^^^^^^^^^^^\nNameError: name 'check_monthnumb_number' is not defined\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpaifkeqo7/candidate_test.py\", line 5, in <module>\n    assert check_monthnumb_number(5)==True\n           ^^^^^^^^^^^^^^^^^^^^^^\nNameError: name 'check_monthnumb_number' is not defined",
+            "failed_test": "assert check_monthnumb_number(5)==True",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 47
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert check_monthnumb_number(5)==True",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpaifkeqo7/candidate_test.py\", line 5, in <module>\n    assert check_monthnumb_number(5)==True\n           ^^^^^^^^^^^^^^^^^^^^^^\nNameError: name 'check_monthnumb_number' is not defined"
+      }
+    },
+    {
+      "task_id": 459,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def remove_uppercase(s):    \n    return ''.join([i for i in s.lower()])   # convert all characters to lower cases and join them back into a string, this will exclude uppercases from our final resultant output strings as per requirement of the problem statement",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpiq6uxwby/candidate_test.py\", line 4, in <module>\n    assert remove_uppercase('cAstyoUrFavoRitETVshoWs') == 'cstyoravoitshos'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpiq6uxwby/candidate_test.py\", line 4, in <module>\n    assert remove_uppercase('cAstyoUrFavoRitETVshoWs') == 'cstyoravoitshos'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert remove_uppercase('cAstyoUrFavoRitETVshoWs') == 'cstyoravoitshos'",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 42
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert remove_uppercase('cAstyoUrFavoRitETVshoWs') == 'cstyoravoitshos'",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpiq6uxwby/candidate_test.py\", line 4, in <module>\n    assert remove_uppercase('cAstyoUrFavoRitETVshoWs') == 'cstyoravoitshos'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 463,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def max_subarray_product(arr):  \n    if not arr: return None # handle empty array case when input is invalid or null value; in Python we can't compare an integer with a string, hence this condition will be False for all non-empty arrays of integers. \n    \n    size = len(arr)\n      \n    max_ending_here = 1  \n     \n    # Initialize overall maximum product assuming first element as current max and min (assuming minimum is one because any number multiplied by -1 gives the same positive result). Also, initialize a variable to store final answer. \n    \n    global_max = arr[0] \n      \n    for i in range(size):  \n        # Multiply current element with max_ending_here and update it if needed (i.e., when the previous product was negative) . Update overall maximum to be a larger value among all products we have seen so far, or just this number itself as both are same for single numbers in array 0\n        \n        # If current element is positive then multiply with max_ending_here and update it. Otherwise if prev prod of -1*arr[i] was negative (then negate the product), use min(prev, arr[i]) to ensure we get minimum possible value for next iteration \n         \n         max_ending_here = max_ending_here * arr[i]   # Multiply current element with previous maximum and update it if needed. Update overall maximum as a larger number among all products so far or just this product itself (as both are same when single numbers in array) \n         \n         global_max  = max(global_max, max_ending_here )   # If the new value is greater than current best then update it to be our final answer. Update overall maximum as a larger number among all products so far or just this product itself (as both are same when single numbers in array) \n         \n    return global_max if size > 0 else None;     // Return max of the list, otherwise -1 for empty arrays and null values which is not defined.   # If there's only one element then answer will be that value itself (as both are same when single numbers in array)  Otherwise it returns overall maximum product so far",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpv7po7kg0/candidate_test.py\", line 21\n    return global_max if size > 0 else None;     // Return max of the list, otherwise -1 for empty arrays and null values which is not defined.   # If there's only one element then answer will be that value itself (as both are same when single numbers in array)  Otherwise it returns overall maximum product so far\n                                                 ^^\nSyntaxError: invalid syntax\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpv7po7kg0/candidate_test.py\", line 21\n    return global_max if size > 0 else None;     // Return max of the list, otherwise -1 for empty arrays and null values which is not defined.   # If there's only one element then answer will be that value itself (as both are same when single numbers in array)  Otherwise it returns overall maximum product so far\n                                                 ^^\nSyntaxError: invalid syntax",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 42
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpv7po7kg0/candidate_test.py\", line 21\n    return global_max if size > 0 else None;     // Return max of the list, otherwise -1 for empty arrays and null values which is not defined.   # If there's only one element then answer will be that value itself (as both are same when single numbers in array)  Otherwise it returns overall maximum product so far\n                                                 ^^\nSyntaxError: invalid syntax"
+      }
+    },
+    {
+      "task_id": 562,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def Find_Max_Length(lst):\n    return max([len(sublist) for sublist in lst])  # find the maximum length of a list inside main list. Maximum is returned as it will be longest one among all lists within given input array/main list.",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 64
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 563,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "import re   # Python's built-in module for regular expressions   \ndef extract_values(input: str)->str : return eval('['+re.sub(\"\\\"\",\"\\\\\",input).replace(\"\\n\",\"\") +']') if '\"' in input else None    \nprint (extract_values('\"Python\",  \"PHP\",   \"Java\"')) # should print ['Python', 'PHP','Java'], and so on for other test cases as well.",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmph2bfzobw/candidate_test.py\", line 3, in <module>\n    print (extract_values('\"Python\",  \"PHP\",   \"Java\"')) # should print ['Python', 'PHP','Java'], and so on for other test cases as well.\n           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmph2bfzobw/candidate_test.py\", line 2, in extract_values\n    def extract_values(input: str)->str : return eval('['+re.sub(\"\\\"\",\"\\\\\",input).replace(\"\\n\",\"\") +']') if '\"' in input else None\n                                                          ~~~~~~^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/__init__.py\", line 208, in sub\n    return _compile(pattern, flags).sub(repl, string, count)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/__init__.py\", line 377, in _compile_template\n    return _sre.template(pattern, _parser.parse_template(repl, pattern))\n                                  ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/_parser.py\", line 1000, in parse_template\n    s = Tokenizer(source)\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/_parser.py\", line 238, in __init__\n    self.__next()\n    ~~~~~~~~~~~^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/_parser.py\", line 251, in __next\n    raise error(\"bad escape (end of pattern)\",\n                self.string, len(self.string) - 1) from None\nre.PatternError: bad escape (end of pattern) at position 0\n",
+            "traceback": "  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/__init__.py\", line 208, in sub\n    return _compile(pattern, flags).sub(repl, string, count)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/__init__.py\", line 377, in _compile_template\n    return _sre.template(pattern, _parser.parse_template(repl, pattern))\n                                  ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/_parser.py\", line 1000, in parse_template\n    s = Tokenizer(source)\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/_parser.py\", line 238, in __init__\n    self.__next()\n    ~~~~~~~~~~~^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/_parser.py\", line 251, in __next\n    raise error(\"bad escape (end of pattern)\",\n                self.string, len(self.string) - 1) from None\nre.PatternError: bad escape (end of pattern) at position 0",
+            "failed_test": "assert extract_values('\"Python\", \"PHP\", \"Java\"')==['Python', 'PHP', 'Java']",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 47
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert extract_values('\"Python\", \"PHP\", \"Java\"')==['Python', 'PHP', 'Java']",
+        "traceback": "  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/__init__.py\", line 208, in sub\n    return _compile(pattern, flags).sub(repl, string, count)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/__init__.py\", line 377, in _compile_template\n    return _sre.template(pattern, _parser.parse_template(repl, pattern))\n                                  ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/_parser.py\", line 1000, in parse_template\n    s = Tokenizer(source)\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/_parser.py\", line 238, in __init__\n    self.__next()\n    ~~~~~~~~~~~^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/_parser.py\", line 251, in __next\n    raise error(\"bad escape (end of pattern)\",\n                self.string, len(self.string) - 1) from None\nre.PatternError: bad escape (end of pattern) at position 0"
+      }
+    },
+    {
+      "task_id": 577,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def last_Digit_Factorial(n):    \n    return abs(pow(factorial(abs(int(str(n))[-2]), -3, pow(10))) if n>=-9 and n<=8 else factorial(-4) # for negative numbers. 7 is the last digit of (56^k mod 10).\n    \ndef factorial(num):  \n    return num * factorial(num - 1) if num > 1 else 1",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp5b6d9vq3/candidate_test.py\", line 2\n    return abs(pow(factorial(abs(int(str(n))[-2]), -3, pow(10))) if n>=-9 and n<=8 else factorial(-4) # for negative numbers. 7 is the last digit of (56^k mod 10).\n              ^\nSyntaxError: '(' was never closed\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp5b6d9vq3/candidate_test.py\", line 2\n    return abs(pow(factorial(abs(int(str(n))[-2]), -3, pow(10))) if n>=-9 and n<=8 else factorial(-4) # for negative numbers. 7 is the last digit of (56^k mod 10).\n              ^\nSyntaxError: '(' was never closed",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 42
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp5b6d9vq3/candidate_test.py\", line 2\n    return abs(pow(factorial(abs(int(str(n))[-2]), -3, pow(10))) if n>=-9 and n<=8 else factorial(-4) # for negative numbers. 7 is the last digit of (56^k mod 10).\n              ^\nSyntaxError: '(' was never closed"
+      }
+    },
+    {
+      "task_id": 581,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "Here is your Python solution for finding out the Surface Area of square pyramid with given base edge and height using formula Base * Height + Lateral area (Base^2). The lateral surface are calculated by multiplying 4 times side length(base) multiplied by its half. This will be used to calculate total sum which is then divided into two parts, one for the top part of pyramid with base and another from bottom where all sides have same height as perimeter formula (2*Base + 2*(Side^2/4)).",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmprhzgem0q/candidate_test.py\", line 1\n    Here is your Python solution for finding out the Surface Area of square pyramid with given base edge and height using formula Base * Height + Lateral area (Base^2). The lateral surface are calculated by multiplying 4 times side length(base) multiplied by its half. This will be used to calculate total sum which is then divided into two parts, one for the top part of pyramid with base and another from bottom where all sides have same height as perimeter formula (2*Base + 2*(Side^2/4)).\n                 ^^^^^^\nSyntaxError: invalid syntax\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmprhzgem0q/candidate_test.py\", line 1\n    Here is your Python solution for finding out the Surface Area of square pyramid with given base edge and height using formula Base * Height + Lateral area (Base^2). The lateral surface are calculated by multiplying 4 times side length(base) multiplied by its half. This will be used to calculate total sum which is then divided into two parts, one for the top part of pyramid with base and another from bottom where all sides have same height as perimeter formula (2*Base + 2*(Side^2/4)).\n                 ^^^^^^\nSyntaxError: invalid syntax",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 43
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmprhzgem0q/candidate_test.py\", line 1\n    Here is your Python solution for finding out the Surface Area of square pyramid with given base edge and height using formula Base * Height + Lateral area (Base^2). The lateral surface are calculated by multiplying 4 times side length(base) multiplied by its half. This will be used to calculate total sum which is then divided into two parts, one for the top part of pyramid with base and another from bottom where all sides have same height as perimeter formula (2*Base + 2*(Side^2/4)).\n                 ^^^^^^\nSyntaxError: invalid syntax"
+      }
+    },
+    {
+      "task_id": 582,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def my_dict(dictionary):   # Define the function with a parameter for inputting dictionaries: 'my_func' in this case    \n    if len(list(dictionary)) == 0 :      # Use list() to convert dictionary into List and then use Python built-in method ->len(), which returns number of elements present. If it is zero, the function will return True (i.e., empty)  else False  \n        return True    # Returning true if there are no keys in dict otherwise false",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpkytqyuo3/candidate_test.py\", line 5, in <module>\n    assert my_dict({10})==False\n           ^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpkytqyuo3/candidate_test.py\", line 5, in <module>\n    assert my_dict({10})==False\n           ^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert my_dict({10})==False",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 51
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert my_dict({10})==False",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpkytqyuo3/candidate_test.py\", line 5, in <module>\n    assert my_dict({10})==False\n           ^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 594,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def diff_even_odd(lst):   # define your function here    \n    evens = [i for i, x in enumerate(lst) if x % 2 == 0]      # list comprehension to get indices where the number is even.        \n                                                                        # 'enumerate' gives us index and value of each element from lst  \n    odds  = [x for idx, x in enumerate(lst[::-1]) if (idx + 1) % 2 != 0]      # list comprehension to get indices where the number is odd.        \n                                                                        # 'enumerate' gives us index and value of each element from lst reversed  \n    return abs((evens[-1]-odds[0]))       # subtracts last even num by first odd one, then returns absolute difference",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp7vgbf86g/candidate_test.py\", line 8, in <module>\n    assert diff_even_odd([1,3,5,7,4,1,6,8])==3\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp7vgbf86g/candidate_test.py\", line 8, in <module>\n    assert diff_even_odd([1,3,5,7,4,1,6,8])==3\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert diff_even_odd([1,3,5,7,4,1,6,8])==3",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 45
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert diff_even_odd([1,3,5,7,4,1,6,8])==3",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp7vgbf86g/candidate_test.py\", line 8, in <module>\n    assert diff_even_odd([1,3,5,7,4,1,6,8])==3\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 605,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def prime_num(n):    \n    # Negative numbers are not considered primes.  0 and negative integers can't both exist in a real number system so we return False for these cases as well:\n    if n < 2 or isinstance(n, float) : \n        return False        \n      \n    else:# Checking from the first prime found till square root of 'num'. If any divisor exists then num can't be a Prime number.  \n      for i in range (2 , int( n ** 0.5 ) + 1): #range starts at two because all numbers less than it are not primes, and we already checked one above which is also prime so start from there onwards to save time: sqrt of num will be the upper limit\n        if n % i == 0 :  \n          return False  # 'n' can only divide evenly by a number (i.e., no remainder), thus it cannot be Prime, hence we break and say that is not prime in this case    \n      else:   \n         continue      \n          \n        print(f\"{ n } IS A PRIME NUMBER\") #printing the result if 'n' passes all checks.  This will only run once for a single number, as it breaks after finding one instance of prime in loop  \n     return True",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpvf49qbr9/candidate_test.py\", line 13\n    print(f\"{ n } IS A PRIME NUMBER\") #printing the result if 'n' passes all checks.  This will only run once for a single number, as it breaks after finding one instance of prime in loop  \n                                                                                                                                                                                             ^\nIndentationError: unindent does not match any outer indentation level\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpvf49qbr9/candidate_test.py\", line 13\n    print(f\"{ n } IS A PRIME NUMBER\") #printing the result if 'n' passes all checks.  This will only run once for a single number, as it breaks after finding one instance of prime in loop  \n                                                                                                                                                                                             ^\nIndentationError: unindent does not match any outer indentation level",
+            "failed_test": "assert prime_num(13)==True",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 45
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert prime_num(13)==True",
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpvf49qbr9/candidate_test.py\", line 13\n    print(f\"{ n } IS A PRIME NUMBER\") #printing the result if 'n' passes all checks.  This will only run once for a single number, as it breaks after finding one instance of prime in loop  \n                                                                                                                                                                                             ^\nIndentationError: unindent does not match any outer indentation level"
+      }
+    },
+    {
+      "task_id": 617,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "from queue import Queue\nimport math\n    \ndef min_Jumps(point, target):  \n    # Calculate the distance from origin for each point in a straight line path. We use Pythagorean theorem to calculate this: sqrt((x2-x1)^2 + (y2 - y1) ^ 2).    \n    dist = [[0 if i==j else math.sqrt(pow(abs(i-j),2)) for j in range(target+5)]for i in range(point[0] + 5 ) ]   # initializing the distance matrix with zeros and calculate distances from origin to each point\n    \n    visited = [[False if x==y else False  for y in range (len(dist) +1)] for x in range( len(dist))];#initialized as false.     \n        \n   # BFS algorithm: We start at the target and go through all reachable points from there, keeping track of their distance to get minimum number jumps required  .   \n     q = Queue()          \n     visited[point[0]][target],q.enqueue((dist[point[0]][target])) # marking as true that we have reached the target point and enqueuing its cost in queue  \n     \n     while not q.empty(): \n         curr_distance = q.dequeue()   \n         \n        for i,j in [(1,0),(-1,0),(0,-1),(0,1)]: # checking all possible directions (up/down left right).  \n            nextPoint=[point[0]+i , point[1] + j ] \n            \n           if -1<nextPoint[0] and len(dist)-1>nextPoint[0]>=abs(target-int((curr_distance)**2/4)): # checking whether the next reachable points are within target range.  \n               if visited[-i][j]: continue  # skip this point, it's already been processed   \n                else :visited [- i ][ j] = True; q .enqueue (curr_distance + dist [ - i ,- j])# mark as true and enqueuing its cost in queue.  \n     return curr_distance  #return minimum number of steps required to reach target point from origin",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpv7mqzp_r/candidate_test.py\", line 11\n    q = Queue()          \nIndentationError: unexpected indent\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpv7mqzp_r/candidate_test.py\", line 11\n    q = Queue()          \nIndentationError: unexpected indent",
+            "failed_test": "assert min_Jumps((3,4),11)==3.5",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 44
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert min_Jumps((3,4),11)==3.5",
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpv7mqzp_r/candidate_test.py\", line 11\n    q = Queue()          \nIndentationError: unexpected indent"
+      }
+    },
+    {
+      "task_id": 620,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def is_divisible(n1: int , n2 :int) -> bool:   # checks if two integers divide each other evenly ie., remainder of division equals zero (modulo operator %). If yes then return True else False .   \n     \"\"\"Check whether the pair can form a divisor\"\"\" \n     \n     assert(n1 > 0 and n2 >0) , \"Both numbers should be greater than Zero\"   #assertion to ensure that both input parameters are positive. This is just for safety purpose, in case if negative or zero values passed then it will raise an AssertionError . \n     \n     return (n1 % n2 == 0 )    # returns True only when the remainder of division equals Zero ie., pair can form a divisor with no remainders.  \n         \ndef largest_subset(nums: list, prev=None) -> int :       \"\"\"Recursive function to find out size of maximum subset which every number in set is divided by\"\"\"  # recursion base case when there are not any numbers left .   \n     if len(nums ) == 0:#base condition for the loop. When all elements have been processed, return zero as we've found a valid combination so far  \n         assert prev == None , \"All previous values should be exhausted\"  #assertion to ensure that no other value is left in list after processing . If any remaining then it will raise an AssertionError   \n         \n         print(\"Largest subset: \", nums)#printing the largest possible combination.  \n        return len(nums )     \"\"\"Return size of maximum valid set\"\"\"  #return length (size/count), ie., number of elements in this list . This is our answer to problem at hand   \n     \n      \n         \n         for num1 in range(len(nums)):   #looping through each element. For every pair, we'll check if it can form a divisor with previous numbers (if any)  and recursively call the function on remaining list . This is where our main logic resides   \n             rest = nums[:num1] + nums[num1+1:]   #creating new lists after removing current element from original one. We'll use this for next pair check in loop below  and recursively call the function on it until we exhaust all elements . This is where our main logic resides   \n              if prev == None or (is_divisible(rest[0],prev) ) : #if no previous number found, then only consider current element. If any previously processed pair can divide this one too , include in subset  and recursively call the function on rest of list . This is where our main logic resides   \n                 largest = max (largest,1 + largest_subset(rest)) #update maximum size if we found a larger valid set so far. We're adding current element to it as part of this subset  and recursively call the function on rest after that . This is where our main logic resides   \n         return largest   \"\"\"Return max possible subsets count\"\"\"",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp_lv_xz7z/candidate_test.py\", line 9\n    if len(nums ) == 0:#base condition for the loop. When all elements have been processed, return zero as we've found a valid combination so far  \nIndentationError: unexpected indent\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp_lv_xz7z/candidate_test.py\", line 9\n    if len(nums ) == 0:#base condition for the loop. When all elements have been processed, return zero as we've found a valid combination so far  \nIndentationError: unexpected indent",
+            "failed_test": "assert largest_subset([ 1, 3, 6, 13, 17, 18 ]) == 4",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 39
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert largest_subset([ 1, 3, 6, 13, 17, 18 ]) == 4",
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp_lv_xz7z/candidate_test.py\", line 9\n    if len(nums ) == 0:#base condition for the loop. When all elements have been processed, return zero as we've found a valid combination so far  \nIndentationError: unexpected indent"
+      }
+    },
+    {
+      "task_id": 631,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def replace_spaces(s):  # Function definition here  \n    return s.replace(' ', '_') if ' ' not in s else s.replace('_', ' ')     # Replace spaces with underscores and vice versa based on the string's presence of space or underline respectively, then finally returning it back to its original form",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpt5cq8iy6/candidate_test.py\", line 4, in <module>\n    assert replace_spaces('Jumanji The Jungle') == 'Jumanji_The_Jungle'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpt5cq8iy6/candidate_test.py\", line 4, in <module>\n    assert replace_spaces('Jumanji The Jungle') == 'Jumanji_The_Jungle'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert replace_spaces('Jumanji The Jungle') == 'Jumanji_The_Jungle'",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 48
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert replace_spaces('Jumanji The Jungle') == 'Jumanji_The_Jungle'",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpt5cq8iy6/candidate_test.py\", line 4, in <module>\n    assert replace_spaces('Jumanji The Jungle') == 'Jumanji_The_Jungle'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 644,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def reverse_Array_Upto_K(arr, k):   # function definition with parameters arr & K.   \n     return arr[k+1:] + list(reversed(arr[:k])) if len(arr) > k else None;      // If array length is greater than given index then reverse all elements upto the last element and append remaining part after reversal (if any).  Otherwise, it will simply print 'None'",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpcuugle0u/candidate_test.py\", line 2\n    return arr[k+1:] + list(reversed(arr[:k])) if len(arr) > k else None;      // If array length is greater than given index then reverse all elements upto the last element and append remaining part after reversal (if any).  Otherwise, it will simply print 'None'\n                                                                               ^^\nSyntaxError: invalid syntax\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpcuugle0u/candidate_test.py\", line 2\n    return arr[k+1:] + list(reversed(arr[:k])) if len(arr) > k else None;      // If array length is greater than given index then reverse all elements upto the last element and append remaining part after reversal (if any).  Otherwise, it will simply print 'None'\n                                                                               ^^\nSyntaxError: invalid syntax",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 48
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpcuugle0u/candidate_test.py\", line 2\n    return arr[k+1:] + list(reversed(arr[:k])) if len(arr) > k else None;      // If array length is greater than given index then reverse all elements upto the last element and append remaining part after reversal (if any).  Otherwise, it will simply print 'None'\n                                                                               ^^\nSyntaxError: invalid syntax"
+      }
+    },
+    {
+      "task_id": 730,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "from itertools import groupby\ndef remove_duplicated(lst):   # define function here.   \n     return [key for key in lst[0]] + list(''.join([str(k) for k, g in groupby(list(map(lambda x: str(x), lst)) if len(list(g)) > 1]))  # map to string and then join them together.",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmphdoz2by7/candidate_test.py\", line 3\n    return [key for key in lst[0]] + list(''.join([str(k) for k, g in groupby(list(map(lambda x: str(x), lst)) if len(list(g)) > 1]))  # map to string and then join them together.\n                                                                                                                                  ^\nSyntaxError: closing parenthesis ']' does not match opening parenthesis '('\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmphdoz2by7/candidate_test.py\", line 3\n    return [key for key in lst[0]] + list(''.join([str(k) for k, g in groupby(list(map(lambda x: str(x), lst)) if len(list(g)) > 1]))  # map to string and then join them together.\n                                                                                                                                  ^\nSyntaxError: closing parenthesis ']' does not match opening parenthesis '('",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 4,
+            "duration_ms": 43
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmphdoz2by7/candidate_test.py\", line 3\n    return [key for key in lst[0]] + list(''.join([str(k) for k, g in groupby(list(map(lambda x: str(x), lst)) if len(list(g)) > 1]))  # map to string and then join them together.\n                                                                                                                                  ^\nSyntaxError: closing parenthesis ']' does not match opening parenthesis '('"
+      }
+    },
+    {
+      "task_id": 744,
+      "status": "fail_assert",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def check_none(tup):    \n    # Using list comprehension and all() method for testing if any value is none or not in tuples  \n    result = all([i is not None for i in tup])     \n      \n    return bool(result)  # Returning True/False as per the condition of problem. If there's at least one non-None element, then it will be False else if every value from tuple are none or Nonetype (like [10,4,5],[7] etc.), Then all elements must pass and we should return true otherwise false",
+          "execution": {
+            "status": "fail_assert",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpzvpvila_/candidate_test.py\", line 7, in <module>\n    assert check_none((10, 4, 5, 6, None)) == True\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpzvpvila_/candidate_test.py\", line 7, in <module>\n    assert check_none((10, 4, 5, 6, None)) == True\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+            "failed_test": "assert check_none((10, 4, 5, 6, None)) == True",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 46
+          }
+        }
+      ],
+      "error": {
+        "status": "fail_assert",
+        "failed_test": "assert check_none((10, 4, 5, 6, None)) == True",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmpzvpvila_/candidate_test.py\", line 7, in <module>\n    assert check_none((10, 4, 5, 6, None)) == True\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+      }
+    },
+    {
+      "task_id": 748,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def capital_words_spaces(sentence):   # define function here.   \n     return ' '.join([word for i, word in enumerate(sentence) if not (i == 0 or sentence[i - 1] == ' ')] + [''])\nprint(\"Test cases:\")     \nassert capital_words_spaces('Python')=='Python', \"Failed on Test Case Python\"   # pass test case.   \nassert capital_words_spaces('ProgrammingExamples') == \t'Programming Examples',' Failed on the second set of tests '  ,    \nassert capital_words_spaces(\"GetReadyToBeCodingFreak\") == \"Get Ready To Be Coding Freak\",   \"'Failed Test Case' for third test\"    # pass all three.     \nprint('All Tests Passed')",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp6816mlw2/candidate_test.py\", line 5\n    assert capital_words_spaces('ProgrammingExamples') == \t'Programming Examples',' Failed on the second set of tests '  ,    \n                                                          \t                                                              ^\nSyntaxError: invalid syntax\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp6816mlw2/candidate_test.py\", line 5\n    assert capital_words_spaces('ProgrammingExamples') == \t'Programming Examples',' Failed on the second set of tests '  ,    \n                                                          \t                                                              ^\nSyntaxError: invalid syntax",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 44
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp6816mlw2/candidate_test.py\", line 5\n    assert capital_words_spaces('ProgrammingExamples') == \t'Programming Examples',' Failed on the second set of tests '  ,    \n                                                          \t                                                              ^\nSyntaxError: invalid syntax"
+      }
+    },
+    {
+      "task_id": 751,
+      "status": "error_runtime",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def is_minheap(arr):  \n    n = len(arr)     # Get the length from input arr.\n      \n    for i in range(n//2-1,-1,-1):      # Start checking each node starting at its parent nodes (i=parent of all leafs). \n        if ((2*i+1 < n and arr[i] > arr[2 * i + 1]) or   # If left child exists.   \n            (2*i+2 < n and arr[i] > arr[2 * i + 2])) :     # And right child also exist, then it is not a min heap array \n             return False      # Return false if any of the conditions are true for current node or its children.  \n    return True       # If all nodes satisfy above condition (i.e., no violations), this means arr represents Min Heap so we can say that function returns 'True'.",
+          "execution": {
+            "status": "error_runtime",
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp_i8vbx2s/candidate_test.py\", line 10, in <module>\n    assert check_min_heap([1, 2, 3, 4, 5, 6]) == True\n           ^^^^^^^^^^^^^^\nNameError: name 'check_min_heap' is not defined\n",
+            "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp_i8vbx2s/candidate_test.py\", line 10, in <module>\n    assert check_min_heap([1, 2, 3, 4, 5, 6]) == True\n           ^^^^^^^^^^^^^^\nNameError: name 'check_min_heap' is not defined",
+            "failed_test": "assert check_min_heap([1, 2, 3, 4, 5, 6]) == True",
+            "passed_count": 0,
+            "total_count": 3,
+            "duration_ms": 47
+          }
+        }
+      ],
+      "error": {
+        "status": "error_runtime",
+        "failed_test": "assert check_min_heap([1, 2, 3, 4, 5, 6]) == True",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp_i8vbx2s/candidate_test.py\", line 10, in <module>\n    assert check_min_heap([1, 2, 3, 4, 5, 6]) == True\n           ^^^^^^^^^^^^^^\nNameError: name 'check_min_heap' is not defined"
+      }
+    },
+    {
+      "task_id": 772,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def remove_length(s, k):   # function definition. s is the input sentence & k is word's desired length to be removed from it if its lengh >= k . It returns a new string after removing all words with required lenght and return only this as per your requirement in one line code block\n    return ' '.join(word for word in s.split() if len(word) != k )  # list comprehension is used to filter out the desired length from sentence & join them back into a string separated by space using str method split and re-joined with spaces ('') . It returns only this as per your requirement",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 72
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "task_id": 787,
+      "status": "error_syntax",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "3.x Code Block\nimport re   # Importing regex module in python for pattern matching and manipulation of strings   \ndef text_match_three(s):    \n        return bool(re.search('a.*b.*b', s))      # Return True if 'ab' appears three times, else False",
+          "execution": {
+            "status": "error_syntax",
+            "stdout": "",
+            "stderr": "  File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp14mzmxo5/candidate_test.py\", line 1\n    3.x Code Block\n     ^\nSyntaxError: invalid decimal literal\n",
+            "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp14mzmxo5/candidate_test.py\", line 1\n    3.x Code Block\n     ^\nSyntaxError: invalid decimal literal",
+            "failed_test": null,
+            "passed_count": 0,
+            "total_count": 4,
+            "duration_ms": 44
+          }
+        }
+      ],
+      "error": {
+        "status": "error_syntax",
+        "failed_test": null,
+        "traceback": "File \"/var/folders/n6/mpp8pfnn0d9cscxzwk01kwwc0000gn/T/tmp14mzmxo5/candidate_test.py\", line 1\n    3.x Code Block\n     ^\nSyntaxError: invalid decimal literal"
+      }
+    },
+    {
+      "task_id": 798,
+      "status": "pass",
+      "iterations": [
+        {
+          "sample_index": 1,
+          "code": "def _sum(arr):   # underscore prefix denotes it's private, not meant as public function or variable name \n    return sum(arr)     # returns the total addition result. Python inbuilt 'sum()', which adds all elements of an iterable (like list). It can also be used on a dictionary and set objects but only if they are mutable ie., it cannot contain unhashable types like lists, dictionaries or sets etc",
+          "execution": {
+            "status": "pass",
+            "stdout": "",
+            "stderr": "",
+            "traceback": "",
+            "failed_test": null,
+            "passed_count": 3,
+            "total_count": 3,
+            "duration_ms": 72
+          }
+        }
+      ],
+      "error": null
+    }
+  ],
+  "total_pass1": 0.22
+}
