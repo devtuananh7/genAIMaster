@@ -1,0 +1,20 @@
+[
+  {
+    "name": "TheAlgorithms/Python",
+    "url": "https://github.com/TheAlgorithms/Python.git",
+    "license": "MIT",
+    "description": "All Algorithms implemented in Python — hàng trăm hàm thuật toán nhỏ, rất phù hợp làm seed"
+  },
+  {
+    "name": "keon/algorithms",
+    "url": "https://github.com/keon/algorithms.git",
+    "license": "MIT",
+    "description": "Minimal examples of data structures and algorithms — code sạch, self-contained"
+  },
+  {
+    "name": "30-seconds/30-seconds-of-python",
+    "url": "https://github.com/30-seconds/30-seconds-of-python.git",
+    "license": "CC-BY-4.0",
+    "description": "Short Python code snippets — đúng target 1-15 dòng"
+  }
+]

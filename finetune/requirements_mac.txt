@@ -1,0 +1,6 @@
+# M5 Fine-tune — Mac Apple Silicon (M4)
+# Cài trên MacBook Air M4, 16GB RAM
+mlx>=0.22.0
+mlx-lm>=0.22.0
+transformers>=4.40.0
+huggingface-hub>=0.23.0

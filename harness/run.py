@@ -46,9 +46,15 @@ def load_strategy(
             base_url=base_url,
             model=model,
         )
-        if max_iterations is not None:
-            kwargs_ma["max_iterations"] = max_iterations
-        return MultiAgentStrategy(**kwargs_ma)
+    elif name == "finetune":
+        # Lazy import — tránh yêu cầu mlx/torch khi chạy strategy khác
+        from finetune.strategy import FinetuneStrategy
+        return FinetuneStrategy(
+            temperature=temperature,
+            max_tokens=max_tokens,
+            base_url=base_url,
+            model=model,
+        )
     raise ValueError(f"Unknown strategy: {name}")
 
 
