@@ -1,0 +1,143 @@
+[
+  {
+    "task_id": 1,
+    "wrapper": "split_into_chunks",
+    "text": "Write a function `split_into_chunks(items, size)` that splits a list into consecutive sublists, each of length `size`. The final sublist may be shorter if there are not enough elements.",
+    "target_module": "boltons.iterutils",
+    "target_name": "chunked",
+    "test_list": [
+      "assert split_into_chunks([1, 2, 3, 4, 5], 2) == [[1, 2], [3, 4], [5]]",
+      "assert split_into_chunks([], 2) == []"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 2,
+    "wrapper": "sliding_windows",
+    "text": "Write a function `sliding_windows(items, size)` that returns all consecutive overlapping windows of the given `size` as a list of tuples.",
+    "target_module": "boltons.iterutils",
+    "target_name": "windowed",
+    "test_list": [
+      "assert sliding_windows([1, 2, 3, 4], 2) == [(1, 2), (2, 3), (3, 4)]"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 3,
+    "wrapper": "first_truthy",
+    "text": "Write a function `first_truthy(items)` that returns the first element of the list that is truthy (its bool() is True), or None if none are truthy.",
+    "target_module": "boltons.iterutils",
+    "target_name": "first",
+    "test_list": [
+      "assert first_truthy([0, '', 3]) == 3",
+      "assert first_truthy([0, 0]) is None"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 4,
+    "wrapper": "group_numbers",
+    "text": "Write a function `group_numbers(nums)` that groups integers into a dictionary with two keys: 'even' and 'odd', mapping to the list of numbers falling in each group (order preserved).",
+    "target_module": "boltons.iterutils",
+    "target_name": "bucketize",
+    "test_list": [
+      "assert group_numbers([1, 2, 3, 4]) == {'odd': [1, 3], 'even': [2, 4]}"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 5,
+    "wrapper": "dedupe_keep_order",
+    "text": "Write a function `dedupe_keep_order(items)` that removes duplicate values while preserving the order of first appearance.",
+    "target_module": "boltons.iterutils",
+    "target_name": "unique",
+    "test_list": [
+      "assert dedupe_keep_order([1, 1, 2, 3, 3]) == [1, 2, 3]",
+      "assert dedupe_keep_order([3, 3, 3]) == [3]"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 6,
+    "wrapper": "adjacent_pairs",
+    "text": "Write a function `adjacent_pairs(items)` that returns a list of tuples of each element paired with the one after it.",
+    "target_module": "boltons.iterutils",
+    "target_name": "pairwise",
+    "test_list": [
+      "assert adjacent_pairs([1, 2, 3]) == [(1, 2), (2, 3)]"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 7,
+    "wrapper": "flatten_nested",
+    "text": "Write a function `flatten_nested(nested)` that fully flattens an arbitrarily nested list of lists into a single flat list.",
+    "target_module": "boltons.iterutils",
+    "target_name": "flatten",
+    "test_list": [
+      "assert flatten_nested([[1, 2], [3, [4]]]) == [1, 2, 3, 4]"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 8,
+    "wrapper": "to_slug",
+    "text": "Write a function `to_slug(text)` that turns a string into a lowercase slug where runs of non-word characters become single underscores.",
+    "target_module": "boltons.strutils",
+    "target_name": "slugify",
+    "test_list": [
+      "assert to_slug('Hello World!') == 'hello_world'"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 9,
+    "wrapper": "to_ordinal",
+    "text": "Write a function `to_ordinal(number)` that returns the ordinal string form of an integer, for example 1 -> '1st', 2 -> '2nd', 11 -> '11th'.",
+    "target_module": "boltons.strutils",
+    "target_name": "ordinalize",
+    "test_list": [
+      "assert to_ordinal(1) == '1st'",
+      "assert to_ordinal(2) == '2nd'",
+      "assert to_ordinal(11) == '11th'"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 10,
+    "wrapper": "pluralize_unit",
+    "text": "Write a function `pluralize_unit(noun, count)` that returns the singular noun when count is 1 and the pluralized noun otherwise.",
+    "target_module": "boltons.strutils",
+    "target_name": "cardinalize",
+    "test_list": [
+      "assert pluralize_unit('cat', 2) == 'cats'",
+      "assert pluralize_unit('cat', 1) == 'cat'"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 11,
+    "wrapper": "human_size",
+    "text": "Write a function `human_size(nbytes)` that formats a byte count as a short human-readable string, for example 1024 -> '1K' and 0 -> '0B'.",
+    "target_module": "boltons.strutils",
+    "target_name": "bytes2human",
+    "test_list": [
+      "assert human_size(1024) == '1K'",
+      "assert human_size(0) == '0B'"
+    ],
+    "test_imports": []
+  },
+  {
+    "task_id": 12,
+    "wrapper": "clamp_value",
+    "text": "Write a function `clamp_value(x, lower, upper)` that constrains x to lie within the inclusive range [lower, upper].",
+    "target_module": "boltons.mathutils",
+    "target_name": "clamp",
+    "test_list": [
+      "assert clamp_value(15, 0, 10) == 10",
+      "assert clamp_value(-3, 0, 10) == 0",
+      "assert clamp_value(5, 0, 10) == 5"
+    ],
+    "test_imports": []
+  }
+]
